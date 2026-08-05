@@ -4,7 +4,7 @@
  * All other surfaces use curated photos (local heroes + Unsplash).
  */
 export const IMAGE_PLACEHOLDER = '/placeholders/image.svg';
-export const HERO_PLACEHOLDER = '/krishna-jewellers-hero.png';
+export const HERO_PLACEHOLDER = '/krishna-jewellers-hero.avif';
 export const LOGO_PLACEHOLDER = '/placeholders/logo.svg';
 
 const unsplash = (photoPath: string, w = 1400) =>
@@ -12,7 +12,7 @@ const unsplash = (photoPath: string, w = 1400) =>
 
 /** Shared catalogue / page heroes (not collections). */
 export const SECTION_IMAGES = {
-  brandStory: '/krishna-jewellers-hero.png',
+  brandStory: '/krishna-jewellers-hero.avif',
   craftsmanship: unsplash('photo-1715374033196-0ff662284a7e'),
   showroom: unsplash('photo-1573408301185-9146fe634ad0'),
   findUs: unsplash('photo-1601121141461-9d6647bca1ed'),
@@ -101,7 +101,7 @@ export const STORE_PHOTOS = {
   gallery: [
     {
       id: 'g1',
-      src: '/krishna-jewellers-hero.png',
+      src: '/krishna-jewellers-hero.avif',
       alt: 'Bridal gold jewellery at Krishna Jewellers',
       span: 'wide' as const,
     },

@@ -1,7 +1,7 @@
 /** Site SEO helpers for Krishna Jewellers, Byasanagar. */
 export const SITE_URL = (import.meta.env.VITE_SITE_URL || 'https://www.krishnajewellersjajpur.com').replace(/\/$/, '');
 export const SITE_NAME = 'Krishna Jewellers';
-export const DEFAULT_OG_IMAGE = `${SITE_URL}/krishna-jewellers-hero.png`;
+export const DEFAULT_OG_IMAGE = `${SITE_URL}/krishna-jewellers-hero.avif`;
 
 export const DEFAULT_TITLE =
   'Krishna Jewellers | Gold & Silver Jewellery in Byasanagar, Jajpur';

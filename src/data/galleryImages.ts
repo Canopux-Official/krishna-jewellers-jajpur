@@ -27,7 +27,7 @@ const u = (path: string) =>
 export const GALLERY_PAGE_IMAGES: GalleryItem[] = [
   {
     id: 'g1',
-    src: '/krishna-jewellers-hero.png',
+    src: '/krishna-jewellers-hero.avif',
     alt: 'Bridal gold at Krishna Jewellers',
     span: 'wide',
     category: 'bridal',

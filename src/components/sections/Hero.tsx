@@ -12,7 +12,7 @@ type HeroSlide = {
 /** Hero banners — each slide can point to its own collection. */
 const HERO_SLIDES: HeroSlide[] = [
   {
-    src: '/krishna-jewellers-hero.png',
+    src: '/krishna-jewellers-hero.avif',
     categoryLabel: 'Bridal Collection',
     categorySlug: 'bridal-collection',
   },
