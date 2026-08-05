@@ -17,8 +17,8 @@ export default function BisCredibility({
   style,
 }: BisCredibilityProps) {
   const isDark = variant === 'dark';
-  const textColor = isDark ? 'rgba(248,246,242,0.72)' : 'var(--color-muted)';
-  const titleColor = isDark ? '#F8F6F2' : 'var(--color-text)';
+  const textColor = isDark ? 'var(--color-on-maroon)' : 'var(--color-muted)';
+  const titleColor = isDark ? 'var(--color-ivory)' : 'var(--color-text)';
   const logoSize = compact ? 52 : 88;
 
   const logo = (
@@ -94,7 +94,7 @@ export default function BisCredibility({
           style={{
             fontFamily: 'var(--font-heading)',
             fontSize: '1.25rem',
-            fontWeight: 400,
+            fontWeight: 600,
             color: titleColor,
             marginBottom: '6px',
             letterSpacing: '0.02em',

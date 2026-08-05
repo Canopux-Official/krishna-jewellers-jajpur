@@ -21,7 +21,8 @@ export default function SectionLabel({ children, light, className }: SectionLabe
         fontWeight: 500,
         letterSpacing: '0.22em',
         textTransform: 'uppercase',
-        color: light ? 'rgba(248,246,242,0.55)' : 'var(--color-muted)',
+        color: light ? 'var(--color-on-maroon)' : 'var(--color-muted)',
+        fontWeight: 400,
       }}
     >
       {children}

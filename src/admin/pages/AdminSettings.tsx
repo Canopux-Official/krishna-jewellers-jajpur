@@ -41,6 +41,7 @@ const EMPTY: StoreSettings = {
   weekdayHours: '',
   sundayHours: '',
   instagramUrl: '',
+  instagramCaption: '',
   facebookUrl: '',
   googleMapsUrl: '',
   showRates: true,
@@ -114,7 +115,7 @@ const SECTIONS: {
         <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
       </svg>
     ),
-    fields: ['instagramUrl', 'facebookUrl', 'googleMapsUrl'],
+    fields: ['instagramUrl', 'instagramCaption', 'facebookUrl', 'googleMapsUrl'],
   },
 ];
 
@@ -128,6 +129,7 @@ const LABELS: Record<TextField, string> = {
   weekdayHours: 'Weekday Hours (Mon–Sat)',
   sundayHours: 'Sunday Hours',
   instagramUrl: 'Instagram URL',
+  instagramCaption: 'Default Instagram Caption',
   facebookUrl: 'Facebook URL',
   googleMapsUrl: 'Google Maps URL',
 };
@@ -140,6 +142,7 @@ const PLACEHOLDERS: Partial<Record<TextField, string>> = {
   weekdayHours: '10:00 AM – 8:30 PM',
   sundayHours: '11:00 AM – 6:00 PM',
   instagramUrl: 'https://instagram.com/…',
+  instagramCaption: 'Temple-town gold from Krishna Jewellers…',
   facebookUrl: 'https://facebook.com/…',
   googleMapsUrl: 'https://maps.google.com/…',
 };
@@ -177,6 +180,7 @@ function fromApi(data: ApiSettings): StoreSettings {
     weekdayHours: data.weekdayHours || '',
     sundayHours: data.sundayHours || '',
     instagramUrl: data.instagramUrl || '',
+    instagramCaption: data.instagramCaption || '',
     facebookUrl: data.facebookUrl || '',
     googleMapsUrl: data.googleMapsUrl || '',
     showRates: boolOr(data.showRates, true),
@@ -453,17 +457,26 @@ export default function AdminSettings() {
                 gap: '18px',
               }}
             >
-              {section.fields.map((field) => (
-                <div key={field} style={field === 'address' || field === 'googleMapsUrl' ? { gridColumn: '1 / -1' } : {}}>
-                  <FormField
-                    label={LABELS[field]}
-                    value={(settings[field] as string) || ''}
-                    placeholder={PLACEHOLDERS[field]}
-                    onChange={(e) => set(field, e.target.value)}
-                    disabled={loading}
-                  />
-                </div>
-              ))}
+              {section.fields.map((field) => {
+                const fullWidth =
+                  field === 'address' ||
+                  field === 'googleMapsUrl' ||
+                  field === 'instagramCaption';
+                const isTextarea = field === 'address' || field === 'instagramCaption';
+                return (
+                  <div key={field} style={fullWidth ? { gridColumn: '1 / -1' } : {}}>
+                    <FormField
+                      as={isTextarea ? 'textarea' : 'input'}
+                      rows={isTextarea ? (field === 'instagramCaption' ? 5 : 3) : undefined}
+                      label={LABELS[field]}
+                      value={(settings[field] as string) || ''}
+                      placeholder={PLACEHOLDERS[field]}
+                      onChange={(e) => set(field, e.target.value)}
+                      disabled={loading}
+                    />
+                  </div>
+                );
+              })}
             </div>
 
             {section.title === 'Admin Account' && (

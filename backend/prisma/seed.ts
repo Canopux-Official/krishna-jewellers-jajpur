@@ -1,16 +1,16 @@
-import { PrismaClient, Purity, OfferStatus } from '@prisma/client';
+import { PrismaClient, OfferStatus } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
 
 const prisma = new PrismaClient();
 
 const STORE_ADDRESS =
-  'New Darshan Jewellery\nThana Chhak\nGhasipura\nAnandapur\nKeonjhar\nOdisha – 758015';
+  'Krishna Jewellers\nByasanagar\nJajpur\nOdisha – 755019';
 
 async function main() {
   console.log('🌱 Seeding database...');
 
   // ─── Admin User ──────────────────────────────────────────────
-  const email = process.env.ADMIN_EMAIL || 'admin@newdarshanjewellery.in';
+  const email = process.env.ADMIN_EMAIL || 'admin@krishnajewellersjajpur.com';
   const password = process.env.ADMIN_PASSWORD || 'Admin@1234';
   const name = process.env.ADMIN_NAME || 'Store Admin';
 
@@ -27,13 +27,13 @@ async function main() {
     console.log(`✅ Admin user updated: ${email}`);
   }
 
-  // Remove legacy login email if present
-  const legacy = await prisma.adminUser.findUnique({
-    where: { email: 'admin@krishnajewellers.in' },
-  });
-  if (legacy) {
-    await prisma.adminUser.delete({ where: { email: 'admin@krishnajewellers.in' } });
-    console.log('✅ Removed legacy admin@krishnajewellers.in');
+  // Remove legacy login emails if present
+  for (const legacyEmail of ['admin@newdarshanjewellery.in']) {
+    const legacy = await prisma.adminUser.findUnique({ where: { email: legacyEmail } });
+    if (legacy) {
+      await prisma.adminUser.delete({ where: { email: legacyEmail } });
+      console.log(`✅ Removed legacy ${legacyEmail}`);
+    }
   }
 
   // ─── Categories ──────────────────────────────────────────────
@@ -86,15 +86,15 @@ async function main() {
   // ─── Store Settings (always update branding) ─────────────────
   const existingSettings = await prisma.storeSettings.findFirst();
   const settingsData = {
-    storeName: 'New Darshan Jewellery',
+    storeName: 'Krishna Jewellers',
     adminName: name,
     email,
-    phone: '+91-9078333946',
-    whatsapp: '919078333946',
+    phone: '',
+    whatsapp: '',
     address: STORE_ADDRESS,
     weekdayHours: '10:00 AM – 8:30 PM',
     sundayHours: '10:00 AM – 8:30 PM',
-    googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=21.213126%2C86.114193%20(New%20Darshan%20Jewellery)',
+    googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=20.946%2C86.1301%20(Krishna%20Jewellers)',
   };
 
   if (existingSettings) {
@@ -108,30 +108,19 @@ async function main() {
     console.log('✅ Store settings seeded');
   }
 
-  // ─── Hero Banners ────────────────────────────────────────────
-  const bannerCount = await prisma.heroBanner.count();
-  if (bannerCount === 0) {
-    await prisma.heroBanner.createMany({
-      data: [
-        { title: 'Bridal Collection 2026', subtitle: 'Heirlooms for your most sacred day', imageUrl: 'https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=1800&q=85', isActive: true, order: 1 },
-        { title: 'Temple Jewellery', subtitle: 'Divine heritage in 22K gold', imageUrl: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=1800&q=85', isActive: true, order: 2 },
-        { title: 'New Arrivals', subtitle: 'Fresh designs, hallmarked purity', imageUrl: 'https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=1800&q=85', isActive: false, order: 3 },
-      ],
-    });
-    console.log('✅ Hero banners seeded');
-  }
+  // ─── Hero Banners — left empty (use placeholders / admin uploads) ──
+  console.log('⏭ Skipping hero banner seed (placeholders only)');
 
-  // ─── Gallery ─────────────────────────────────────────────────
-  // Do not seed placeholder images — public gallery uses static assets +
-  // admin-uploaded Cloudinary media (avoids duplicate photos).
+  // ─── Gallery — do not seed images ────────────────────────────
+  // Admin-uploaded Cloudinary media only.
 
-  // ─── Testimonials (refresh branding quotes) ──────────────────
+  // ─── Testimonials ────────────────────────────────────────────
   await prisma.testimonial.deleteMany();
   await prisma.testimonial.createMany({
     data: [
-      { name: 'Priyanka Mishra', city: 'Ghasipura', quote: 'Beautiful jewellery collection and very polite staff. Highly recommended.', rating: 5, isApproved: true },
-      { name: 'Satyabrata Nayak', city: 'Anandapur', quote: 'Excellent craftsmanship and transparent pricing. We purchased our wedding jewellery here.', rating: 5, isApproved: true },
-      { name: 'Ananya Das', city: 'Keonjhar', quote: 'Trusted jewellery shop in Ghasipura with a wide variety of designs.', rating: 5, isApproved: true },
+      { name: 'Priyanka Mishra', city: 'Byasanagar', quote: 'We bought our bridal set from Krishna Jewellers — the staff guided us with patience, and every piece felt pure and complete for our wedding.', rating: 5, isApproved: true },
+      { name: 'Satyabrata Nayak', city: 'Jajpur', quote: 'Transparent rates and honest making charges. For our family, this is the trusted jewellery house in Jajpur Road.', rating: 5, isApproved: true },
+      { name: 'Ananya Das', city: 'Jajpur', quote: 'From festival bangles to our daughter’s mangalsutra, Krishna Jewellers has been part of every celebration.', rating: 5, isApproved: true },
     ],
   });
   console.log('✅ Testimonials seeded');
@@ -148,25 +137,8 @@ async function main() {
     console.log('✅ Offers seeded');
   }
 
-  // ─── Sample Products ─────────────────────────────────────────
-  const productCount = await prisma.product.count();
-  if (productCount === 0) {
-    const ringsCategory = await prisma.category.findUnique({ where: { slug: 'gold-rings' } });
-    const necklacesCategory = await prisma.category.findUnique({ where: { slug: 'gold-necklaces' } });
-    if (ringsCategory) {
-      const ring = await prisma.product.create({
-        data: { slug: 'floral-gold-ring', name: 'Floral Gold Ring', categoryId: ringsCategory.id, purity: Purity.KARAT_22, weight: '4.2g', weightGrams: 4.2, price: '₹28,566', priceValue: 28566, description: 'A radiant floral design set in 22K gold.', makingStyle: 'Machine-finished with hand engraving', isNewArrival: true, isFeatured: true, isAvailable: true },
-      });
-      await prisma.productImage.create({ data: { productId: ring.id, url: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&q=80', order: 0 } });
-    }
-    if (necklacesCategory) {
-      const necklace = await prisma.product.create({
-        data: { slug: 'traditional-gold-necklace', name: 'Traditional Gold Necklace', categoryId: necklacesCategory.id, purity: Purity.KARAT_22, weight: '22.5g', weightGrams: 22.5, price: '₹1,53,225', priceValue: 153225, description: 'A traditional gold necklace finished in 22K gold.', makingStyle: 'Hand-finished traditional work', isFeatured: true, isAvailable: true },
-      });
-      await prisma.productImage.create({ data: { productId: necklace.id, url: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&q=80', order: 0 } });
-    }
-    console.log('✅ Sample products seeded');
-  }
+  // ─── Sample Products — removed for redesign ──────────────────
+  // Catalogue starts empty; add products via admin.
 
   console.log('✅ Seeding complete!');
 }

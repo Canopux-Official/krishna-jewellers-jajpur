@@ -80,7 +80,7 @@ export default function CollectionHero({ collection }: CollectionHeroProps) {
           style={{
             fontFamily: 'var(--font-heading)',
             fontSize: 'clamp(2.25rem, 7vw, 4.5rem)',
-            fontWeight: 400,
+            fontWeight: 600,
             color: '#F8F6F2',
             lineHeight: 1.08,
             marginBottom: '12px',

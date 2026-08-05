@@ -18,7 +18,7 @@ export default function InstagramGallery() {
             transition={{ duration: 0.8 }}
             style={{ marginBottom: '12px' }}
           >
-            <SectionLabel>@newdarshanjewellery</SectionLabel>
+            <SectionLabel>@krishnajewellers</SectionLabel>
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 24 }}
@@ -28,13 +28,13 @@ export default function InstagramGallery() {
             style={{
               fontFamily: 'var(--font-heading)',
               fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)',
-              fontWeight: 400,
+              fontWeight: 600,
               color: 'var(--color-text)',
             }}
           >
-            As Seen on{' '}
+            Gold Moments from{' '}
             <span style={{ fontStyle: 'italic', color: 'var(--color-bronze)' }}>
-              Instagram
+              Byasanagar
             </span>
           </motion.h2>
         </div>

@@ -6,11 +6,11 @@ import GoldDivider from '../components/ui/GoldDivider';
 import PageMeta from '../components/seo/PageMeta';
 import MapsDirectionsButton from '../components/ui/MapsDirectionsButton';
 import { useStoreSettings } from '../context/StoreSettingsContext';
-import { STORE_PHOTOS } from '../data/storeImages';
+import { SECTION_IMAGES } from '../data/storeImages';
 import { STATIC_PAGE_META } from '../utils/seo';
 import { getStoreMapsEmbedUrl, getStoreMapsUrl } from '../utils/maps';
 
-const HERO_IMAGE = STORE_PHOTOS.findUs;
+const HERO_IMAGE = SECTION_IMAGES.contact;
 
 function toMapsEmbedUrl(): string {
   return getStoreMapsEmbedUrl();
@@ -84,7 +84,7 @@ export default function ContactPage() {
         >
           <img
             src={HERO_IMAGE}
-            alt="Contact New Darshan Jewellery"
+            alt="Contact Krishna Jewellers"
             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
           />
         </motion.div>
@@ -124,7 +124,7 @@ export default function ContactPage() {
             style={{
               fontFamily: 'var(--font-heading)',
               fontSize: 'clamp(2.5rem, 5vw, 4rem)',
-              fontWeight: 400,
+              fontWeight: 600,
               color: '#F8F6F2',
               lineHeight: 1.08,
               marginBottom: '12px',
@@ -145,7 +145,7 @@ export default function ContactPage() {
               lineHeight: 1.7,
             }}
           >
-            Visit us in Ghasipura, or reach out by phone and WhatsApp.
+            Step into our Byasanagar showroom, or write to us for bridal and festival enquiries.
           </motion.p>
         </div>
       </section>
@@ -180,15 +180,15 @@ export default function ContactPage() {
                 style={{
                   fontFamily: 'var(--font-heading)',
                   fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
-                  fontWeight: 400,
+                  fontWeight: 600,
                   color: 'var(--color-text)',
                   lineHeight: 1.15,
                   marginBottom: '24px',
                 }}
               >
-                We&apos;d love to
+                Welcome to
                 <br />
-                <span style={{ fontStyle: 'italic', color: 'var(--color-bronze)' }}>hear from you</span>
+                <span style={{ fontStyle: 'italic', color: 'var(--color-bronze)' }}>Krishna Jewellers</span>
               </motion.h2>
 
               <motion.div
@@ -307,7 +307,7 @@ export default function ContactPage() {
                 }}
               >
                 <iframe
-                  title="New Darshan Jewellery location"
+                  title="Krishna Jewellers location"
                   src={embedUrl}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"

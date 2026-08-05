@@ -11,13 +11,13 @@ import {
   type GalleryCategory,
   type GalleryItem,
 } from '../data/galleryImages';
-import { STORE_PHOTOS } from '../data/storeImages';
+import { SECTION_IMAGES } from '../data/storeImages';
 import { useStoreSettings } from '../context/StoreSettingsContext';
 import { STATIC_PAGE_META } from '../utils/seo';
 import { publicGalleryService } from '../services/publicApi';
 import { resolveMediaUrl, videoThumbnailUrl } from '../utils/cloudinary';
 
-const HERO_IMAGE = STORE_PHOTOS.showroom;
+const HERO_IMAGE = SECTION_IMAGES.galleryBanner;
 
 type ApiGalleryRow = {
   id: string;
@@ -146,7 +146,7 @@ export default function GalleryPage() {
         >
           <img
             src={HERO_IMAGE}
-            alt="New Darshan Jewellery gallery"
+            alt="Krishna Jewellers gallery"
             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }}
           />
         </motion.div>
@@ -186,7 +186,7 @@ export default function GalleryPage() {
             style={{
               fontFamily: 'var(--font-heading)',
               fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
-              fontWeight: 400,
+              fontWeight: 600,
               color: '#F8F6F2',
               lineHeight: 1.08,
               marginBottom: '16px',
@@ -207,7 +207,7 @@ export default function GalleryPage() {
               lineHeight: 1.7,
             }}
           >
-            A look inside New Darshan Jewellery — store moments, bridal sets, and hallmarked pieces from our collections.
+            Moments from our Byasanagar showroom — bridal gold, festival ornaments, and hallmarked treasures.
           </motion.p>
         </div>
       </section>

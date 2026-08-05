@@ -24,10 +24,10 @@ const legalLinks = [
 
 export default function Footer() {
   const settings = useStoreSettings();
-  const storeName = settings.storeName || 'New Darshan Jewellery';
+  const storeName = settings.storeName || 'Krishna Jewellers';
   const nameParts = storeName.split(/\s+/);
-  const brandMain = nameParts.length >= 3 ? nameParts.slice(0, -1).join(' ') : (nameParts[0] || 'New Darshan');
-  const brandSub = nameParts.length >= 3 ? nameParts[nameParts.length - 1] : (nameParts.slice(1).join(' ') || 'Jewellery');
+  const brandMain = nameParts.length >= 3 ? nameParts.slice(0, -1).join(' ') : (nameParts[0] || 'Krishna');
+  const brandSub = nameParts.length >= 3 ? nameParts[nameParts.length - 1] : (nameParts.slice(1).join(' ') || 'Jewellers');
 
   const socialLinks = [
     { label: 'Instagram', href: settings.instagramUrl },
@@ -65,11 +65,11 @@ export default function Footer() {
             <div style={{ marginBottom: '24px' }}>
               <div
                 style={{
-                  fontFamily: 'var(--font-heading)',
+                  fontFamily: 'var(--font-display)',
                   fontSize: '1.75rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.18em',
-                  color: '#F8F6F2',
+                  fontWeight: 600,
+                  letterSpacing: '0.28em',
+                  color: 'var(--color-gold)',
                   textTransform: 'uppercase',
                 }}
               >
@@ -77,12 +77,13 @@ export default function Footer() {
               </div>
               <div
                 style={{
-                  fontFamily: 'var(--font-body)',
+                  fontFamily: 'var(--font-display)',
                   fontSize: '0.5625rem',
-                  letterSpacing: '0.3em',
+                  fontWeight: 500,
+                  letterSpacing: '0.36em',
                   color: 'var(--color-gold)',
                   textTransform: 'uppercase',
-                  marginTop: '4px',
+                  marginTop: '6px',
                 }}
               >
                 {brandSub}
@@ -97,7 +98,7 @@ export default function Footer() {
                 maxWidth: '280px',
               }}
             >
-              Premium gold and silver jewellery from Ghasipura, Keonjhar — crafted with purity, trust, and care for every celebration.
+              Premium BIS-hallmarked gold and silver from Byasanagar — a temple-town jewellery house trusted for weddings, festivals, and everyday blessing.
             </p>
             <BisCredibility
               variant="dark"
@@ -266,7 +267,7 @@ export default function Footer() {
                 letterSpacing: '0.08em',
               }}
             >
-              © {new Date().getFullYear()} New Darshan Jewellery.
+              © {new Date().getFullYear()} Krishna Jewellers.
               All Rights Reserved.
             </p>
             <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}>
@@ -296,7 +297,7 @@ export default function Footer() {
                   letterSpacing: '0.08em',
                 }}
               >
-                Ghasipura · Keonjhar · Odisha
+                Byasanagar · Jajpur · Odisha
               </p>
               <span
                 style={{

@@ -105,7 +105,7 @@ export default function ProductDetailPage() {
         title={pageTitle(`${product.name}${product.purity ? ` — ${product.purity}` : ''}`)}
         description={truncateMeta(
           product.description ||
-            `${product.name}${product.purity ? ` in ${product.purity}` : ''}${product.weight ? `, ${product.weight}` : ''} at New Darshan Jewellery, Ghasipura, Keonjhar.`,
+            `${product.name}${product.purity ? ` in ${product.purity}` : ''}${product.weight ? `, ${product.weight}` : ''} at Krishna Jewellers, Byasanagar, Jajpur.`,
         )}
         path={`/products/${product.slug}`}
         image={images[0]}
@@ -157,7 +157,7 @@ export default function ProductDetailPage() {
                 {categoryName}
               </p>
 
-              <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', fontWeight: 400, color: 'var(--color-text)', lineHeight: 1.15, marginBottom: '24px' }}>
+              <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', fontWeight: 600, color: 'var(--color-text)', lineHeight: 1.15, marginBottom: '24px' }}>
                 {product.name}
               </h1>
 
@@ -178,7 +178,7 @@ export default function ProductDetailPage() {
               </div>
 
               {product.price && (
-                <p style={{ fontFamily: 'var(--font-heading)', fontSize: '2rem', fontWeight: 400, color: 'var(--color-text)', marginBottom: '8px' }}>{product.price}</p>
+                <p style={{ fontFamily: 'var(--font-body)', fontSize: '2rem', fontWeight: 300, color: 'var(--color-text)', marginBottom: '8px', letterSpacing: '0.02em' }}>{product.price}</p>
               )}
               <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.6875rem', color: 'var(--color-muted)', marginBottom: '36px' }}>
                 Price is indicative · Contact store for confirmed billing

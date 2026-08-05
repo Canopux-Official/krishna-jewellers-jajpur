@@ -1,13 +1,13 @@
-const STORE_LAT = 21.213126;
-const STORE_LNG = 86.114193;
-const STORE_NAME = 'New Darshan Jewellery';
+const STORE_LAT = 20.946;
+const STORE_LNG = 86.1301;
+const STORE_NAME = 'Krishna Jewellers';
 
-/** Exact pin — do not use a place-name query (Google fuzzy-matches “Darshan Jewellers”). */
+/** Exact pin — prefer coordinates over fuzzy place-name matching. */
 const STORE_COORDS = `${STORE_LAT},${STORE_LNG}`;
 
 /**
  * Dropped-pin query with our label.
- * Bare names resolve to the wrong Google Business listing nearby.
+ * Bare names can resolve to the wrong Google Business listing nearby.
  */
 const STORE_PIN_QUERY = `${STORE_COORDS} (${STORE_NAME})`;
 
@@ -24,7 +24,7 @@ export function getStoreMapsEmbedUrl(): string {
 /**
  * Directions to the exact lat/lng.
  * Using coordinates (not a place name) stops Google from routing to
- * the nearby “Darshan Jewellers” listing.
+ * a nearby unrelated jewellery listing.
  */
 export function buildDirectionsUrl(origin?: { lat: number; lng: number }): string {
   const params = new URLSearchParams({

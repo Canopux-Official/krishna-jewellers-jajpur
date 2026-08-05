@@ -1,4 +1,4 @@
-// Prisma schema for New Darshan Jewellery Admin
+// Prisma schema for Krishna Jewellers Admin
 // Phase 5: Cloudinary + StoreSettings
 
 generator client {
@@ -179,15 +179,16 @@ model ActivityLog {
 // Singleton-style store configuration (one row)
 model StoreSettings {
   id             String   @id @default(cuid())
-  storeName      String   @default("New Darshan Jewellery")
+  storeName      String   @default("Krishna Jewellers")
   adminName      String   @default("Store Admin")
-  email          String   @default("admin@newdarshanjewellery.in")
-  phone          String   @default("+91-9078333946")
-  whatsapp       String   @default("919078333946")
-  address        String   @default("New Darshan Jewellery, Thana Chhak, Ghasipura, Anandapur, Keonjhar, Odisha – 758015")
+  email          String   @default("admin@krishnajewellersjajpur.com")
+  phone          String   @default("")
+  whatsapp       String   @default("")
+  address        String   @default("Krishna Jewellers, Byasanagar, Jajpur, Odisha – 755019")
   weekdayHours   String   @default("10:00 AM – 8:30 PM")
   sundayHours    String   @default("10:00 AM – 8:30 PM")
   instagramUrl   String?
+  instagramCaption String? @db.Text
   facebookUrl    String?
   googleMapsUrl  String?
   showRates         Boolean  @default(true)

@@ -128,10 +128,11 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
               {product.price && (
                 <p
                   style={{
-                    fontFamily: 'var(--font-heading)',
+                    fontFamily: 'var(--font-body)',
                     fontSize: '1.375rem',
-                    fontWeight: 400,
-                    color: '#F8F6F2',
+                    fontWeight: 300,
+                    color: 'var(--color-on-maroon)',
+                    letterSpacing: '0.02em',
                   }}
                 >
                   {product.price}
@@ -159,7 +160,7 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
             style={{
               fontFamily: 'var(--font-heading)',
               fontSize: '1.125rem',
-              fontWeight: 400,
+              fontWeight: 600,
               color: 'var(--color-text)',
               lineHeight: 1.25,
               overflow: 'hidden',
@@ -186,10 +187,11 @@ export default function ProductCard({ product, index = 0 }: ProductCardProps) {
             {product.price && (
               <p
                 style={{
-                  fontFamily: 'var(--font-heading)',
+                  fontFamily: 'var(--font-body)',
                   fontSize: '1.125rem',
                   fontWeight: 400,
                   color: 'var(--color-text)',
+                  letterSpacing: '0.02em',
                 }}
               >
                 {product.price}

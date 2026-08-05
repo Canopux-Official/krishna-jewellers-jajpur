@@ -141,7 +141,7 @@ function TestimonialModal({ title, form, setForm, onClose, onSave }: { title: st
         style={{ position: 'fixed', inset: 0, zIndex: 401, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px', pointerEvents: 'none' }}
       >
         <div onClick={(e) => e.stopPropagation()} style={{ backgroundColor: 'var(--admin-card)', border: '1px solid var(--admin-border)', borderRadius: '12px', padding: '28px', maxWidth: '480px', width: '100%', boxShadow: '0 20px 60px rgba(0,0,0,0.15)', pointerEvents: 'all' }}>
-          <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.25rem', fontWeight: 400, color: 'var(--admin-text)', marginBottom: '20px' }}>{title}</h3>
+          <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.25rem', fontWeight: 600, color: 'var(--admin-text)', marginBottom: '20px' }}>{title}</h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '24px' }}>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
               <FormField label="Customer Name" required value={form.name} onChange={(e) => setForm('name', e.target.value)} />

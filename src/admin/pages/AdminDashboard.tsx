@@ -93,7 +93,7 @@ export default function AdminDashboard() {
           style={{ backgroundColor: 'var(--admin-card)', border: '1px solid var(--admin-border)', borderRadius: '10px', overflow: 'hidden' }}
         >
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 24px', borderBottom: '1px solid var(--admin-border)' }}>
-            <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.125rem', fontWeight: 400, color: 'var(--admin-text)' }}>Recent Products</h3>
+            <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.125rem', fontWeight: 600, color: 'var(--admin-text)' }}>Recent Products</h3>
             <AdminButton variant="ghost" size="sm" onClick={() => navigate('/admin/products')}>View all →</AdminButton>
           </div>
           {loading ? <div style={{ padding: '16px 24px' }}><TableSkeleton rows={5} /></div> : (
@@ -141,7 +141,7 @@ export default function AdminDashboard() {
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.4 }}
             style={{ backgroundColor: 'var(--admin-card)', border: '1px solid var(--admin-border)', borderRadius: '10px', padding: '20px 24px' }}
           >
-            <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.125rem', fontWeight: 400, color: 'var(--admin-text)', marginBottom: '16px' }}>Quick Actions</h3>
+            <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.125rem', fontWeight: 600, color: 'var(--admin-text)', marginBottom: '16px' }}>Quick Actions</h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {[
                 { label: 'Add New Product', icon: '＋', action: () => setAddOpen(true) },
@@ -163,7 +163,7 @@ export default function AdminDashboard() {
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.5 }}
             style={{ backgroundColor: 'var(--admin-card)', border: '1px solid var(--admin-border)', borderRadius: '10px', padding: '20px 24px' }}
           >
-            <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.125rem', fontWeight: 400, color: 'var(--admin-text)', marginBottom: '20px' }}>Recent Activity</h3>
+            <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.125rem', fontWeight: 600, color: 'var(--admin-text)', marginBottom: '20px' }}>Recent Activity</h3>
             {loading ? <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>{Array.from({ length: 4 }).map((_, i) => <Skeleton key={i} height="14px" />)}</div> : (
               <div style={{ display: 'flex', flexDirection: 'column' }}>
                 {activity.length === 0 ? <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.8125rem', color: 'var(--admin-text-3)' }}>No recent activity</p> :

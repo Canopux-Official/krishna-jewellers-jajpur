@@ -1,234 +1,248 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import SectionLabel from '../ui/SectionLabel';
-import GoldDivider from '../ui/GoldDivider';
+import { useState } from 'react';
 import { COLLECTIONS } from '../../utils/constants';
 
 export default function Collections() {
+  const [activeId, setActiveId] = useState(COLLECTIONS[0]?.id ?? 'bridal');
+  const active = COLLECTIONS.find((c) => c.id === activeId) ?? COLLECTIONS[0];
+
   return (
     <section
-      className="section-padding"
-      style={{ backgroundColor: 'var(--color-bg-alt)' }}
+      className="kj-collections"
+      style={{
+        backgroundColor: 'var(--color-bg)',
+        paddingTop: 'clamp(16px, 2.5vw, 28px)',
+        paddingBottom: 'clamp(64px, 10vw, 120px)',
+      }}
     >
       <div className="container">
-        {/* Header */}
         <div
+          className="kj-collections-layout"
           style={{
-            display: 'flex',
-            alignItems: 'flex-end',
-            justifyContent: 'space-between',
-            marginBottom: '64px',
-            flexWrap: 'wrap',
-            gap: '24px',
+            display: 'grid',
+            gridTemplateColumns: 'minmax(240px, 0.9fr) minmax(0, 1.25fr)',
+            gap: 'clamp(40px, 6vw, 80px)',
+            alignItems: 'stretch',
           }}
         >
+          {/* Index list — not a masonry card grid */}
           <div>
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              style={{ marginBottom: '16px' }}
-            >
-              <SectionLabel>Our Collections</SectionLabel>
-            </motion.div>
             <motion.h2
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.9, delay: 0.1, ease: 'easeInOut' }}
+              transition={{ duration: 0.85 }}
               style={{
                 fontFamily: 'var(--font-heading)',
-                fontSize: 'clamp(2rem, 4vw, 3.25rem)',
-                fontWeight: 400,
+                fontSize: 'clamp(2rem, 3.8vw, 3rem)',
+                fontWeight: 600,
                 color: 'var(--color-text)',
-                lineHeight: 1.12,
+                lineHeight: 1.15,
+                marginBottom: '12px',
               }}
             >
-              Shop by
-              <br />
-              <span style={{ fontStyle: 'italic', color: 'var(--color-bronze)' }}>
-                Category
-              </span>
+              In the showroom
             </motion.h2>
-          </div>
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.75, delay: 0.1 }}
+              style={{
+                fontFamily: 'var(--font-body)',
+                fontWeight: 300,
+                fontSize: '0.9375rem',
+                color: 'var(--color-muted)',
+                lineHeight: 1.7,
+                marginBottom: '40px',
+                maxWidth: '28rem',
+              }}
+            >
+              Bridal sets, festival bangles, temple pendants, and the everyday gold families wear in Byasanagar.
+            </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
+            <nav aria-label="Collections" style={{ display: 'flex', flexDirection: 'column' }}>
+              {COLLECTIONS.map((col, i) => {
+                const isActive = col.id === activeId;
+                return (
+                  <motion.button
+                    key={col.id}
+                    type="button"
+                    initial={{ opacity: 0, x: -12 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.55, delay: i * 0.04 }}
+                    onMouseEnter={() => setActiveId(col.id)}
+                    onFocus={() => setActiveId(col.id)}
+                    onClick={() => setActiveId(col.id)}
+                    style={{
+                      textAlign: 'left',
+                      background: 'transparent',
+                      border: 'none',
+                      borderBottom: '1px solid var(--color-divider)',
+                      padding: '18px 0',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '6px',
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontFamily: 'var(--font-heading)',
+                        fontSize: '1.25rem',
+                        fontWeight: 600,
+                        color: isActive ? 'var(--color-maroon)' : 'var(--color-text)',
+                        transition: 'color 0.25s ease',
+                      }}
+                    >
+                      {col.name}
+                    </span>
+                    <span
+                      style={{
+                        fontFamily: 'var(--font-body)',
+                        fontWeight: 300,
+                        fontSize: '0.8125rem',
+                        color: 'var(--color-muted)',
+                        lineHeight: 1.5,
+                      }}
+                    >
+                      {col.shortDescription}
+                    </span>
+                  </motion.button>
+                );
+              })}
+            </nav>
+
             <Link
               to="/collections"
               style={{
+                display: 'inline-block',
+                marginTop: '32px',
                 fontFamily: 'var(--font-body)',
                 fontSize: '0.6875rem',
                 letterSpacing: '0.18em',
                 textTransform: 'uppercase',
-                color: 'var(--color-muted)',
-                borderBottom: '1px solid var(--color-divider)',
-                paddingBottom: '2px',
+                color: 'var(--color-maroon)',
+                borderBottom: '1px solid var(--color-gold)',
+                paddingBottom: '3px',
+                textDecoration: 'none',
               }}
             >
-              View All Collections →
+              Open full catalogue
+            </Link>
+          </div>
+
+          {/* Featured preview */}
+          <motion.div
+            key={active?.id}
+            initial={{ opacity: 0.4 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.45 }}
+            style={{ position: 'relative', minHeight: '520px' }}
+          >
+            <Link
+              to={`/collections/${active?.slug ?? 'bridal-collection'}`}
+              style={{ display: 'block', height: '100%', textDecoration: 'none', color: 'inherit' }}
+            >
+              <div
+                style={{
+                  position: 'relative',
+                  height: '100%',
+                  minHeight: '520px',
+                  overflow: 'hidden',
+                  backgroundColor: 'var(--color-maroon)',
+                }}
+              >
+                <img
+                  src={active?.image}
+                  alt={active?.name ?? 'Collection'}
+                  loading="lazy"
+                  decoding="async"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'center',
+                    display: 'block',
+                    opacity: 0.92,
+                  }}
+                />
+                <div
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    background:
+                      'linear-gradient(180deg, transparent 45%, rgba(24,24,24,0.88) 100%)',
+                  }}
+                />
+                <div
+                  style={{
+                    position: 'absolute',
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    padding: '36px 32px',
+                  }}
+                >
+                  <p
+                    style={{
+                      fontFamily: 'var(--font-display)',
+                      fontSize: '0.75rem',
+                      letterSpacing: '0.28em',
+                      textTransform: 'uppercase',
+                      color: 'var(--color-gold)',
+                      marginBottom: '10px',
+                    }}
+                  >
+                    Featured
+                  </p>
+                  <h3
+                    style={{
+                      fontFamily: 'var(--font-heading)',
+                      fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
+                      fontWeight: 600,
+                      color: 'var(--color-ivory)',
+                      marginBottom: '12px',
+                    }}
+                  >
+                    {active?.name}
+                  </h3>
+                  <p
+                    style={{
+                      fontFamily: 'var(--font-body)',
+                      fontWeight: 300,
+                      fontSize: '0.875rem',
+                      color: 'var(--color-on-maroon)',
+                      maxWidth: '32rem',
+                      lineHeight: 1.7,
+                    }}
+                  >
+                    {active?.shortDescription}
+                  </p>
+                </div>
+              </div>
             </Link>
           </motion.div>
         </div>
-
-        <GoldDivider style={{ marginBottom: '56px' }} />
-
-        {/* Grid */}
-        <div
-          className="collections-grid"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gridAutoRows: 'minmax(0, auto)',
-            gap: '2px',
-          }}
-        >
-          {COLLECTIONS.map((col, i) => (
-            <CollectionCard key={col.id} collection={col} index={i} />
-          ))}
-        </div>
       </div>
-    </section>
-  );
-}
-
-interface CollectionCardProps {
-  collection: (typeof COLLECTIONS)[0];
-  index: number;
-}
-
-function CollectionCard({ collection, index }: CollectionCardProps) {
-  const isLarge = collection.size === 'large';
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.8, delay: index * 0.08, ease: 'easeInOut' }}
-      style={isLarge ? { gridColumn: 'span 2', gridRow: 'span 2' } : undefined}
-    >
-      <Link
-        to={`/collections/${collection.slug}`}
-        style={{ display: 'block', textDecoration: 'none', height: '100%' }}
-      >
-        <div
-          className="collection-card"
-          style={{
-            position: 'relative',
-            overflow: 'hidden',
-            aspectRatio: isLarge ? undefined : '3 / 4',
-            height: isLarge ? '100%' : undefined,
-            minHeight: isLarge ? '100%' : undefined,
-            cursor: 'pointer',
-          }}
-        >
-          <motion.img
-            src={collection.image}
-            alt={collection.name}
-            loading="lazy"
-            decoding="async"
-            whileHover={{ scale: 1.06 }}
-            transition={{ duration: 0.9, ease: 'easeInOut' }}
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              objectPosition: 'center center',
-              display: 'block',
-            }}
-          />
-
-          {/* Gradient overlay */}
-          <div
-            style={{
-              position: 'absolute',
-              inset: 0,
-              background:
-                'linear-gradient(180deg, transparent 40%, rgba(24,24,24,0.72) 100%)',
-              transition: 'opacity 0.5s ease',
-            }}
-          />
-
-          {/* Text overlay — fades up on hover */}
-          <div
-            className="collection-card-text"
-            style={{
-              position: 'absolute',
-              bottom: 0,
-              left: 0,
-              right: 0,
-              padding: isLarge ? '40px 32px' : '32px 24px',
-            }}
-          >
-            <p
-              style={{
-                fontFamily: 'var(--font-body)',
-                fontSize: '0.5625rem',
-                letterSpacing: '0.22em',
-                textTransform: 'uppercase',
-                color: 'var(--color-gold)',
-                marginBottom: '8px',
-                opacity: 0,
-                transform: 'translateY(8px)',
-                transition: 'opacity 0.5s ease, transform 0.5s ease',
-              }}
-              className="collection-sub"
-            >
-              Explore Collection
-            </p>
-            <h3
-              style={{
-                fontFamily: 'var(--font-heading)',
-                fontSize: isLarge ? '2.25rem' : '1.625rem',
-                fontWeight: 400,
-                color: '#F8F6F2',
-                lineHeight: 1.1,
-                transform: 'translateY(8px)',
-                transition: 'transform 0.5s ease',
-              }}
-              className="collection-title"
-            >
-              {collection.name}
-            </h3>
-          </div>
-        </div>
-      </Link>
 
       <style>{`
-        .collection-card:hover .collection-sub {
-          opacity: 1 !important;
-          transform: translateY(0) !important;
-        }
-        .collection-card:hover .collection-title {
-          transform: translateY(0) !important;
-        }
-        @media (hover: none) {
-          .collection-sub {
-            opacity: 1 !important;
-            transform: none !important;
-          }
-        }
         @media (max-width: 900px) {
-          .collections-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-          }
-        }
-        @media (max-width: 500px) {
-          .collections-grid {
+          .kj-collections-layout {
             grid-template-columns: 1fr !important;
+            gap: 40px !important;
           }
-          .collections-grid > * {
-            grid-column: span 1 !important;
-            grid-row: span 1 !important;
+          .kj-collections-layout > div:last-child {
+            min-height: 380px !important;
+            order: -1;
+          }
+          .kj-collections-layout > div:last-child a > div {
+            min-height: 380px !important;
           }
         }
       `}</style>
-    </motion.div>
+    </section>
   );
 }

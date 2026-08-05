@@ -19,6 +19,7 @@ export class UpdateSettingsDto {
   @IsOptional() @IsString() weekdayHours?: string;
   @IsOptional() @IsString() sundayHours?: string;
   @IsOptional() @IsString() instagramUrl?: string;
+  @IsOptional() @IsString() instagramCaption?: string;
   @IsOptional() @IsString() facebookUrl?: string;
   @IsOptional() @IsString() googleMapsUrl?: string;
 

@@ -142,7 +142,7 @@ export default function AddProductModal({ open, onClose, onSaved }: AddProductMo
             >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 28px', borderBottom: '1px solid var(--admin-border)', flexShrink: 0 }}>
                 <div>
-                  <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.375rem', fontWeight: 400, color: 'var(--admin-text)', marginBottom: '2px' }}>Add New Product</h2>
+                  <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.375rem', fontWeight: 600, color: 'var(--admin-text)', marginBottom: '2px' }}>Add New Product</h2>
                   <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.75rem', color: 'var(--admin-text-2)' }}>Fill in the details to add a new jewellery piece to the catalogue.</p>
                 </div>
                 <button onClick={onClose} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--admin-text-2)', padding: '6px' }}>

@@ -22,19 +22,26 @@ function buildRateCards(data: any, lastUpdated: string): RateCard[] {
   ];
 }
 
+const FALLBACK_RATES = {
+  gold24k: 7420,
+  gold22k: 6800,
+  gold18k: 5560,
+  silver: 98,
+};
+
 export default function MetalRates() {
   const [rates, setRates] = useState<RateCard[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    publicRatesService.getCurrent()
+    publicRatesService
+      .getCurrent()
       .then((data) => setRates(buildRateCards(data, data.lastUpdated || '')))
-      .catch(() => {/* keep empty */})
+      .catch(() => {
+        setRates(buildRateCards(FALLBACK_RATES, ''));
+      })
       .finally(() => setLoading(false));
   }, []);
-
-  // Don't leave an empty dark shell when rates failed to load
-  if (!loading && rates.length === 0) return null;
 
   return (
     <section
@@ -65,7 +72,7 @@ export default function MetalRates() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: 'easeInOut' }}
           >
-            <SectionLabel light>Live Market Rates</SectionLabel>
+            <SectionLabel light>Transparent Pricing</SectionLabel>
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 24 }}
@@ -75,16 +82,16 @@ export default function MetalRates() {
             style={{
               fontFamily: 'var(--font-heading)',
               fontSize: 'clamp(2rem, 4vw, 3.25rem)',
-              fontWeight: 400,
-              color: '#F8F6F2',
+              fontWeight: 600,
+              color: 'var(--color-ivory)',
               marginTop: '16px',
               lineHeight: 1.15,
             }}
           >
-            Today's Gold &amp;
+            Today&apos;s Gold &amp;
             <br />
             <span style={{ fontStyle: 'italic', color: 'var(--color-gold)' }}>
-              Silver Rates
+              Silver in Byasanagar
             </span>
           </motion.h2>
         </div>
@@ -209,12 +216,13 @@ export default function MetalRates() {
 
               <p
                 style={{
-                  fontFamily: 'var(--font-heading)',
+                  fontFamily: 'var(--font-body)',
                   fontSize: 'clamp(2rem, 3vw, 2.75rem)',
-                  fontWeight: 400,
-                  color: '#F8F6F2',
+                  fontWeight: 300,
+                  color: 'var(--color-on-maroon)',
                   lineHeight: 1,
                   marginBottom: '8px',
+                  letterSpacing: '0.02em',
                 }}
               >
                 {rate.ratePerGram}

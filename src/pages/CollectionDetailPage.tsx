@@ -105,9 +105,9 @@ export default function CollectionDetailPage() {
   return (
     <PageTransition>
       <PageMeta
-        title={pageTitle(`${collection.name} — Ghasipura, Keonjhar`)}
+        title={pageTitle(`${collection.name} — Byasanagar, Jajpur`)}
         description={truncateMeta(
-          `${collection.shortDescription} Shop ${collection.name.toLowerCase()} at New Darshan Jewellery, Ghasipura, Keonjhar, Odisha.`,
+          `${collection.shortDescription} Shop ${collection.name.toLowerCase()} at Krishna Jewellers, Byasanagar, Jajpur, Odisha.`,
         )}
         path={`/collections/${collection.slug}`}
         image={collection.bannerImage || collection.image}

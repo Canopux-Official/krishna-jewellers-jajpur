@@ -1,173 +1,179 @@
-import { useState, useEffect, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import SectionLabel from '../ui/SectionLabel';
 import { TESTIMONIALS } from '../../utils/constants';
 
-const AUTO_SWIPE_MS = 5000;
+function initials(name: string) {
+  return name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w[0]?.toUpperCase() ?? '')
+    .join('');
+}
 
 export default function Testimonials() {
-  const [active, setActive] = useState(0);
-  const [paused, setPaused] = useState(false);
-  const testimonial = TESTIMONIALS[active];
-
-  const goNext = useCallback(() => {
-    setActive((i) => (i + 1) % TESTIMONIALS.length);
-  }, []);
-
-  useEffect(() => {
-    if (paused || TESTIMONIALS.length <= 1) return;
-    const id = window.setInterval(goNext, AUTO_SWIPE_MS);
-    return () => window.clearInterval(id);
-  }, [paused, goNext, active]);
-
   return (
     <section
       className="section-padding"
       style={{ backgroundColor: 'var(--color-bg-alt)' }}
     >
       <div className="container">
-        <div
-          style={{
-            maxWidth: '900px',
-            marginInline: 'auto',
-            textAlign: 'center',
-          }}
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-          onFocusCapture={() => setPaused(true)}
-          onBlurCapture={(e) => {
-            if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
-              setPaused(false);
-            }
-          }}
-        >
-          {/* Label */}
+        <div style={{ marginBottom: 'clamp(40px, 6vw, 64px)', maxWidth: '36rem' }}>
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            style={{ marginBottom: '56px' }}
+            transition={{ duration: 0.7 }}
           >
-            <SectionLabel>What Our Patrons Say</SectionLabel>
+            <SectionLabel>Voices from Jajpur</SectionLabel>
           </motion.div>
-
-          {/* Quotation mark */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.9, ease: 'easeInOut' }}
+            transition={{ duration: 0.8, delay: 0.08 }}
             style={{
               fontFamily: 'var(--font-heading)',
-              fontSize: '8rem',
-              lineHeight: 0.6,
-              color: 'var(--color-gold)',
-              opacity: 0.18,
-              marginBottom: '32px',
-              userSelect: 'none',
+              fontSize: 'clamp(1.85rem, 3.5vw, 2.75rem)',
+              fontWeight: 600,
+              color: 'var(--color-text)',
+              lineHeight: 1.2,
+              marginTop: '16px',
             }}
           >
-            "
-          </motion.div>
+            What families say about us
+          </motion.h2>
+        </div>
 
-          {/* Quote */}
-          <AnimatePresence mode="wait">
-            <motion.blockquote
-              key={testimonial.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.7, ease: 'easeInOut' }}
+        <div
+          className="kj-testimonial-grid"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: 'clamp(16px, 2.2vw, 28px)',
+          }}
+        >
+          {TESTIMONIALS.map((t, i) => (
+            <motion.article
+              key={t.id}
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.7, delay: i * 0.1, ease: 'easeOut' }}
               style={{
-                fontFamily: 'var(--font-heading)',
-                fontSize: 'clamp(1.25rem, 2.5vw, 1.75rem)',
-                fontWeight: 300,
-                fontStyle: 'italic',
-                lineHeight: 1.65,
-                color: 'var(--color-text)',
-                marginBottom: '40px',
+                display: 'flex',
+                flexDirection: 'column',
+                height: '100%',
+                padding: 'clamp(28px, 3vw, 36px)',
+                backgroundColor: 'var(--color-bg)',
+                border: '1px solid var(--color-divider)',
+                borderRadius: '4px',
+                boxShadow: '0 10px 28px rgba(24,24,24,0.04)',
               }}
             >
-              {testimonial.quote}
-            </motion.blockquote>
-          </AnimatePresence>
-
-          {/* Divider */}
-          <div
-            style={{
-              width: '40px',
-              height: '1px',
-              background: 'var(--color-gold)',
-              marginInline: 'auto',
-              marginBottom: '24px',
-            }}
-          />
-
-          {/* Name + City */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`meta-${testimonial.id}`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <p
+              <span
+                aria-hidden
                 style={{
-                  fontFamily: 'var(--font-body)',
-                  fontSize: '0.8125rem',
-                  fontWeight: 500,
-                  letterSpacing: '0.1em',
+                  fontFamily: 'var(--font-heading)',
+                  fontSize: '3rem',
+                  lineHeight: 1,
+                  color: 'var(--color-gold)',
+                  marginBottom: '16px',
+                }}
+              >
+                “
+              </span>
+
+              <blockquote
+                style={{
+                  flex: 1,
+                  fontFamily: 'var(--font-heading)',
+                  fontSize: 'clamp(1.05rem, 1.5vw, 1.2rem)',
+                  fontWeight: 400,
+                  fontStyle: 'italic',
+                  lineHeight: 1.65,
                   color: 'var(--color-text)',
-                  marginBottom: '4px',
+                  margin: 0,
                 }}
               >
-                {testimonial.name}
-              </p>
-              <p
-                style={{
-                  fontFamily: 'var(--font-body)',
-                  fontSize: '0.6875rem',
-                  letterSpacing: '0.18em',
-                  textTransform: 'uppercase',
-                  color: 'var(--color-muted)',
-                }}
-              >
-                {testimonial.city}
-              </p>
-            </motion.div>
-          </AnimatePresence>
+                {t.quote}
+              </blockquote>
 
-          {/* Navigation dots */}
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              gap: '12px',
-              marginTop: '48px',
-            }}
-          >
-            {TESTIMONIALS.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setActive(i)}
-                aria-label={`Testimonial ${i + 1}`}
+              <div
                 style={{
-                  width: i === active ? '24px' : '6px',
-                  height: '6px',
-                  borderRadius: '3px',
-                  background: i === active ? 'var(--color-gold)' : 'var(--color-divider)',
-                  border: 'none',
-                  cursor: 'pointer',
-                  transition: 'width 0.4s ease, background 0.4s ease',
-                  padding: 0,
+                  marginTop: '28px',
+                  paddingTop: '22px',
+                  borderTop: '1px solid var(--color-divider)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '14px',
                 }}
-              />
-            ))}
-          </div>
+              >
+                <div
+                  aria-hidden
+                  style={{
+                    width: '42px',
+                    height: '42px',
+                    borderRadius: '50%',
+                    flexShrink: 0,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    background:
+                      'linear-gradient(145deg, rgba(199,161,90,0.22), rgba(199,161,90,0.06))',
+                    border: '1px solid rgba(199,161,90,0.35)',
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '0.75rem',
+                    fontWeight: 500,
+                    letterSpacing: '0.06em',
+                    color: 'var(--color-bronze)',
+                  }}
+                >
+                  {initials(t.name)}
+                </div>
+                <div>
+                  <p
+                    style={{
+                      fontFamily: 'var(--font-body)',
+                      fontSize: '0.8125rem',
+                      fontWeight: 500,
+                      letterSpacing: '0.06em',
+                      color: 'var(--color-text)',
+                      marginBottom: '4px',
+                    }}
+                  >
+                    {t.name}
+                  </p>
+                  <p
+                    style={{
+                      fontFamily: 'var(--font-body)',
+                      fontSize: '0.625rem',
+                      letterSpacing: '0.16em',
+                      textTransform: 'uppercase',
+                      color: 'var(--color-muted)',
+                    }}
+                  >
+                    {t.city}
+                  </p>
+                </div>
+              </div>
+            </motion.article>
+          ))}
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 900px) {
+          .kj-testimonial-grid {
+            grid-template-columns: 1fr 1fr !important;
+          }
+        }
+        @media (max-width: 600px) {
+          .kj-testimonial-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320" role="img" aria-label="Krishna Jewellers logo placeholder">
+  <rect width="320" height="320" fill="#1C0E12"/>
+  <circle cx="160" cy="148" r="78" fill="none" stroke="#C4A052" stroke-width="2"/>
+  <circle cx="160" cy="148" r="22" fill="#C4A052"/>
+  <text x="160" y="268" text-anchor="middle" fill="#E8D5A8" font-family="Georgia, serif" font-size="22" letter-spacing="4">KJ</text>
+</svg>

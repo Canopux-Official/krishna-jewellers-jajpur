@@ -196,12 +196,12 @@ export default function SearchOverlay() {
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   onKeyDown={handleKeyDown}
-                  placeholder="Search jewellery, collections…"
+                  placeholder="Search bridal, bangles, chains…"
                   style={{
                     flex: 1,
                     fontFamily: 'var(--font-heading)',
                     fontSize: 'clamp(1.25rem, 3vw, 2rem)',
-                    fontWeight: 400,
+                    fontWeight: 600,
                     fontStyle: query ? 'normal' : 'italic',
                     color: 'var(--color-text)',
                     backgroundColor: 'transparent',

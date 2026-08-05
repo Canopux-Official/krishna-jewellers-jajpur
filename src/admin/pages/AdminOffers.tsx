@@ -364,7 +364,7 @@ function OfferModal({
             style={{
               fontFamily: 'var(--font-heading)',
               fontSize: '1.25rem',
-              fontWeight: 400,
+              fontWeight: 600,
               color: 'var(--admin-text)',
               marginBottom: '20px',
             }}

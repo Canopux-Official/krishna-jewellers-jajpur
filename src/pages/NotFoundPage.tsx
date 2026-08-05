@@ -35,7 +35,7 @@ export default function NotFoundPage() {
         style={{
           fontFamily: 'var(--font-heading)',
           fontSize: 'clamp(3rem, 8vw, 7rem)',
-          fontWeight: 400,
+          fontWeight: 600,
           fontStyle: 'italic',
           color: 'var(--color-text)',
           lineHeight: 1,

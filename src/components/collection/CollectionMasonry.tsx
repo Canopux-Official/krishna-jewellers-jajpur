@@ -114,7 +114,7 @@ function CollectionMasonryCard({ collection, index }: { collection: Collection; 
               style={{
                 fontFamily: 'var(--font-heading)',
                 fontSize: collection.size === 'large' ? '2rem' : '1.375rem',
-                fontWeight: 400,
+                fontWeight: 600,
                 color: '#F8F6F2',
                 lineHeight: 1.1,
                 transform: 'translateY(6px)',

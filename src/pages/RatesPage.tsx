@@ -4,11 +4,11 @@ import PageTransition from '../components/ui/PageTransition';
 import Breadcrumb from '../components/ui/Breadcrumb';
 import MetalRates from '../components/sections/MetalRates';
 import PageMeta from '../components/seo/PageMeta';
-import { STORE_PHOTOS } from '../data/storeImages';
+import { SECTION_IMAGES } from '../data/storeImages';
 import { useStoreSettings } from '../context/StoreSettingsContext';
 import { STATIC_PAGE_META } from '../utils/seo';
 
-const HERO_IMAGE = STORE_PHOTOS.showroom;
+const HERO_IMAGE = SECTION_IMAGES.rates;
 
 export default function RatesPage() {
   const meta = STATIC_PAGE_META.rates;
@@ -80,7 +80,7 @@ export default function RatesPage() {
             style={{
               fontFamily: 'var(--font-heading)',
               fontSize: 'clamp(2.5rem, 5vw, 4rem)',
-              fontWeight: 400,
+              fontWeight: 600,
               color: '#F8F6F2',
               lineHeight: 1.08,
               marginBottom: '12px',
@@ -101,7 +101,7 @@ export default function RatesPage() {
               lineHeight: 1.7,
             }}
           >
-            Live gold and silver rates from New Darshan Jewellery.
+            Indicative 22K, 24K gold and silver rates — confirmed in store with making charges.
           </motion.p>
         </div>
       </section>

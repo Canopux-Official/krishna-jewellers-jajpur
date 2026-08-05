@@ -61,7 +61,7 @@ export function buildWhatsAppEnquiry(
 ): string {
   const phone = (whatsapp || '').replace(/[^\d]/g, '');
   const message = encodeURIComponent(
-    `Hello New Darshan Jewellery,\n\nI am interested in the following product:\n\nProduct Name: ${product.name}\nPurity: ${product.purity}\nWeight: ${product.weight}\n\nPlease share more details.`,
+    `Hello Krishna Jewellers,\n\nI am interested in the following piece from your Byasanagar showroom:\n\nProduct Name: ${product.name}\nPurity: ${product.purity}\nWeight: ${product.weight}\n\nPlease share more details.`,
   );
   return `https://wa.me/${phone}?text=${message}`;
 }

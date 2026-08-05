@@ -4,11 +4,11 @@ import Breadcrumb from '../components/ui/Breadcrumb';
 import BrandStory from '../components/sections/BrandStory';
 import VisitStore from '../components/sections/VisitStore';
 import PageMeta from '../components/seo/PageMeta';
-import { STORE_PHOTOS } from '../data/storeImages';
+import { SECTION_IMAGES } from '../data/storeImages';
 import { useStoreSettings } from '../context/StoreSettingsContext';
 import { STATIC_PAGE_META } from '../utils/seo';
 
-const HERO_IMAGE = STORE_PHOTOS.findUs;
+const HERO_IMAGE = SECTION_IMAGES.about;
 
 export default function AboutPage() {
   const meta = STATIC_PAGE_META.about;
@@ -34,7 +34,7 @@ export default function AboutPage() {
         >
           <img
             src={HERO_IMAGE}
-            alt="About New Darshan Jewellery"
+            alt="About Krishna Jewellers"
             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
           />
         </motion.div>
@@ -74,7 +74,7 @@ export default function AboutPage() {
             style={{
               fontFamily: 'var(--font-heading)',
               fontSize: 'clamp(2.5rem, 5vw, 4rem)',
-              fontWeight: 400,
+              fontWeight: 600,
               color: '#F8F6F2',
               lineHeight: 1.08,
               marginBottom: '12px',
@@ -95,7 +95,7 @@ export default function AboutPage() {
               lineHeight: 1.7,
             }}
           >
-            Our story, craft, and the people behind New Darshan Jewellery.
+            Our story as a temple-town jewellery house in Byasanagar — craft, purity, and families we’ve served.
           </motion.p>
         </div>
       </section>

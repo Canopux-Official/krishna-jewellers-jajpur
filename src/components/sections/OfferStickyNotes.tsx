@@ -168,7 +168,7 @@ export default function OfferStickyNotes() {
                 style={{
                   fontFamily: 'var(--font-heading)',
                   fontSize: isMobile ? '0.95rem' : '1.05rem',
-                  fontWeight: 400,
+                  fontWeight: 600,
                   color: 'var(--color-text)',
                   lineHeight: 1.25,
                   marginBottom: 6,

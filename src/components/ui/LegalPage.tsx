@@ -54,7 +54,7 @@ export default function LegalPage({ title, updated, intro, sections }: LegalPage
             style={{
               fontFamily: 'var(--font-heading)',
               fontSize: 'clamp(2.25rem, 4.5vw, 3.5rem)',
-              fontWeight: 400,
+              fontWeight: 600,
               color: '#F8F6F2',
               lineHeight: 1.08,
               marginBottom: 12,
@@ -109,7 +109,7 @@ export default function LegalPage({ title, updated, intro, sections }: LegalPage
                   style={{
                     fontFamily: 'var(--font-heading)',
                     fontSize: '1.375rem',
-                    fontWeight: 400,
+                    fontWeight: 600,
                     color: 'var(--color-text)',
                     marginBottom: 12,
                   }}

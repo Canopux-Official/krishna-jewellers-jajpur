@@ -1,14 +1,15 @@
 import { motion } from 'framer-motion';
 import SectionLabel from '../ui/SectionLabel';
 
-const CRAFT_IMAGE =
-  'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=1800&q=85';
+import { SECTION_IMAGES } from '../../data/storeImages';
+
+const CRAFT_IMAGE = SECTION_IMAGES.craftsmanship;
 
 const TIMELINE_STEPS = [
-  { step: '01', label: 'Design', desc: 'Every piece begins as a sketch — inspired by heritage, refined by vision.' },
-  { step: '02', label: 'Craftsmanship', desc: 'Master artisans shape raw gold by hand, a tradition passed through generations.' },
-  { step: '03', label: 'Hallmarked', desc: 'Each piece is certified for purity under the BIS hallmarking standard.' },
-  { step: '04', label: 'Delivered', desc: 'Presented in our signature packaging, ready to mark a moment that lasts forever.' },
+  { step: '01', label: 'Select', desc: 'We begin with hallmarked gold and silver chosen for purity and workmanship.' },
+  { step: '02', label: 'Craft', desc: 'Local artisans and trusted makers shape each piece with traditional skill.' },
+  { step: '03', label: 'Bless', desc: 'Every ornament is certified under BIS standards before it reaches you.' },
+  { step: '04', label: 'Bestow', desc: 'Presented with care — ready for weddings, rituals, and heirlooms ahead.' },
 ];
 
 export default function Craftsmanship() {
@@ -58,7 +59,7 @@ export default function Craftsmanship() {
               transition={{ duration: 0.8, ease: 'easeInOut' }}
               style={{ marginBottom: '16px' }}
             >
-              <SectionLabel light>The Process</SectionLabel>
+              <SectionLabel light>Our Craft</SectionLabel>
             </motion.div>
 
             <motion.h2
@@ -69,16 +70,16 @@ export default function Craftsmanship() {
               style={{
                 fontFamily: 'var(--font-heading)',
                 fontSize: 'clamp(2rem, 5vw, 4rem)',
-                fontWeight: 400,
-                color: '#F8F6F2',
+                fontWeight: 600,
+                color: 'var(--color-ivory)',
                 maxWidth: '700px',
                 lineHeight: 1.1,
               }}
             >
-              Every Ornament
+              From Temple Town
               <br />
               <span style={{ fontStyle: 'italic', color: 'var(--color-gold)' }}>
-                Tells A Story
+                To Your Home
               </span>
             </motion.h2>
 
@@ -96,7 +97,7 @@ export default function Craftsmanship() {
                 marginTop: '24px',
               }}
             >
-              From timeless gold necklaces to elegant bangles and carefully crafted bridal collections, every piece reflects our commitment to purity, craftsmanship and trust.
+              Bridal haars, temple pendants, chura and daily-wear chains — each piece at Krishna Jewellers carries the quiet promise of purity, fair pricing, and craftsmanship you can trust for a lifetime.
             </motion.p>
           </div>
         </div>
@@ -174,7 +175,7 @@ export default function Craftsmanship() {
                 style={{
                   fontFamily: 'var(--font-heading)',
                   fontSize: '1.625rem',
-                  fontWeight: 400,
+                  fontWeight: 600,
                   color: '#F8F6F2',
                   marginBottom: '12px',
                   lineHeight: 1.1,

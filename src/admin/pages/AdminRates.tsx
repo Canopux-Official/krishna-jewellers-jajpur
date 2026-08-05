@@ -90,7 +90,7 @@ export default function AdminRates() {
                   />
                   <span style={{ padding: '10px 12px', fontFamily: 'var(--font-body)', fontSize: '0.75rem', color: 'var(--admin-text-3)', backgroundColor: 'var(--admin-card)', borderLeft: '1px solid var(--admin-border)', flexShrink: 0 }}>/g</span>
                 </div>
-                <p style={{ fontFamily: 'var(--font-heading)', fontSize: '1.5rem', fontWeight: 400, color: card.color, marginTop: '12px' }}>
+                <p style={{ fontFamily: 'var(--font-heading)', fontSize: '1.5rem', fontWeight: 600, color: card.color, marginTop: '12px' }}>
                   ₹{Number(rates[card.key]).toLocaleString('en-IN')}
                 </p>
                 <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.75rem', color: 'var(--admin-text-3)' }}>per gram</p>

@@ -15,7 +15,6 @@ export default function HomePage() {
   const {
     isLoaded,
     showBrandStory,
-    showRates,
     showCollections,
     showCraftsmanship,
     showTestimonials,
@@ -30,9 +29,9 @@ export default function HomePage() {
     <main>
       <PageMeta title={meta.title} description={meta.description} path={meta.path} />
       <Hero />
-      {show(showBrandStory) && <BrandStory />}
-      {show(showRates) && <MetalRates />}
       {show(showCollections) && <Collections />}
+      <MetalRates />
+      {show(showBrandStory) && <BrandStory />}
       {show(showCraftsmanship) && <Craftsmanship />}
       {show(showTestimonials) && <Testimonials />}
       {show(showVisitStore) && <VisitStore />}

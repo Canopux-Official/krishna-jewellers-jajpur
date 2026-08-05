@@ -46,7 +46,7 @@ export default function ConfirmDialog({ open, title, description, confirmLabel =
               <div style={{ width: '40px', height: '40px', borderRadius: '8px', backgroundColor: 'rgba(220,38,38,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--admin-danger)" strokeWidth="1.5"><polyline points="3 6 5 6 21 6" /><path d="M19 6l-1 14H6L5 6" /><path d="M10 11v6M14 11v6" /><path d="M9 6V4h6v2" /></svg>
               </div>
-              <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.25rem', fontWeight: 400, color: 'var(--admin-text)', marginBottom: '10px' }}>{title}</h3>
+              <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.25rem', fontWeight: 600, color: 'var(--admin-text)', marginBottom: '10px' }}>{title}</h3>
               <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem', color: 'var(--admin-text-2)', lineHeight: 1.6, marginBottom: '28px' }}>{description}</p>
               <div style={{ display: 'flex', gap: '10px', justifyContent: 'flex-end' }}>
                 <AdminButton variant="secondary" onClick={handleClose}>Cancel</AdminButton>

@@ -19,7 +19,7 @@ export default function PageHeader({ title, subtitle, actions }: PageHeaderProps
       }}
     >
       <div>
-        <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.75rem', fontWeight: 400, color: 'var(--admin-text)', marginBottom: subtitle ? '4px' : 0 }}>
+        <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.75rem', fontWeight: 600, color: 'var(--admin-text)', marginBottom: subtitle ? '4px' : 0 }}>
           {title}
         </h1>
         {subtitle && (

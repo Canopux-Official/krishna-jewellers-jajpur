@@ -14,6 +14,14 @@ async function bootstrap() {
     .map((origin) => origin.trim())
     .filter(Boolean);
 
+  // Vite may bump to 5174+ if 5173 is busy
+  if (process.env.NODE_ENV !== 'production') {
+    for (const port of [5173, 5174, 5175, 5176]) {
+      const origin = `http://localhost:${port}`;
+      if (!allowedOrigins.includes(origin)) allowedOrigins.push(origin);
+    }
+  }
+
   app.enableCors({
     origin: (requestOrigin, callback) => {
       // Allow non-browser requests (no Origin header, e.g. curl, server-to-server)
@@ -41,7 +49,7 @@ async function bootstrap() {
 
   const port = process.env.PORT || 3001;
   await app.listen(port);
-  console.log(`\n🚀 New Darshan Jewellery API running on http://localhost:${port}/api/v1`);
+  console.log(`\n🚀 Krishna Jewellers API running on http://localhost:${port}/api/v1`);
   console.log(`☁️  Image storage: Cloudinary`);
 }
 bootstrap();

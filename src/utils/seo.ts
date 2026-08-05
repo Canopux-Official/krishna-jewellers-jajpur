@@ -1,13 +1,13 @@
-/** Site SEO helpers — canonical host for future .in domain. */
-export const SITE_URL = (import.meta.env.VITE_SITE_URL || 'https://www.newdarshanjewellery.com').replace(/\/$/, '');
-export const SITE_NAME = 'New Darshan Jewellery';
-export const DEFAULT_OG_IMAGE = `${SITE_URL}/New-Darshan-Jewellery-Hero.png`;
+/** Site SEO helpers for Krishna Jewellers, Byasanagar. */
+export const SITE_URL = (import.meta.env.VITE_SITE_URL || 'https://www.krishnajewellersjajpur.com').replace(/\/$/, '');
+export const SITE_NAME = 'Krishna Jewellers';
+export const DEFAULT_OG_IMAGE = `${SITE_URL}/krishna-jewellers-hero.png`;
 
 export const DEFAULT_TITLE =
-  'New Darshan Jewellery | Gold & Silver Jewellery in Ghasipura, Keonjhar';
+  'Krishna Jewellers | Gold & Silver Jewellery in Byasanagar, Jajpur';
 
 export const DEFAULT_DESCRIPTION =
-  'Premium BIS hallmarked gold and silver jewellery in Ghasipura, Keonjhar, Odisha. Bridal sets, necklaces, chains, bangles and more — visit our showroom or enquire on WhatsApp.';
+  'BIS-hallmarked gold and silver jewellery from Krishna Jewellers in Byasanagar, Jajpur — bridal sets, temple motifs, festive bangles, and everyday gold for Odisha families.';
 
 export function absoluteUrl(path = '/'): string {
   if (!path || path === '/') return SITE_URL;
@@ -43,16 +43,16 @@ export function buildLocalBusinessJsonLd(settings: {
     email: settings.email || undefined,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Thana Chhak',
-      addressLocality: 'Ghasipura',
+      streetAddress: 'Byasanagar',
+      addressLocality: 'Byasanagar',
       addressRegion: 'Odisha',
-      postalCode: '758015',
+      postalCode: '755019',
       addressCountry: 'IN',
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: 21.213126,
-      longitude: 86.114193,
+      latitude: 20.9460,
+      longitude: 86.1301,
     },
     openingHoursSpecification: {
       '@type': 'OpeningHoursSpecification',
@@ -70,11 +70,10 @@ export function buildLocalBusinessJsonLd(settings: {
       description: settings.weekdayHours,
     },
     hasMap: settings.googleMapsUrl || undefined,
-    areaServed: ['Ghasipura', 'Anandapur', 'Keonjhar', 'Odisha'],
+    areaServed: ['Byasanagar', 'Jajpur', 'Jajpur Road', 'Odisha'],
     priceRange: '₹₹₹',
     description: DEFAULT_DESCRIPTION,
     sameAs: [] as string[],
-    // Keep full address text available for NAP consistency
     disambiguatingDescription: lines.join(', '),
   };
 }
@@ -125,50 +124,50 @@ export const STATIC_PAGE_META: Record<
     path: '/',
   },
   about: {
-    title: pageTitle('About Us — Jewellers in Ghasipura, Keonjhar'),
+    title: pageTitle('About Us — Jewellers in Byasanagar, Jajpur'),
     description:
-      'Family-run jewellers in Ghasipura, Keonjhar — trusted craftsmanship, transparent pricing, and BIS hallmarked gold & silver jewellery.',
+      'A temple-town jewellery house in Byasanagar — BIS-hallmarked gold, transparent pricing, and families served across Jajpur.',
     path: '/about',
   },
   contact: {
-    title: pageTitle('Contact — Ghasipura, Keonjhar Showroom'),
+    title: pageTitle('Contact — Byasanagar, Jajpur Showroom'),
     description:
-      'Visit New Darshan Jewellery at Thana Chhak, Ghasipura, Anandapur, Keonjhar, Odisha. Call or WhatsApp +91-9078333946.',
+      'Visit Krishna Jewellers in Byasanagar for bridal, festival, and everyday gold. Reach us at the showroom for enquiries.',
     path: '/contact',
   },
   gallery: {
     title: pageTitle('Jewellery Gallery'),
     description:
-      'Browse bridal sets, gold necklaces, bangles, chains, earrings and silver jewellery from our Ghasipura, Keonjhar showroom.',
+      'Bridal gold, festive bangles, temple pendants, and showroom moments from Krishna Jewellers, Byasanagar.',
     path: '/gallery',
   },
   rates: {
-    title: pageTitle("Today's Gold & Silver Rates — Keonjhar"),
+    title: pageTitle("Today's Gold & Silver Rates — Jajpur"),
     description:
-      "Check today's indicative 22K, 24K gold and silver rates at New Darshan Jewellery, Ghasipura. Final prices confirmed in store.",
+      "Today's indicative 22K, 24K gold and silver rates at Krishna Jewellers, Byasanagar. Final prices confirmed in store.",
     path: '/rates',
   },
   collections: {
     title: pageTitle('Gold & Silver Collections'),
     description:
-      'Explore bridal, necklaces, chains, bangles, bracelets, earrings, pendants and silver — hallmarked jewellery in Ghasipura, Keonjhar.',
+      'Bridal sets, necklaces, chains, bangles, earrings, pendants and silver — hallmarked jewellery for rituals and everyday wear in Byasanagar.',
     path: '/collections',
   },
   privacy: {
     title: pageTitle('Privacy Policy'),
     description:
-      'How New Darshan Jewellery handles enquiries and visitor information at our Ghasipura, Keonjhar showroom and website.',
+      'How Krishna Jewellers handles enquiries and visitor information at our Byasanagar, Jajpur showroom and website.',
     path: '/privacy-policy',
   },
   terms: {
     title: pageTitle('Terms of Service'),
     description:
-      'Website terms for New Darshan Jewellery — rates, product availability, and in-store purchase policies in Ghasipura, Keonjhar.',
+      'Website terms for Krishna Jewellers — rates, product availability, and in-store purchase policies in Byasanagar, Jajpur.',
     path: '/terms-of-service',
   },
   notFound: {
     title: pageTitle('Page Not Found'),
-    description: 'The page you are looking for could not be found on New Darshan Jewellery.',
+    description: 'The page you are looking for could not be found on Krishna Jewellers.',
     path: '/404',
   },
 };

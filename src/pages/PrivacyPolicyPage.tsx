@@ -10,7 +10,7 @@ export default function PrivacyPolicyPage() {
       <LegalPage
         title="Privacy Policy"
         updated="July 2026"
-        intro="This Privacy Policy explains how New Darshan Jewellery (“we”, “us”) collects and uses information when you visit our website or contact our store in Ghasipura, Keonjhar, Odisha."
+        intro="This Privacy Policy explains how Krishna Jewellers (“we”, “us”) collects and uses information when you visit our website or contact our Byasanagar showroom in Jajpur, Odisha."
         sections={[
           {
             title: 'Information we collect',
@@ -56,11 +56,7 @@ export default function PrivacyPolicyPage() {
             title: 'Contact',
             body: (
               <p>
-                For privacy-related questions, contact New Darshan Jewellery, Thana Chhak, Ghasipura, Anandapur, Keonjhar, Odisha – 758015, or call{' '}
-                <a href="tel:+919078333946" style={{ color: 'var(--color-bronze)' }}>
-                  +91-9078333946
-                </a>
-                .
+                For privacy-related questions, contact Krishna Jewellers, Byasanagar, Jajpur, Odisha – 755019.
               </p>
             ),
           },

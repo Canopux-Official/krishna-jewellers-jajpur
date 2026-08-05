@@ -10,13 +10,13 @@ export default function TermsOfServicePage() {
       <LegalPage
         title="Terms of Service"
         updated="July 2026"
-        intro="These Terms of Service govern your use of the New Darshan Jewellery website and related enquiries. By using this site, you agree to these terms."
+        intro="These Terms of Service govern your use of the Krishna Jewellers website and related enquiries. By using this site, you agree to these terms."
         sections={[
           {
             title: 'About our website',
             body: (
               <p>
-                This website showcases jewellery collections, store information, and indicative metal rates for New Darshan Jewellery, Ghasipura, Keonjhar, Odisha. Product images are for reference; actual pieces may vary slightly due to handmade craftsmanship and lighting.
+                This website showcases jewellery collections, store information, and indicative metal rates for Krishna Jewellers — a jewellery house in Byasanagar, Jajpur, Odisha. Product images are for reference; actual pieces may vary slightly due to handmade craftsmanship and lighting.
               </p>
             ),
           },
@@ -48,7 +48,7 @@ export default function TermsOfServicePage() {
             title: 'Intellectual property',
             body: (
               <p>
-                Store photographs, branding, and site content belong to New Darshan Jewellery or its licensors. You may not reproduce them for commercial purposes without our prior written consent.
+                Store photographs, branding, and site content belong to Krishna Jewellers or its licensors. You may not reproduce them for commercial purposes without our prior written consent.
               </p>
             ),
           },
@@ -64,11 +64,7 @@ export default function TermsOfServicePage() {
             title: 'Contact',
             body: (
               <p>
-                Questions about these terms can be directed to New Darshan Jewellery at Thana Chhak, Ghasipura, Anandapur, Keonjhar, Odisha – 758015, or{' '}
-                <a href="tel:+919078333946" style={{ color: 'var(--color-bronze)' }}>
-                  +91-9078333946
-                </a>
-                .
+                Questions about these terms can be directed to Krishna Jewellers at Byasanagar, Jajpur, Odisha – 755019.
               </p>
             ),
           },

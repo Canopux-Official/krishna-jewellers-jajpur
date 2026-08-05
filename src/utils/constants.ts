@@ -20,47 +20,40 @@ export const METAL_RATES: MetalRate[] = [
 const C = STORE_PHOTOS.collections;
 
 export const COLLECTIONS: Collection[] = [
-  { id: 'bridal', name: 'Bridal Collection', slug: 'bridal-collection', shortDescription: 'Heirlooms for your most sacred day.', description: '', image: C.bridal, bannerImage: C.bridal, productCount: 4, size: 'large' },
-  { id: 'necklaces', name: 'Gold Necklaces', slug: 'gold-necklaces', shortDescription: 'Heritage necklaces crafted in 22K gold.', description: '', image: C.goldNecklaces, bannerImage: C.goldNecklaces, productCount: 5, size: 'medium' },
-  { id: 'chains', name: 'Gold Chains', slug: 'gold-chains', shortDescription: 'Classic chains woven with precision.', description: '', image: C.goldChains, bannerImage: C.goldChains, productCount: 7, size: 'small' },
-  { id: 'bangles', name: 'Bangles', slug: 'bangles', shortDescription: 'Intricately designed bangle sets.', description: '', image: C.bangles, bannerImage: C.bangles, productCount: 7, size: 'small' },
-  { id: 'bracelets', name: 'Gold Bracelets', slug: 'gold-bracelets', shortDescription: 'Refined designs for the wrist.', description: '', image: C.bracelets, bannerImage: C.bracelets, productCount: 7, size: 'medium' },
-  { id: 'earrings', name: 'Gold Earrings', slug: 'earrings', shortDescription: 'Traditional and modern gold earrings.', description: '', image: C.earrings, bannerImage: C.earrings, productCount: 7, size: 'small' },
-  { id: 'pendants', name: 'Gold Pendants', slug: 'gold-pendants', shortDescription: 'Meaningful motifs in gold.', description: '', image: C.pendants, bannerImage: C.pendants, productCount: 5, size: 'small' },
-  { id: 'silver', name: 'Silver Bracelets', slug: 'silver-bracelets', shortDescription: 'Elegant silver for everyday wear.', description: '', image: C.silver, bannerImage: C.silver, productCount: 3, size: 'medium' },
+  { id: 'bridal', name: 'Bridal Collection', slug: 'bridal-collection', shortDescription: 'Haars, chokers and sets for the sacred day.', description: '', image: C.bridal, bannerImage: C.bridal, productCount: 0, size: 'large' },
+  { id: 'necklaces', name: 'Gold Necklaces', slug: 'gold-necklaces', shortDescription: 'Temple grace to everyday gold.', description: '', image: C.goldNecklaces, bannerImage: C.goldNecklaces, productCount: 0, size: 'medium' },
+  { id: 'chains', name: 'Gold Chains', slug: 'gold-chains', shortDescription: 'Links of purity for every day.', description: '', image: C.goldChains, bannerImage: C.goldChains, productCount: 0, size: 'small' },
+  { id: 'bangles', name: 'Bangles', slug: 'bangles', shortDescription: 'Chura, pairs, and festive stacks.', description: '', image: C.bangles, bannerImage: C.bangles, productCount: 0, size: 'small' },
+  { id: 'bracelets', name: 'Gold Bracelets', slug: 'gold-bracelets', shortDescription: 'Grace for the wrist.', description: '', image: C.bracelets, bannerImage: C.bracelets, productCount: 0, size: 'medium' },
+  { id: 'earrings', name: 'Gold Earrings', slug: 'earrings', shortDescription: 'Jhumkas, studs and drops.', description: '', image: C.earrings, bannerImage: C.earrings, productCount: 0, size: 'small' },
+  { id: 'pendants', name: 'Gold Pendants', slug: 'gold-pendants', shortDescription: 'Motifs of devotion & beauty.', description: '', image: C.pendants, bannerImage: C.pendants, productCount: 0, size: 'small' },
+  { id: 'silver', name: 'Silver Bracelets', slug: 'silver-bracelets', shortDescription: 'Silver for everyday blessing.', description: '', image: C.silver, bannerImage: C.silver, productCount: 0, size: 'medium' },
 ];
 
-const P = STORE_PHOTOS.products;
-
-export const FEATURED_PRODUCTS: Product[] = [
-  { id: 'p2', slug: 'traditional-gold-necklace', name: 'Traditional Gold Necklace', category: 'Gold Necklaces', categorySlug: 'gold-necklaces', weight: '22.5g', weightGrams: 22.5, purity: '22K', price: '₹1,53,075', images: [P.traditionalNecklace], description: 'A statement traditional necklace.', isAvailable: true },
-  { id: 'p4', slug: 'sunburst-drop-earrings', name: 'Sunburst Drop Earrings', category: 'Gold Earrings', categorySlug: 'earrings', weight: '9.6g', weightGrams: 9.6, purity: '22K', price: '₹65,376', images: [P.earringsSunburst], description: 'Ornate circular drop earrings with latkan fringe in 22K gold.', isAvailable: true },
-  { id: 'p5', slug: 'red-gold-pair-bangles', name: 'Red & Gold Pair Bangles', category: 'Bangles', categorySlug: 'bangles', weight: '40.0g', weightGrams: 40, purity: '22K', price: '₹2,72,400', images: [P.banglesRedGoldPairs], description: 'Traditional red and gold pair bangles with ornate gold bands.', isNewArrival: true, isAvailable: true },
-  { id: 'p6', slug: 'wheat-braid-chain', name: 'Wheat Braid Chain', category: 'Gold Chains', categorySlug: 'gold-chains', weight: '16.0g', weightGrams: 16, purity: '22K', price: '₹1,08,960', images: [P.chainWheatBraid], description: 'A bold wheat-braid chain in 22K gold.', isAvailable: true },
-  { id: 'p8', slug: 'classic-bridal-set', name: 'Classic Bridal Set', category: 'Bridal Collection', categorySlug: 'bridal-collection', weight: '72.0g', weightGrams: 72, purity: '22K', price: '₹4,90,320', images: [P.bridalBibSet], description: 'A classic bridal necklace set with matching earrings.', isNewArrival: true, isAvailable: true },
-];
+/** Featured products emptied for redesign. */
+export const FEATURED_PRODUCTS: Product[] = [];
 
 export const TESTIMONIALS: Testimonial[] = [
   {
     id: 't1',
     quote:
-      'Beautiful jewellery collection and very polite staff. Highly recommended.',
+      'We bought our bridal set from Krishna Jewellers — the staff guided us with patience, and every piece felt pure and complete for our wedding.',
     name: 'Priyanka Mishra',
-    city: 'Ghasipura',
+    city: 'Byasanagar',
   },
   {
     id: 't2',
     quote:
-      'Excellent craftsmanship and transparent pricing. We purchased our wedding jewellery here.',
+      'Transparent rates and honest making charges. For our family, this is the trusted jewellery house in Jajpur Road.',
     name: 'Satyabrata Nayak',
-    city: 'Anandapur',
+    city: 'Jajpur',
   },
   {
     id: 't3',
     quote:
-      'Trusted jewellery shop in Ghasipura with a wide variety of designs.',
+      'From festival bangles to our daughter’s mangalsutra, Krishna Jewellers has been part of every celebration.',
     name: 'Ananya Das',
-    city: 'Keonjhar',
+    city: 'Jajpur',
   },
 ];
 

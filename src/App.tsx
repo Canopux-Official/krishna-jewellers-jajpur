@@ -36,6 +36,7 @@ const AdminRates = lazy(() => import('./admin/pages/AdminRates'));
 const AdminGallery = lazy(() => import('./admin/pages/AdminGallery'));
 const AdminTestimonials = lazy(() => import('./admin/pages/AdminTestimonials'));
 const AdminOffers = lazy(() => import('./admin/pages/AdminOffers'));
+const AdminInstagram = lazy(() => import('./admin/pages/AdminInstagram'));
 const AdminSettings = lazy(() => import('./admin/pages/AdminSettings'));
 
 function PageFallback() {
@@ -86,6 +87,7 @@ function AnimatedRoutes() {
           <Route path="gallery" element={<AdminGallery />} />
           <Route path="testimonials" element={<AdminTestimonials />} />
           <Route path="offers" element={<AdminOffers />} />
+          <Route path="instagram" element={<AdminInstagram />} />
           <Route path="settings" element={<AdminSettings />} />
         </Route>
 

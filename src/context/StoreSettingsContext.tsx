@@ -39,14 +39,14 @@ const VISIBILITY_DEFAULTS: SectionVisibility = {
 };
 
 const DEFAULTS: PublicStoreSettings = {
-  storeName: 'New Darshan Jewellery',
-  phone: '+91-9078333946',
-  whatsapp: '919078333946',
+  storeName: 'Krishna Jewellers',
+  phone: '',
+  whatsapp: '',
   address:
-    'New Darshan Jewellery\nThana Chhak\nGhasipura\nAnandapur\nKeonjhar\nOdisha – 758015',
+    'Krishna Jewellers\nByasanagar\nJajpur\nOdisha – 755019',
   weekdayHours: '10:00 AM – 8:30 PM',
   sundayHours: '10:00 AM – 8:30 PM',
-  googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=21.213126%2C86.114193%20(New%20Darshan%20Jewellery)',
+  googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=20.946%2C86.1301%20(Krishna%20Jewellers)',
   ...VISIBILITY_DEFAULTS,
   isLoaded: false,
 };

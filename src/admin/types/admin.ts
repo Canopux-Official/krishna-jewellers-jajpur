@@ -93,6 +93,7 @@ export interface StoreSettings {
   weekdayHours: string;
   sundayHours: string;
   instagramUrl?: string;
+  instagramCaption?: string;
   facebookUrl?: string;
   googleMapsUrl?: string;
   showRates: boolean;

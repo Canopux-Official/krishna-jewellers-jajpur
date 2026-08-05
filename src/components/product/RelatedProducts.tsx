@@ -23,7 +23,7 @@ export default function RelatedProducts({ products }: RelatedProductsProps) {
           <span style={{ fontFamily: 'var(--font-body)', fontSize: '0.625rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--color-muted)', display: 'block', marginBottom: '14px' }}>
             You May Also Like
           </span>
-          <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 400, color: 'var(--color-text)', marginBottom: '20px' }}>
+          <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 600, color: 'var(--color-text)', marginBottom: '20px' }}>
             From the Same <span style={{ fontStyle: 'italic', color: 'var(--color-bronze)' }}>Collection</span>
           </h2>
           <GoldDivider />
@@ -62,7 +62,7 @@ export default function RelatedProducts({ products }: RelatedProductsProps) {
                   <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.5625rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--color-muted)', marginBottom: '4px' }}>
                     {product.purity} · {product.weight}
                   </p>
-                  <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.05rem', fontWeight: 400, color: 'var(--color-text)', lineHeight: 1.25 }}>
+                  <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.05rem', fontWeight: 600, color: 'var(--color-text)', lineHeight: 1.25 }}>
                     {product.name}
                   </h3>
                 </div>

@@ -118,7 +118,7 @@ export default function VisitStore() {
               style={{
                 fontFamily: 'var(--font-heading)',
                 fontSize: 'clamp(2rem, 3.5vw, 3rem)',
-                fontWeight: 400,
+                fontWeight: 600,
                 color: 'var(--color-text)',
                 lineHeight: 1.12,
                 marginBottom: '28px',
@@ -127,7 +127,7 @@ export default function VisitStore() {
               Visit Our
               <br />
               <span style={{ fontStyle: 'italic', color: 'var(--color-bronze)' }}>
-                Flagship Store
+                Byasanagar Showroom
               </span>
             </motion.h2>
 
@@ -231,7 +231,7 @@ export default function VisitStore() {
             }}
           >
             <iframe
-              title="New Darshan Jewellery location"
+              title="Krishna Jewellers location"
               src={MAP_EMBED_URL}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

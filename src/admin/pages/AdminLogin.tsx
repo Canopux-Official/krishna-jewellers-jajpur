@@ -37,7 +37,7 @@ export default function AdminLogin() {
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: 'var(--admin-sidebar-bg)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px', fontFamily: 'var(--font-body)' }}>
-      <PageMeta title="Admin Login | New Darshan Jewellery" description="Store admin login." path="/admin/login" noindex />
+      <PageMeta title="Admin Login | Krishna Jewellers" description="Store admin login." path="/admin/login" noindex />
       {/* Subtle background texture */}
       <div style={{ position: 'fixed', inset: 0, backgroundImage: 'radial-gradient(circle at 30% 40%, rgba(199,161,90,0.04) 0%, transparent 60%), radial-gradient(circle at 70% 70%, rgba(199,161,90,0.03) 0%, transparent 50%)', pointerEvents: 'none' }} />
 
@@ -50,9 +50,9 @@ export default function AdminLogin() {
         {/* Logo */}
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
           <div style={{ width: '48px', height: '48px', backgroundColor: 'var(--color-gold)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
-            <span style={{ fontFamily: 'var(--font-heading)', fontSize: '1.5rem', color: '#fff', fontWeight: 400 }}>N</span>
+            <span style={{ fontFamily: 'var(--font-heading)', fontSize: '1.5rem', color: '#fff', fontWeight: 600 }}>N</span>
           </div>
-          <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.625rem', fontWeight: 400, color: '#F8F6F2', marginBottom: '6px' }}>New Darshan Jewellery</h1>
+          <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '1.625rem', fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '6px' }}>Krishna Jewellers</h1>
           <p style={{ fontSize: '0.8125rem', color: 'rgba(255,255,255,0.4)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Admin Panel</p>
         </div>
 
@@ -76,7 +76,7 @@ export default function AdminLogin() {
               <label style={{ display: 'block', fontSize: '0.75rem', fontWeight: 500, color: 'rgba(255,255,255,0.5)', marginBottom: '6px', letterSpacing: '0.04em' }}>Email Address</label>
               <input
                 type="email" value={email} onChange={(e) => setEmail(e.target.value)} required
-                placeholder="admin@newdarshanjewellery.in"
+                placeholder="admin@krishnajewellersjajpur.com"
                 style={{ width: '100%', padding: '10px 14px', backgroundColor: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', color: '#F8F6F2', fontSize: '0.875rem', outline: 'none', transition: 'border-color 0.2s', boxSizing: 'border-box' }}
                 onFocus={(e) => e.target.style.borderColor = 'rgba(199,161,90,0.5)'}
                 onBlur={(e) => e.target.style.borderColor = 'rgba(255,255,255,0.1)'}
@@ -122,7 +122,7 @@ export default function AdminLogin() {
         </div>
 
         <p style={{ textAlign: 'center', marginTop: '20px', fontSize: '0.75rem', color: 'rgba(255,255,255,0.2)' }}>
-          New Darshan Jewellery · Admin v4.0
+          Krishna Jewellers · Admin v4.0
         </p>
       </motion.div>
 

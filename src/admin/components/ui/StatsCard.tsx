@@ -41,7 +41,7 @@ export default function StatsCard({
         </div>
       </div>
 
-      <p style={{ fontFamily: 'var(--font-heading)', fontSize: '2rem', fontWeight: 400, color: 'var(--admin-text)', lineHeight: 1, marginBottom: '8px' }}>
+      <p style={{ fontFamily: 'var(--font-heading)', fontSize: '2rem', fontWeight: 600, color: 'var(--admin-text)', lineHeight: 1, marginBottom: '8px' }}>
         {value}
       </p>
 

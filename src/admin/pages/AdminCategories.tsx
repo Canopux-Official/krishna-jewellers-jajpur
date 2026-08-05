@@ -152,7 +152,7 @@ function SimpleModal({ title, onClose, onSave, saveLabel = 'Save', children }: {
         style={{ position: 'fixed', inset: 0, zIndex: 401, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px', pointerEvents: 'none' }}
       >
         <div onClick={(e) => e.stopPropagation()} style={{ backgroundColor: 'var(--admin-card)', border: '1px solid var(--admin-border)', borderRadius: '12px', padding: '28px', maxWidth: '420px', width: '100%', boxShadow: '0 20px 60px rgba(0,0,0,0.15)', pointerEvents: 'all' }}>
-          <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.25rem', fontWeight: 400, color: 'var(--admin-text)', marginBottom: '20px' }}>{title}</h3>
+          <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '1.25rem', fontWeight: 600, color: 'var(--admin-text)', marginBottom: '20px' }}>{title}</h3>
           <div style={{ marginBottom: '24px' }}>{children}</div>
           <div style={{ display: 'flex', gap: '10px', justifyContent: 'flex-end' }}>
             <AdminButton variant="secondary" onClick={onClose}>Cancel</AdminButton>

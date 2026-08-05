@@ -6,13 +6,14 @@ import GoldDivider from '../components/ui/GoldDivider';
 import CollectionMasonry from '../components/collection/CollectionMasonry';
 import PageMeta from '../components/seo/PageMeta';
 import { COLLECTIONS } from '../data/mockCollections';
-import { STORE_PHOTOS } from '../data/storeImages';
+import { IMAGE_PLACEHOLDER } from '../data/storeImages';
 import { STATIC_PAGE_META } from '../utils/seo';
 import { publicCategoriesService } from '../services/publicApi';
 import { mergeCollectionsWithLiveCounts } from '../utils/collections';
 import type { Collection } from '../types';
 
-const HERO_IMAGE = STORE_PHOTOS.showroom;
+/** Collections page keeps placeholders until category shoots are ready. */
+const HERO_IMAGE = IMAGE_PLACEHOLDER;
 
 export default function CollectionsPage() {
   const meta = STATIC_PAGE_META.collections;
@@ -73,7 +74,7 @@ export default function CollectionsPage() {
             transition={{ duration: 0.8, delay: 0.35 }}
             style={{ fontFamily: 'var(--font-body)', fontSize: '0.625rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-gold)', marginBottom: '14px' }}
           >
-            Our Collections
+            Heritage Collections
           </motion.p>
 
           <motion.h1
@@ -83,15 +84,15 @@ export default function CollectionsPage() {
             style={{
               fontFamily: 'var(--font-heading)',
               fontSize: 'clamp(2.5rem, 5.5vw, 5rem)',
-              fontWeight: 400,
+              fontWeight: 600,
               color: '#F8F6F2',
               lineHeight: 1.08,
               marginBottom: '20px',
             }}
           >
-            Crafted For
+            Gold for Rituals
             <br />
-            <span style={{ fontStyle: 'italic' }}>Every Occasion</span>
+            <span style={{ fontStyle: 'italic' }}>&amp; Everyday Grace</span>
           </motion.h1>
 
           <motion.p
@@ -100,7 +101,7 @@ export default function CollectionsPage() {
             transition={{ duration: 0.8, delay: 0.6 }}
             style={{ fontFamily: 'var(--font-body)', fontSize: '0.9375rem', color: 'rgba(248,246,242,0.65)', maxWidth: '480px', lineHeight: 1.75 }}
           >
-            From everyday gold to heirloom bridal sets — browse our complete catalogue of hallmarked jewellery.
+            Bridal sets, temple pendants, festive bangles, and daily-wear gold — hallmarked jewellery from our Byasanagar showroom.
           </motion.p>
         </div>
       </section>
@@ -124,9 +125,9 @@ export default function CollectionsPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.85, delay: 0.08, ease: 'easeInOut' }}
-                style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(1.75rem, 3vw, 2.75rem)', fontWeight: 400, color: 'var(--color-text)' }}
+                style={{ fontFamily: 'var(--font-heading)', fontSize: 'clamp(1.75rem, 3vw, 2.75rem)', fontWeight: 600, color: 'var(--color-text)' }}
               >
-                Browse <span style={{ fontStyle: 'italic', color: 'var(--color-bronze)' }}>Collections</span>
+                Browse <span style={{ fontStyle: 'italic', color: 'var(--color-bronze)' }}>the Jewellery Room</span>
               </motion.h2>
             </div>
           </div>
