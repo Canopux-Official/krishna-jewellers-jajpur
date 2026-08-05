@@ -60,7 +60,8 @@ export const defaultSettings: StoreSettings = {
   adminName: 'Store Admin',
   email: 'admin@krishnajewellersjajpur.com',
   storeName: 'Krishna Jewellers',
-  address: 'Krishna Jewellers\nByasanagar\nJajpur\nOdisha – 755019',
+  address:
+    'Krishna Jewellers\nX42J+2Q2, Bank St, Dolipur\nByasanagar, Odisha – 755019\nIn front of Misrilal Petrol Pump',
   phone: '',
   whatsapp: '',
   weekdayHours: '10:00 AM – 8:30 PM',
@@ -68,7 +69,8 @@ export const defaultSettings: StoreSettings = {
   instagramUrl: '',
   instagramCaption: '',
   facebookUrl: '',
-  googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=20.946%2C86.1301%20(Krishna%20Jewellers)',
+  googleMapsUrl:
+    'https://www.google.com/maps/search/?api=1&query=20.9500125%2C86.131891%20(Krishna%20Jewellers%2C%20X42J%2B2Q2%2C%20Bank%20St%2C%20Dolipur%2C%20Byasanagar)',
   showRates: true,
   showBrandStory: true,
   showCollections: true,

@@ -56,7 +56,7 @@ export default function PrivacyPolicyPage() {
             title: 'Contact',
             body: (
               <p>
-                For privacy-related questions, contact Krishna Jewellers, Byasanagar, Jajpur, Odisha – 755019.
+                For privacy-related questions, contact Krishna Jewellers, X42J+2Q2, Bank St, Dolipur, Byasanagar, Odisha 755019.
               </p>
             ),
           },

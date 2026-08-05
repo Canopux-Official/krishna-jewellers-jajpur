@@ -43,7 +43,7 @@ export function buildLocalBusinessJsonLd(settings: {
     email: settings.email || undefined,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Byasanagar',
+      streetAddress: 'X42J+2Q2, Bank St, Dolipur',
       addressLocality: 'Byasanagar',
       addressRegion: 'Odisha',
       postalCode: '755019',
@@ -51,8 +51,8 @@ export function buildLocalBusinessJsonLd(settings: {
     },
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: 20.9460,
-      longitude: 86.1301,
+      latitude: 20.9500125,
+      longitude: 86.131891,
     },
     openingHoursSpecification: {
       '@type': 'OpeningHoursSpecification',

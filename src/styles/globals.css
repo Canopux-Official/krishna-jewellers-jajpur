@@ -45,21 +45,21 @@
   /* Layout */
   --max-width: 1440px;
   --navbar-brand-row: 64px;
-  --navbar-cats-row: 44px;
+  --navbar-cats-row: 48px;
   --navbar-height: var(--navbar-brand-row);
 }
 
 @media (max-width: 900px) {
   :root {
     --navbar-brand-row: 58px;
-    --navbar-cats-row: 40px;
+    --navbar-cats-row: 46px;
   }
 }
 
 @media (max-width: 480px) {
   :root {
     --navbar-brand-row: 54px;
-    --navbar-cats-row: 38px;
+    --navbar-cats-row: 44px;
   }
 }
 

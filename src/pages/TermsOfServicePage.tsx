@@ -64,7 +64,7 @@ export default function TermsOfServicePage() {
             title: 'Contact',
             body: (
               <p>
-                Questions about these terms can be directed to Krishna Jewellers at Byasanagar, Jajpur, Odisha – 755019.
+                Questions about these terms can be directed to Krishna Jewellers at X42J+2Q2, Bank St, Dolipur, Byasanagar, Odisha 755019.
               </p>
             ),
           },

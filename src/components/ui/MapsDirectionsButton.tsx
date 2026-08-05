@@ -11,7 +11,6 @@ export default function MapsDirectionsButton({ style }: MapsDirectionsButtonProp
   const handleClick = () => {
     setLoading(true);
     openStoreDirections();
-    // Geolocation may take a moment; reset loading shortly
     window.setTimeout(() => setLoading(false), 1200);
   };
 
@@ -44,7 +43,16 @@ export default function MapsDirectionsButton({ style }: MapsDirectionsButtonProp
         e.currentTarget.style.backgroundColor = 'var(--color-text)';
       }}
     >
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <svg
+        width="15"
+        height="15"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
         <polygon points="3 11 22 2 13 21 11 13 3 11" />
       </svg>
       {loading ? 'Getting your location…' : 'Get Directions'}

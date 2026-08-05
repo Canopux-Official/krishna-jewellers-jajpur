@@ -5,6 +5,10 @@ import { useScrolled } from '../../hooks/useScrolled';
 import { useSearch } from '../../context/SearchContext';
 import { useStoreSettings } from '../../context/StoreSettingsContext';
 import { NAV_LINKS, COLLECTIONS } from '../../utils/constants';
+import {
+  CategoryNavIcon,
+  CATEGORY_NAV_LABELS,
+} from '../icons/CategoryNavIcons';
 
 function BrandMark({ atTop }: { atTop: boolean }) {
   return (
@@ -272,7 +276,7 @@ export default function Navbar() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  gap: 'clamp(18px, 2.8vw, 36px)',
+                  gap: 'clamp(16px, 2.4vw, 32px)',
                   paddingInline: 'clamp(16px, 4vw, 40px)',
                   overflowX: 'auto',
                   scrollbarWidth: 'none',
@@ -281,25 +285,15 @@ export default function Navbar() {
                 {COLLECTIONS.map((col) => {
                   const href = `/collections/${col.slug}`;
                   const active = location.pathname === href;
+                  const label = CATEGORY_NAV_LABELS[col.id] ?? col.name;
                   return (
                     <Link
                       key={col.id}
                       to={href}
-                      style={{
-                        flexShrink: 0,
-                        fontFamily: 'var(--font-body)',
-                        fontSize: '0.625rem',
-                        fontWeight: active ? 500 : 400,
-                        letterSpacing: '0.14em',
-                        textTransform: 'uppercase',
-                        textDecoration: 'none',
-                        color: active ? 'var(--color-gold)' : 'var(--color-text)',
-                        whiteSpace: 'nowrap',
-                        opacity: active ? 1 : 0.78,
-                        transition: 'color 0.25s ease, opacity 0.25s ease',
-                      }}
+                      className={`kj-cat-link${active ? ' is-active' : ''}`}
                     >
-                      {col.name}
+                      <CategoryNavIcon id={col.id} size={22} />
+                      <span>{label}</span>
                     </Link>
                   );
                 })}
@@ -426,6 +420,9 @@ export default function Navbar() {
                   to={`/collections/${col.slug}`}
                   onClick={() => setMenuOpen(false)}
                   style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
                     fontFamily: 'var(--font-body)',
                     fontSize: '0.75rem',
                     letterSpacing: '0.14em',
@@ -436,7 +433,8 @@ export default function Navbar() {
                     borderBottom: '1px solid var(--color-divider)',
                   }}
                 >
-                  {col.name}
+                  <CategoryNavIcon id={col.id} size={22} />
+                  <span>{CATEGORY_NAV_LABELS[col.id] ?? col.name}</span>
                 </Link>
               ))}
             </motion.nav>
@@ -449,9 +447,47 @@ export default function Navbar() {
         .kj-category-bar::-webkit-scrollbar {
           display: none;
         }
-        .kj-category-bar a:hover {
-          color: var(--color-gold) !important;
-          opacity: 1 !important;
+        .kj-cat-link {
+          flex-shrink: 0;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          min-width: 0;
+          text-decoration: none;
+          color: var(--color-text);
+          opacity: 0.78;
+          transition: color 0.25s ease, opacity 0.25s ease;
+        }
+        .kj-cat-link span {
+          font-family: var(--font-body);
+          font-size: 0.9375rem;
+          font-weight: 400;
+          letter-spacing: 0.03em;
+          text-transform: none;
+          white-space: nowrap;
+          line-height: 1;
+        }
+        .kj-cat-link:hover,
+        .kj-cat-link.is-active {
+          color: var(--color-bronze);
+          opacity: 1;
+        }
+        .kj-cat-link.is-active span {
+          font-weight: 500;
+        }
+        @media (max-width: 640px) {
+          .kj-cat-link {
+            gap: 6px;
+          }
+          .kj-cat-link svg {
+            width: 24px;
+            height: 24px;
+          }
+          .kj-cat-link span {
+            font-size: 0.8125rem;
+          }
         }
       `}</style>
     </>

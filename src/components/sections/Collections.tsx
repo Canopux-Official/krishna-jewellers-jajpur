@@ -1,245 +1,420 @@
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useRef, useState } from 'react';
 import { COLLECTIONS } from '../../utils/constants';
+import { CATEGORY_NAV_LABELS } from '../icons/CategoryNavIcons';
 
 export default function Collections() {
   const [activeId, setActiveId] = useState(COLLECTIONS[0]?.id ?? 'bridal');
+  const stripRef = useRef<HTMLDivElement>(null);
   const active = COLLECTIONS.find((c) => c.id === activeId) ?? COLLECTIONS[0];
 
+  const scrollStrip = (dir: 1 | -1) => {
+    stripRef.current?.scrollBy({ left: dir * 320, behavior: 'smooth' });
+  };
+
   return (
-    <section
-      className="kj-collections"
-      style={{
-        backgroundColor: 'var(--color-bg)',
-        paddingTop: 'clamp(16px, 2.5vw, 28px)',
-        paddingBottom: 'clamp(64px, 10vw, 120px)',
-      }}
-    >
-      <div className="container">
-        <div
-          className="kj-collections-layout"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'minmax(240px, 0.9fr) minmax(0, 1.25fr)',
-            gap: 'clamp(40px, 6vw, 80px)',
-            alignItems: 'stretch',
-          }}
-        >
-          {/* Index list — not a masonry card grid */}
-          <div>
-            <motion.h2
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.85 }}
-              style={{
-                fontFamily: 'var(--font-heading)',
-                fontSize: 'clamp(2rem, 3.8vw, 3rem)',
-                fontWeight: 600,
-                color: 'var(--color-text)',
-                lineHeight: 1.15,
-                marginBottom: '12px',
-              }}
-            >
-              In the showroom
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.75, delay: 0.1 }}
-              style={{
-                fontFamily: 'var(--font-body)',
-                fontWeight: 300,
-                fontSize: '0.9375rem',
-                color: 'var(--color-muted)',
-                lineHeight: 1.7,
-                marginBottom: '40px',
-                maxWidth: '28rem',
-              }}
-            >
-              Bridal sets, festival bangles, temple pendants, and the everyday gold families wear in Byasanagar.
-            </motion.p>
+    <section className="kj-collections" aria-labelledby="collections-heading">
+      <div className="kj-collections__glow" aria-hidden />
 
-            <nav aria-label="Collections" style={{ display: 'flex', flexDirection: 'column' }}>
-              {COLLECTIONS.map((col, i) => {
-                const isActive = col.id === activeId;
-                return (
-                  <motion.button
-                    key={col.id}
-                    type="button"
-                    initial={{ opacity: 0, x: -12 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.55, delay: i * 0.04 }}
-                    onMouseEnter={() => setActiveId(col.id)}
-                    onFocus={() => setActiveId(col.id)}
-                    onClick={() => setActiveId(col.id)}
-                    style={{
-                      textAlign: 'left',
-                      background: 'transparent',
-                      border: 'none',
-                      borderBottom: '1px solid var(--color-divider)',
-                      padding: '18px 0',
-                      cursor: 'pointer',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: '6px',
-                    }}
-                  >
-                    <span
-                      style={{
-                        fontFamily: 'var(--font-heading)',
-                        fontSize: '1.25rem',
-                        fontWeight: 600,
-                        color: isActive ? 'var(--color-maroon)' : 'var(--color-text)',
-                        transition: 'color 0.25s ease',
-                      }}
-                    >
-                      {col.name}
-                    </span>
-                    <span
-                      style={{
-                        fontFamily: 'var(--font-body)',
-                        fontWeight: 300,
-                        fontSize: '0.8125rem',
-                        color: 'var(--color-muted)',
-                        lineHeight: 1.5,
-                      }}
-                    >
-                      {col.shortDescription}
-                    </span>
-                  </motion.button>
-                );
-              })}
-            </nav>
-
-            <Link
-              to="/collections"
-              style={{
-                display: 'inline-block',
-                marginTop: '32px',
-                fontFamily: 'var(--font-body)',
-                fontSize: '0.6875rem',
-                letterSpacing: '0.18em',
-                textTransform: 'uppercase',
-                color: 'var(--color-maroon)',
-                borderBottom: '1px solid var(--color-gold)',
-                paddingBottom: '3px',
-                textDecoration: 'none',
-              }}
-            >
-              Open full catalogue
-            </Link>
-          </div>
-
-          {/* Featured preview */}
-          <motion.div
-            key={active?.id}
-            initial={{ opacity: 0.4 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.45 }}
-            style={{ position: 'relative', minHeight: '520px' }}
+      <div className="container kj-collections__inner">
+        <header className="kj-collections__header">
+          <motion.h2
+            id="collections-heading"
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
           >
-            <Link
-              to={`/collections/${active?.slug ?? 'bridal-collection'}`}
-              style={{ display: 'block', height: '100%', textDecoration: 'none', color: 'inherit' }}
+            Collections
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.08 }}
+          >
+            Bridal, festival, and everyday gold from the Byasanagar showroom.
+          </motion.p>
+        </header>
+
+        <div className="kj-collections__feature">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active.id}
+              className="kj-collections__feature-frame"
+              initial={{ opacity: 0, scale: 1.02 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.995 }}
+              transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
             >
-              <div
-                style={{
-                  position: 'relative',
-                  height: '100%',
-                  minHeight: '520px',
-                  overflow: 'hidden',
-                  backgroundColor: 'var(--color-maroon)',
-                }}
+              <Link
+                to={`/collections/${active.slug}`}
+                className="kj-collections__feature-link"
+                aria-label={`Explore ${active.name}`}
               >
                 <img
-                  src={active?.image}
-                  alt={active?.name ?? 'Collection'}
+                  src={active.image}
+                  alt=""
                   loading="lazy"
                   decoding="async"
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    objectPosition: 'center',
-                    display: 'block',
-                    opacity: 0.92,
-                  }}
                 />
-                <div
-                  style={{
-                    position: 'absolute',
-                    inset: 0,
-                    background:
-                      'linear-gradient(180deg, transparent 45%, rgba(24,24,24,0.88) 100%)',
-                  }}
-                />
-                <div
-                  style={{
-                    position: 'absolute',
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    padding: '36px 32px',
-                  }}
-                >
-                  <p
-                    style={{
-                      fontFamily: 'var(--font-display)',
-                      fontSize: '0.75rem',
-                      letterSpacing: '0.28em',
-                      textTransform: 'uppercase',
-                      color: 'var(--color-gold)',
-                      marginBottom: '10px',
-                    }}
-                  >
-                    Featured
-                  </p>
-                  <h3
-                    style={{
-                      fontFamily: 'var(--font-heading)',
-                      fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
-                      fontWeight: 600,
-                      color: 'var(--color-ivory)',
-                      marginBottom: '12px',
-                    }}
-                  >
-                    {active?.name}
-                  </h3>
-                  <p
-                    style={{
-                      fontFamily: 'var(--font-body)',
-                      fontWeight: 300,
-                      fontSize: '0.875rem',
-                      color: 'var(--color-on-maroon)',
-                      maxWidth: '32rem',
-                      lineHeight: 1.7,
-                    }}
-                  >
-                    {active?.shortDescription}
-                  </p>
+                <div className="kj-collections__feature-shade" />
+                <div className="kj-collections__feature-copy">
+                  <span className="kj-collections__feature-kicker">
+                    {CATEGORY_NAV_LABELS[active.id] ?? active.name}
+                  </span>
+                  <h3>{active.name}</h3>
+                  <p>{active.shortDescription}</p>
+                  <span className="kj-collections__feature-cta">
+                    Explore collection →
+                  </span>
                 </div>
-              </div>
-            </Link>
-          </motion.div>
+              </Link>
+            </motion.div>
+          </AnimatePresence>
         </div>
+
+        <div className="kj-collections__strip-wrap">
+          <button
+            type="button"
+            className="kj-collections__strip-nav kj-collections__strip-nav--prev"
+            aria-label="Scroll collections left"
+            onClick={() => scrollStrip(-1)}
+          >
+            ‹
+          </button>
+
+          <div
+            ref={stripRef}
+            className="kj-collections__tiles"
+            role="listbox"
+            aria-label="Choose a collection"
+          >
+            {COLLECTIONS.map((col, i) => {
+              const selected = col.id === activeId;
+              const label = CATEGORY_NAV_LABELS[col.id] ?? col.name;
+              return (
+                <motion.button
+                  key={col.id}
+                  type="button"
+                  role="option"
+                  aria-selected={selected}
+                  className={`kj-collections__tile${selected ? ' is-active' : ''}`}
+                  initial={{ opacity: 0, y: 14 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.45, delay: i * 0.05 }}
+                  onClick={() => setActiveId(col.id)}
+                  onMouseEnter={() => setActiveId(col.id)}
+                  onFocus={() => setActiveId(col.id)}
+                >
+                  <span className="kj-collections__tile-media">
+                    <img
+                      src={col.image}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                      draggable={false}
+                    />
+                  </span>
+                  <span className="kj-collections__tile-label">{label}</span>
+                </motion.button>
+              );
+            })}
+          </div>
+
+          <button
+            type="button"
+            className="kj-collections__strip-nav kj-collections__strip-nav--next"
+            aria-label="Scroll collections right"
+            onClick={() => scrollStrip(1)}
+          >
+            ›
+          </button>
+        </div>
+
+        <motion.div
+          className="kj-collections__footer"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+        >
+          <Link to="/collections" className="kj-collections__all">
+            View all collections
+          </Link>
+        </motion.div>
       </div>
 
       <style>{`
+        .kj-collections {
+          position: relative;
+          overflow: hidden;
+          padding: clamp(48px, 8vw, 96px) 0 clamp(56px, 9vw, 110px);
+          background:
+            radial-gradient(ellipse 80% 55% at 12% 0%, rgba(199,161,90,0.14) 0%, transparent 55%),
+            radial-gradient(ellipse 70% 50% at 100% 80%, rgba(139,115,85,0.08) 0%, transparent 50%),
+            linear-gradient(180deg, var(--color-bg-alt) 0%, var(--color-bg) 45%, var(--color-bg-alt) 100%);
+        }
+        .kj-collections__glow {
+          pointer-events: none;
+          position: absolute;
+          inset: auto 0 0 0;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, rgba(199,161,90,0.45), transparent);
+        }
+        .kj-collections__inner {
+          position: relative;
+          z-index: 1;
+        }
+
+        .kj-collections__header {
+          max-width: 36rem;
+          margin-bottom: clamp(28px, 4vw, 40px);
+        }
+        .kj-collections__header h2 {
+          font-family: var(--font-heading);
+          font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+          font-weight: 600;
+          color: var(--color-text);
+          line-height: 1.1;
+          margin: 0 0 12px;
+        }
+        .kj-collections__header p {
+          margin: 0;
+          font-family: var(--font-body);
+          font-weight: 300;
+          font-size: 1rem;
+          color: var(--color-muted);
+          line-height: 1.7;
+        }
+
+        .kj-collections__feature {
+          position: relative;
+          width: 100%;
+          margin-bottom: clamp(28px, 4vw, 40px);
+        }
+        .kj-collections__feature-frame {
+          position: relative;
+          width: 100%;
+          aspect-ratio: 21 / 9;
+          max-height: min(52vh, 520px);
+          min-height: 280px;
+          overflow: hidden;
+          border-radius: 4px;
+          background: var(--color-dark);
+          box-shadow: 0 20px 50px rgba(24, 24, 24, 0.12);
+        }
+        .kj-collections__feature-link {
+          display: block;
+          position: absolute;
+          inset: 0;
+          text-decoration: none;
+          color: inherit;
+        }
+        .kj-collections__feature-link img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center 30%;
+          display: block;
+          transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .kj-collections__feature-link:hover img {
+          transform: scale(1.04);
+        }
+        .kj-collections__feature-shade {
+          position: absolute;
+          inset: 0;
+          background:
+            linear-gradient(90deg, rgba(24,24,24,0.72) 0%, rgba(24,24,24,0.25) 42%, transparent 70%),
+            linear-gradient(180deg, transparent 40%, rgba(24,24,24,0.55) 100%);
+          pointer-events: none;
+        }
+        .kj-collections__feature-copy {
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          max-width: min(28rem, 92%);
+          padding: clamp(24px, 4vw, 44px);
+          z-index: 1;
+        }
+        .kj-collections__feature-kicker {
+          display: inline-block;
+          font-family: var(--font-body);
+          font-size: 0.6875rem;
+          letter-spacing: 0.2em;
+          text-transform: uppercase;
+          color: var(--color-gold);
+          margin-bottom: 10px;
+        }
+        .kj-collections__feature-copy h3 {
+          margin: 0 0 10px;
+          font-family: var(--font-heading);
+          font-size: clamp(1.75rem, 3.2vw, 2.75rem);
+          font-weight: 600;
+          color: var(--color-ivory);
+          line-height: 1.15;
+        }
+        .kj-collections__feature-copy p {
+          margin: 0 0 18px;
+          font-family: var(--font-body);
+          font-weight: 300;
+          font-size: 0.9375rem;
+          color: rgba(248, 246, 242, 0.82);
+          line-height: 1.65;
+        }
+        .kj-collections__feature-cta {
+          font-family: var(--font-body);
+          font-size: 0.6875rem;
+          letter-spacing: 0.16em;
+          text-transform: uppercase;
+          color: var(--color-ivory);
+          border-bottom: 1px solid rgba(199, 161, 90, 0.7);
+          padding-bottom: 3px;
+        }
+
+        .kj-collections__strip-wrap {
+          display: grid;
+          grid-template-columns: auto 1fr auto;
+          align-items: center;
+          gap: 10px;
+        }
+        .kj-collections__tiles {
+          display: flex;
+          gap: clamp(12px, 1.6vw, 18px);
+          overflow-x: auto;
+          scroll-snap-type: x mandatory;
+          scrollbar-width: none;
+          padding: 4px 2px 6px;
+          -webkit-overflow-scrolling: touch;
+        }
+        .kj-collections__tiles::-webkit-scrollbar {
+          display: none;
+        }
+
+        .kj-collections__tile {
+          flex: 0 0 auto;
+          width: clamp(132px, 16vw, 168px);
+          scroll-snap-align: start;
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 10px;
+          padding: 0;
+          border: none;
+          background: transparent;
+          cursor: pointer;
+          text-align: left;
+          color: var(--color-muted);
+          transition: color 0.25s ease;
+        }
+        .kj-collections__tile-media {
+          display: block;
+          aspect-ratio: 4 / 5;
+          overflow: hidden;
+          border-radius: 4px;
+          background: var(--color-bg-alt);
+          outline: 1px solid transparent;
+          outline-offset: 0;
+          transition: outline-color 0.25s ease, box-shadow 0.25s ease;
+        }
+        .kj-collections__tile-media img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+          display: block;
+          transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .kj-collections__tile-label {
+          font-family: var(--font-heading);
+          font-size: 1.0625rem;
+          font-weight: 600;
+          line-height: 1.2;
+          letter-spacing: 0.01em;
+          padding-inline: 2px;
+        }
+        .kj-collections__tile:hover {
+          color: var(--color-text);
+        }
+        .kj-collections__tile:hover .kj-collections__tile-media img {
+          transform: scale(1.05);
+        }
+        .kj-collections__tile.is-active {
+          color: var(--color-text);
+        }
+        .kj-collections__tile.is-active .kj-collections__tile-media {
+          outline-color: var(--color-gold);
+          box-shadow: 0 10px 24px rgba(24, 24, 24, 0.1);
+        }
+
+        .kj-collections__strip-nav {
+          width: 36px;
+          height: 36px;
+          border-radius: 999px;
+          border: 1px solid var(--color-divider);
+          background: var(--color-bg);
+          color: var(--color-text);
+          font-size: 1.25rem;
+          line-height: 1;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+        .kj-collections__strip-nav:hover {
+          border-color: var(--color-gold);
+          color: var(--color-bronze);
+        }
+
+        .kj-collections__footer {
+          margin-top: clamp(28px, 4vw, 40px);
+          text-align: center;
+        }
+        .kj-collections__all {
+          font-family: var(--font-body);
+          font-size: 0.75rem;
+          letter-spacing: 0.16em;
+          text-transform: uppercase;
+          color: var(--color-bronze);
+          text-decoration: none;
+          border-bottom: 1px solid rgba(199, 161, 90, 0.55);
+          padding-bottom: 4px;
+        }
+        .kj-collections__all:hover {
+          color: var(--color-text);
+          border-bottom-color: var(--color-gold);
+        }
+
         @media (max-width: 900px) {
-          .kj-collections-layout {
-            grid-template-columns: 1fr !important;
-            gap: 40px !important;
+          .kj-collections__feature-frame {
+            aspect-ratio: 4 / 3;
+            max-height: none;
+            min-height: 320px;
           }
-          .kj-collections-layout > div:last-child {
-            min-height: 380px !important;
-            order: -1;
+          .kj-collections__feature-shade {
+            background:
+              linear-gradient(180deg, transparent 35%, rgba(24,24,24,0.82) 100%);
           }
-          .kj-collections-layout > div:last-child a > div {
-            min-height: 380px !important;
+        }
+        @media (max-width: 640px) {
+          .kj-collections__strip-nav {
+            display: none;
+          }
+          .kj-collections__strip-wrap {
+            grid-template-columns: 1fr;
+          }
+          .kj-collections__feature-copy p {
+            display: none;
+          }
+          .kj-collections__tile {
+            width: 118px;
+          }
+          .kj-collections__tile-label {
+            font-size: 0.9375rem;
           }
         }
       `}</style>
