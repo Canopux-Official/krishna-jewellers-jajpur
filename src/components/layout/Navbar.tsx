@@ -72,7 +72,7 @@ export default function Navbar() {
 
   const isHome = location.pathname === '/';
   const atHeroTop = isHome && !scrolled;
-  const showLinks = !atHeroTop;
+  // const showLinks = !atHeroTop;
 
   const links = NAV_LINKS.filter((link) => {
     if (link.href === '/rates') return settings.showRates;
