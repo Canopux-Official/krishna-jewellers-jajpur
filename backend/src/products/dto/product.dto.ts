@@ -49,12 +49,15 @@ export class CreateProductDto {
   @IsEnum(PurityDto)
   purity: PurityDto;
 
+  /** Optional for quick bulk-add — can be filled in later from the Products list. */
+  @IsOptional()
   @IsString()
-  weight: string;
+  weight?: string;
 
+  @IsOptional()
   @IsNumber()
   @Type(() => Number)
-  weightGrams: number;
+  weightGrams?: number;
 
   @IsOptional()
   @IsString()
@@ -65,9 +68,10 @@ export class CreateProductDto {
   @Type(() => Number)
   priceValue?: number;
 
+  /** Optional for quick bulk-add — can be filled in later from the Products list. */
+  @IsOptional()
   @IsString()
-  @MinLength(10)
-  description: string;
+  description?: string;
 
   @IsOptional()
   @IsString()

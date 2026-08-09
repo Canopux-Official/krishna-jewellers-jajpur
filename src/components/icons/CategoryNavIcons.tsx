@@ -103,12 +103,39 @@ export function IconPendant(props: IconProps) {
   );
 }
 
-export function IconSilver(props: IconProps) {
+export function IconCoins(props: IconProps) {
   return (
     <Svg {...props}>
-      <ellipse cx="16" cy="16" rx="9" ry="7.5" />
-      <path d="M8.5 14.5c2 .8 4.5 1.2 7.5 1.2s5.5-.4 7.5-1.2" />
-      <path d="M10 18.2c1.8.6 3.8.9 6 .9s4.2-.3 6-.9" />
+      <circle cx="13" cy="16" r="7.5" />
+      <path d="M20.2 11.2a7.5 7.5 0 0 1 0 9.6" />
+      <path d="M13 11.5v9" />
+      <path d="M10.5 13.8c.7-.7 1.6-1.1 2.5-1.1s1.8.4 2.5 1.1" />
+      <path d="M10.5 18.2c.7.7 1.6 1.1 2.5 1.1s1.8-.4 2.5-1.1" />
+    </Svg>
+  );
+}
+
+export function IconMangalsutra(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <path d="M7 8c2.8 9 6.2 13 9 13s6.2-4 9-13" />
+      <circle cx="11" cy="14" r="1.1" />
+      <circle cx="14" cy="17.5" r="1.1" />
+      <circle cx="18" cy="17.5" r="1.1" />
+      <circle cx="21" cy="14" r="1.1" />
+      <path d="M14.2 21.2h3.6l-1.8 3.4-1.8-3.4z" />
+    </Svg>
+  );
+}
+
+export function IconWatches(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <rect x="10" y="9" width="12" height="14" rx="3.5" />
+      <path d="M13 9V6.5h6V9" />
+      <path d="M13 23v2.5h6V23" />
+      <path d="M16 13.5v4l2.5 1.5" />
+      <circle cx="16" cy="16" r="0.8" fill="currentColor" stroke="none" />
     </Svg>
   );
 }
@@ -121,7 +148,9 @@ const BY_ID: Record<string, (props: IconProps) => ReactNode> = {
   bracelets: IconBracelet,
   earrings: IconEarrings,
   pendants: IconPendant,
-  silver: IconSilver,
+  coins: IconCoins,
+  mangalsutra: IconMangalsutra,
+  watches: IconWatches,
 };
 
 /** Short labels for the category strip (Tanishq-style). */
@@ -133,7 +162,9 @@ export const CATEGORY_NAV_LABELS: Record<string, string> = {
   bracelets: 'Bracelets',
   earrings: 'Earrings',
   pendants: 'Pendants',
-  silver: 'Silver',
+  coins: 'Coins',
+  mangalsutra: 'Mangalsutra',
+  watches: 'Watches',
 };
 
 export function CategoryNavIcon({

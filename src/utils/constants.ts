@@ -27,7 +27,9 @@ export const COLLECTIONS: Collection[] = [
   { id: 'bracelets', name: 'Gold Bracelets', slug: 'gold-bracelets', shortDescription: 'Grace for the wrist.', description: '', image: C.bracelets, bannerImage: C.bracelets, productCount: 0, size: 'medium' },
   { id: 'earrings', name: 'Gold Earrings', slug: 'earrings', shortDescription: 'Jhumkas, studs and drops.', description: '', image: C.earrings, bannerImage: C.earrings, productCount: 0, size: 'small' },
   { id: 'pendants', name: 'Gold Pendants', slug: 'gold-pendants', shortDescription: 'Motifs of devotion & beauty.', description: '', image: C.pendants, bannerImage: C.pendants, productCount: 0, size: 'small' },
-  { id: 'silver', name: 'Silver Bracelets', slug: 'silver-bracelets', shortDescription: 'Silver for everyday blessing.', description: '', image: C.silver, bannerImage: C.silver, productCount: 0, size: 'medium' },
+  { id: 'coins', name: 'Coins', slug: 'gold-coins--bars', shortDescription: 'Hallmarked gold coins.', description: '', image: C.coins, bannerImage: C.coins, productCount: 0, size: 'small' },
+  { id: 'mangalsutra', name: 'Mangalsutra', slug: 'mangalsutra', shortDescription: 'Sacred threads of gold.', description: '', image: C.mangalsutra, bannerImage: C.mangalsutra, productCount: 0, size: 'medium' },
+  { id: 'watches', name: 'Watches', slug: 'watches--collections', shortDescription: 'Fine timepieces.', description: '', image: C.watches, bannerImage: C.watches, productCount: 0, size: 'small' },
 ];
 
 /** Featured products emptied for redesign. */

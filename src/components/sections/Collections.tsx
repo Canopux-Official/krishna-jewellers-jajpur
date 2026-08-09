@@ -22,15 +22,15 @@ export default function Collections() {
           <motion.h2
             id="collections-heading"
             initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
           >
             Collections
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.08 }}
           >
@@ -70,8 +70,8 @@ export default function Collections() {
                     Explore collection →
                   </span>
                 </div>
-              </Link>
-            </motion.div>
+            </Link>
+          </motion.div>
           </AnimatePresence>
         </div>
 
@@ -143,7 +143,7 @@ export default function Collections() {
         >
           <Link to="/collections" className="kj-collections__all">
             View all collections
-          </Link>
+      </Link>
         </motion.div>
       </div>
 
@@ -203,7 +203,7 @@ export default function Collections() {
           min-height: 280px;
           overflow: hidden;
           border-radius: 4px;
-          background: var(--color-dark);
+          background: #f3efe8;
           box-shadow: 0 20px 50px rgba(24, 24, 24, 0.12);
         }
         .kj-collections__feature-link {
@@ -216,8 +216,8 @@ export default function Collections() {
         .kj-collections__feature-link img {
           width: 100%;
           height: 100%;
-          object-fit: cover;
-          object-position: center 30%;
+          object-fit: contain;
+          object-position: center;
           display: block;
           transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
         }
@@ -228,8 +228,8 @@ export default function Collections() {
           position: absolute;
           inset: 0;
           background:
-            linear-gradient(90deg, rgba(24,24,24,0.72) 0%, rgba(24,24,24,0.25) 42%, transparent 70%),
-            linear-gradient(180deg, transparent 40%, rgba(24,24,24,0.55) 100%);
+            linear-gradient(90deg, rgba(24,24,24,0.78) 0%, rgba(24,24,24,0.35) 38%, transparent 68%),
+            linear-gradient(180deg, transparent 48%, rgba(24,24,24,0.5) 100%);
           pointer-events: none;
         }
         .kj-collections__feature-copy {
@@ -315,7 +315,7 @@ export default function Collections() {
           aspect-ratio: 4 / 5;
           overflow: hidden;
           border-radius: 4px;
-          background: var(--color-bg-alt);
+          background: #f3efe8;
           outline: 1px solid transparent;
           outline-offset: 0;
           transition: outline-color 0.25s ease, box-shadow 0.25s ease;
@@ -323,7 +323,7 @@ export default function Collections() {
         .kj-collections__tile-media img {
           width: 100%;
           height: 100%;
-          object-fit: cover;
+          object-fit: contain;
           object-position: center;
           display: block;
           transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);

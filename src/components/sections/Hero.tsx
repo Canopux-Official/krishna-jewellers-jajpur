@@ -13,19 +13,19 @@ type TrackItem = HeroSlide & { key: string; realIndex: number };
 /** Hero banners — each slide can point to its own collection. */
 const HERO_SLIDES: HeroSlide[] = [
   {
-    src: '/krishna-jewellers-hero.avif',
+    src: '/new-hero-1.png',
     categoryLabel: 'Bridal Collection',
     categorySlug: 'bridal-collection',
   },
   {
-    src: '/hero-2.png',
+    src: '/new-hero-2.png',
     categoryLabel: 'Gold Necklaces',
     categorySlug: 'gold-necklaces',
   },
   {
-    src: '/hero-3.png',
-    categoryLabel: 'Earrings',
-    categorySlug: 'earrings',
+    src: '/new-hero-3.png',
+    categoryLabel: 'Bangles',
+    categorySlug: 'bangles',
   },
 ];
 
