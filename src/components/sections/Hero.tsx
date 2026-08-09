@@ -90,13 +90,18 @@ export default function Hero() {
       const w = el.clientWidth;
       setViewportW(w);
       const mobile = w < 640;
-      // Desktop: wide center slide with slim side peeks (Tanishq ~3.6:1 banners)
-      const next = Math.round(
-        mobile
-          ? Math.min(w * 0.88, w - 24)
-          : Math.min(1280, w * 0.88),
-      );
-      setSlideW(next);
+      // Match CSS aspect-ratio + max-height so JS width doesn't fight height caps
+      const aspectWPerH = mobile ? 3 / 4 : 5 / 2;
+      const navH =
+        parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--navbar-height')) ||
+        (mobile ? 56 : 120);
+      const chrome = mobile ? 142 : 148;
+      const maxH = Math.max(160, window.innerHeight - navH - chrome);
+      const maxWFromHeight = maxH * aspectWPerH;
+      const preferred = mobile
+        ? Math.min(w * 0.88, w - 24)
+        : Math.min(1280, w * 0.88);
+      setSlideW(Math.round(Math.min(preferred, maxWFromHeight)));
     };
 
     measure();
@@ -130,9 +135,14 @@ export default function Hero() {
     (dir: 1 | -1) => {
       if (!multi) return;
       setSmooth(true);
-      setTrackIndex((i) => i + dir);
+      setTrackIndex((i) => {
+        const next = i + dir;
+        if (next > count + 1) return count + 1;
+        if (next < 0) return 0;
+        return next;
+      });
     },
-    [multi],
+    [multi, count],
   );
 
   const goToReal = useCallback(
@@ -144,15 +154,64 @@ export default function Hero() {
     [multi],
   );
 
+  const normalizeTrack = useCallback(() => {
+    if (!multi) return;
+    const i = trackIndexRef.current;
+    let next = i;
+    if (i <= 0) next = count;
+    else if (i >= count + 1) next = 1;
+    setSmooth(false);
+    setTrackIndex(next);
+    setDragDx(0);
+    draggingRef.current = false;
+  }, [multi, count]);
+
+  // Autoplay — pause while tab is hidden; never walk past clone bounds
   useEffect(() => {
     if (!multi) return;
     const id = window.setInterval(() => {
-      if (pausedRef.current || draggingRef.current) return;
+      if (document.hidden || pausedRef.current || draggingRef.current) return;
       setSmooth(true);
-      setTrackIndex((i) => i + 1);
+      setTrackIndex((i) => {
+        // If a prior transitionend was skipped (background tab), recover first
+        if (i >= count + 1) return 1;
+        if (i <= 0) return count;
+        return i + 1;
+      });
     }, SWIPE_MS);
     return () => window.clearInterval(id);
-  }, [multi]);
+  }, [multi, count]);
+
+  // Returning to the tab: remeasure + snap off clones so slides reappear
+  useEffect(() => {
+    const restore = () => {
+      if (document.hidden) {
+        pausedRef.current = true;
+        return;
+      }
+      pausedRef.current = false;
+      normalizeTrack();
+      const el = viewportRef.current;
+      if (!el) return;
+      const w = el.clientWidth;
+      setViewportW(w);
+      const mobile = w < 640;
+      setSlideW(
+        Math.round(
+          mobile ? Math.min(w * 0.88, w - 24) : Math.min(1280, w * 0.88),
+        ),
+      );
+    };
+
+    document.addEventListener('visibilitychange', restore);
+    window.addEventListener('pageshow', restore);
+    window.addEventListener('focus', restore);
+    return () => {
+      document.removeEventListener('visibilitychange', restore);
+      window.removeEventListener('pageshow', restore);
+      window.removeEventListener('focus', restore);
+    };
+  }, [normalizeTrack]);
 
   const onPointerDown = (e: React.PointerEvent) => {
     if (!multi) return;
@@ -466,12 +525,13 @@ export default function Hero() {
           width: 100%;
           text-align: center;
           font-family: var(--font-body);
-          font-size: clamp(0.52rem, 1.5vw, 0.625rem);
+          font-size: clamp(0.625rem, 1.5vw, 0.75rem);
           font-weight: 300;
-          letter-spacing: 0.14em;
+          letter-spacing: 0.1em;
           text-transform: uppercase;
           color: var(--color-ivory);
-          line-height: 1.35;
+          line-height: 1.45;
+          white-space: normal;
         }
 
         @media (max-width: 640px) {

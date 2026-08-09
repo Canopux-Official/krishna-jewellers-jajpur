@@ -114,7 +114,11 @@ export default function Collections() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.45, delay: i * 0.04 }}
                     onClick={() => setActiveId(col.id)}
-                    onMouseEnter={() => setActiveId(col.id)}
+                    onMouseEnter={() => {
+                      if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+                        setActiveId(col.id);
+                      }
+                    }}
                     onFocus={() => setActiveId(col.id)}
                   >
                     <span className="kj-collections__tile-media">
@@ -251,6 +255,15 @@ export default function Collections() {
           padding: clamp(24px, 4vw, 44px);
           z-index: 1;
         }
+        @media (max-width: 1100px) and (min-width: 901px) {
+          .kj-collections__feature-copy {
+            max-width: min(22rem, 46%);
+            padding: clamp(20px, 3vw, 32px);
+          }
+          .kj-collections__strip-wrap {
+            width: 132px;
+          }
+        }
         .kj-collections__feature-kicker {
           display: inline-block;
           font-family: var(--font-body);
@@ -292,14 +305,14 @@ export default function Collections() {
           right: 14px;
           bottom: 14px;
           z-index: 3;
-          width: 108px;
+          width: 156px;
           display: grid;
           grid-template-columns: 1fr;
           grid-template-rows: auto minmax(0, 1fr) auto;
           align-items: center;
           justify-items: center;
-          gap: 8px;
-          padding: 10px 8px;
+          gap: 10px;
+          padding: 14px 12px;
           border-radius: 4px;
           background: rgba(248, 246, 242, 0.92);
           border: 1px solid rgba(255, 255, 255, 0.35);
@@ -310,7 +323,7 @@ export default function Collections() {
         .kj-collections__tiles {
           display: flex;
           flex-direction: column;
-          gap: 10px;
+          gap: 14px;
           overflow-y: auto;
           overflow-x: hidden;
           scroll-snap-type: y mandatory;
@@ -331,22 +344,23 @@ export default function Collections() {
           scroll-snap-align: start;
           display: flex;
           flex-direction: column;
-          align-items: stretch;
-          gap: 6px;
+          align-items: center;
+          gap: 8px;
           padding: 0;
           border: none;
           background: transparent;
           cursor: pointer;
-          text-align: left;
+          text-align: center;
           color: var(--color-muted);
           transition: color 0.25s ease;
         }
         .kj-collections__tile-media {
           display: block;
+          width: 100%;
           aspect-ratio: 1;
           overflow: hidden;
-          border-radius: 3px;
-          background: #f3efe8;
+          border-radius: 4px;
+          background: var(--color-dark);
           outline: 1px solid transparent;
           outline-offset: 0;
           transition: outline-color 0.25s ease, box-shadow 0.25s ease;
@@ -354,18 +368,20 @@ export default function Collections() {
         .kj-collections__tile-media img {
           width: 100%;
           height: 100%;
-          object-fit: contain;
+          object-fit: cover;
           object-position: center;
           display: block;
           transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .kj-collections__tile-label {
           font-family: var(--font-heading);
-          font-size: 0.8125rem;
+          font-size: 1rem;
           font-weight: 600;
-          line-height: 1.15;
+          line-height: 1.2;
           letter-spacing: 0.01em;
-          padding-inline: 1px;
+          padding-inline: 2px;
+          text-align: center;
+          width: 100%;
         }
         .kj-collections__tile:hover {
           color: var(--color-text);
@@ -382,13 +398,13 @@ export default function Collections() {
         }
 
         .kj-collections__strip-nav {
-          width: 28px;
-          height: 28px;
+          width: 32px;
+          height: 32px;
           border-radius: 999px;
           border: 1px solid var(--color-divider);
           background: var(--color-bg);
           color: var(--color-text);
-          font-size: 1rem;
+          font-size: 1.1rem;
           line-height: 1;
           cursor: pointer;
           display: flex;

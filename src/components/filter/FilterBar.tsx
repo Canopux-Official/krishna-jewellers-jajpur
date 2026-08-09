@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { FilterState, Purity } from '../../types';
 import { DEFAULT_FILTERS } from '../../types';
@@ -29,6 +29,15 @@ const PRICES = [
 export default function FilterBar({ filters, onChange, resultCount }: FilterBarProps) {
   const [sheetOpen, setSheetOpen] = useState(false);
   const activeCount = getActiveFilterCount(filters);
+
+  useEffect(() => {
+    if (!sheetOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [sheetOpen]);
 
   const togglePurity = (p: Purity) => {
     const next = filters.purity.includes(p)
@@ -319,7 +328,7 @@ export default function FilterBar({ filters, onChange, resultCount }: FilterBarP
       </AnimatePresence>
 
       <style>{`
-        @media (max-width: 900px) {
+        @media (max-width: 1024px) {
           .filter-bar-desktop { display: none !important; }
           .filter-bar-mobile { display: block !important; }
         }

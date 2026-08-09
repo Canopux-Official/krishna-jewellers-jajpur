@@ -26,6 +26,7 @@ function BrandMark({ atTop }: { atTop: boolean }) {
       }}
     >
       <span
+        className="kj-brand-name"
         style={{
           fontFamily: 'var(--font-display)',
           fontSize: atTop
@@ -42,6 +43,7 @@ function BrandMark({ atTop }: { atTop: boolean }) {
         Krishna Jewellers
       </span>
       <span
+        className="kj-brand-place"
         style={{
           fontFamily: 'var(--font-body)',
           fontSize: atTop ? '0.625rem' : '0.5625rem',
@@ -87,15 +89,18 @@ export default function Navbar() {
       root.style.setProperty(
         '--navbar-height',
         atHeroTop && !mobile
-          ? 'calc(var(--navbar-brand-row) + var(--navbar-cats-row))'
-          : 'var(--navbar-brand-row)',
+          ? 'calc(var(--navbar-brand-row) + var(--navbar-cats-row) + env(safe-area-inset-top, 0px))'
+          : 'calc(var(--navbar-brand-row) + env(safe-area-inset-top, 0px))',
       );
     };
     applyHeight();
     window.addEventListener('resize', applyHeight);
     return () => {
       window.removeEventListener('resize', applyHeight);
-      root.style.setProperty('--navbar-height', 'var(--navbar-brand-row)');
+      root.style.setProperty(
+        '--navbar-height',
+        'calc(var(--navbar-brand-row) + env(safe-area-inset-top, 0px))',
+      );
     };
   }, [atHeroTop]);
 
@@ -121,6 +126,7 @@ export default function Navbar() {
           zIndex: 100,
           display: 'flex',
           flexDirection: 'column',
+          paddingTop: 'env(safe-area-inset-top, 0px)',
           backgroundColor: 'rgba(248,246,242,0.97)',
           borderBottom: atHeroTop
             ? '1px solid var(--color-divider)'
@@ -214,26 +220,24 @@ export default function Navbar() {
               gap: '8px',
             }}
           >
-            {!atHeroTop && (
-              <button
-                type="button"
-                aria-label="Search"
-                onClick={openSearch}
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  cursor: 'pointer',
-                  padding: '8px',
-                  color: 'var(--color-text)',
-                  display: 'flex',
-                }}
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="11" cy="11" r="8" />
-                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                </svg>
-              </button>
-            )}
+            <button
+              type="button"
+              aria-label="Search"
+              onClick={openSearch}
+              style={{
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                padding: '8px',
+                color: 'var(--color-text)',
+                display: 'flex',
+              }}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+            </button>
 
             <button
               type="button"
@@ -407,6 +411,37 @@ export default function Navbar() {
                 </Link>
               ))}
 
+              <button
+                type="button"
+                onClick={() => {
+                  setMenuOpen(false);
+                  openSearch();
+                }}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '12px',
+                  fontFamily: 'var(--font-body)',
+                  fontSize: '0.8125rem',
+                  letterSpacing: '0.18em',
+                  textTransform: 'uppercase',
+                  color: 'var(--color-text)',
+                  background: 'none',
+                  border: 'none',
+                  borderBottom: '1px solid var(--color-divider)',
+                  padding: '14px 0',
+                  cursor: 'pointer',
+                  textAlign: 'left',
+                  width: '100%',
+                }}
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+                Search
+              </button>
+
               <p
                 style={{
                   fontFamily: 'var(--font-body)',
@@ -510,6 +545,16 @@ export default function Navbar() {
           }
           .kj-cat-link span {
             font-size: 0.8125rem;
+          }
+        }
+        @media (max-width: 380px) {
+          .kj-brand-name {
+            letter-spacing: 0.1em !important;
+            font-size: 0.95rem !important;
+          }
+          .kj-brand-place {
+            letter-spacing: 0.12em !important;
+            font-size: 0.5rem !important;
           }
         }
       `}</style>

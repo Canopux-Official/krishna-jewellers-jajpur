@@ -128,16 +128,7 @@ export default function GalleryPage() {
         path={STATIC_PAGE_META.gallery.path}
       />
       {/* Hero */}
-      <section
-        style={{
-          position: 'relative',
-          height: '52vh',
-          minHeight: '380px',
-          overflow: 'hidden',
-          display: 'flex',
-          alignItems: 'flex-end',
-        }}
-      >
+      <section className="page-hero page-hero--lg">
         <motion.div
           initial={{ scale: 1.06 }}
           animate={{ scale: 1 }}
@@ -161,7 +152,7 @@ export default function GalleryPage() {
         />
 
         <div
-          className="container"
+          className="container page-hero__content"
           style={{
             position: 'relative',
             zIndex: 1,
@@ -196,6 +187,7 @@ export default function GalleryPage() {
           </motion.h1>
 
           <motion.p
+            className="page-hero__lede"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}

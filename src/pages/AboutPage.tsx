@@ -17,14 +17,7 @@ export default function AboutPage() {
     <PageTransition>
       <PageMeta title={meta.title} description={meta.description} path={meta.path} />
       <section
-        style={{
-          position: 'relative',
-          height: '48vh',
-          minHeight: '340px',
-          overflow: 'hidden',
-          display: 'flex',
-          alignItems: 'flex-end',
-        }}
+        className="page-hero page-hero--md"
       >
         <motion.div
           initial={{ scale: 1.06 }}
@@ -49,7 +42,7 @@ export default function AboutPage() {
         />
 
         <div
-          className="container"
+          className="container page-hero__content"
           style={{
             position: 'relative',
             zIndex: 1,
@@ -84,6 +77,7 @@ export default function AboutPage() {
           </motion.h1>
 
           <motion.p
+            className="page-hero__lede"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}

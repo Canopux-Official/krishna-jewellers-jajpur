@@ -1,15 +1,14 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useStoreSettings } from '../../context/StoreSettingsContext';
+import { COLLECTIONS } from '../../utils/constants';
+import { CATEGORY_NAV_LABELS } from '../icons/CategoryNavIcons';
 import BisCredibility from '../ui/BisCredibility';
 
-const footerCollections = [
-  { label: 'Bridal Collection', href: '/collections/bridal-collection' },
-  { label: 'Gold Necklaces', href: '/collections/gold-necklaces' },
-  { label: 'Bangles', href: '/collections/bangles' },
-  { label: 'Gold Pendants', href: '/collections/gold-pendants' },
-  { label: 'Silver Bracelets', href: '/collections/silver-bracelets' },
-];
+const footerCollections = COLLECTIONS.map((col) => ({
+  label: CATEGORY_NAV_LABELS[col.id] ?? col.name,
+  href: `/collections/${col.slug}`,
+}));
 const quickLinks = [
   { label: 'Home', href: '/' },
   { label: 'About Us', href: '/about' },
@@ -249,7 +248,13 @@ export default function Footer() {
           </div>
         </div>
 
-        <div style={{ borderTop: '1px solid rgba(221,215,207,0.15)', paddingBlock: '28px' }}>
+        <div
+          style={{
+            borderTop: '1px solid rgba(221,215,207,0.15)',
+            paddingTop: '28px',
+            paddingBottom: 'max(28px, env(safe-area-inset-bottom, 0px))',
+          }}
+        >
           <div
             style={{
               display: 'flex',

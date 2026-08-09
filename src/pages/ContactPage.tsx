@@ -84,16 +84,7 @@ export default function ContactPage() {
         description={STATIC_PAGE_META.contact.description}
         path={STATIC_PAGE_META.contact.path}
       />
-      <section
-        style={{
-          position: 'relative',
-          height: '44vh',
-          minHeight: '300px',
-          overflow: 'hidden',
-          display: 'flex',
-          alignItems: 'flex-end',
-        }}
-      >
+      <section className="page-hero page-hero--sm">
         <motion.div
           initial={{ scale: 1.06 }}
           animate={{ scale: 1 }}
@@ -117,7 +108,7 @@ export default function ContactPage() {
         />
 
         <div
-          className="container"
+          className="container page-hero__content"
           style={{
             position: 'relative',
             zIndex: 1,
@@ -152,6 +143,7 @@ export default function ContactPage() {
           </motion.h1>
 
           <motion.p
+            className="page-hero__lede"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
@@ -358,9 +350,10 @@ export default function ContactPage() {
                 <MapsDirectionsButton />
               </div>
               <div
+                className="contact-map"
                 style={{
                   width: '100%',
-                  minHeight: '420px',
+                  minHeight: 'min(420px, 55svh)',
                   height: '100%',
                   border: '1px solid var(--color-divider)',
                   overflow: 'hidden',
@@ -375,7 +368,7 @@ export default function ContactPage() {
                   style={{
                     width: '100%',
                     height: '100%',
-                    minHeight: '420px',
+                    minHeight: 'min(420px, 55svh)',
                     border: 0,
                     display: 'block',
                   }}

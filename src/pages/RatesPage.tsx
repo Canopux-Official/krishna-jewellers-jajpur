@@ -20,14 +20,7 @@ export default function RatesPage() {
     <PageTransition>
       <PageMeta title={meta.title} description={meta.description} path={meta.path} />
       <section
-        style={{
-          position: 'relative',
-          height: '42vh',
-          minHeight: '300px',
-          overflow: 'hidden',
-          display: 'flex',
-          alignItems: 'flex-end',
-        }}
+        className="page-hero page-hero--sm"
       >
         <motion.div
           initial={{ scale: 1.06 }}
@@ -52,7 +45,7 @@ export default function RatesPage() {
         />
 
         <div
-          className="container"
+          className="container page-hero__content"
           style={{
             position: 'relative',
             zIndex: 1,
@@ -90,6 +83,7 @@ export default function RatesPage() {
           </motion.h1>
 
           <motion.p
+            className="page-hero__lede"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}

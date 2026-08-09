@@ -32,9 +32,9 @@ export const STORE_PHOTOS = {
   /** Featured product photos per collection (Cloudinary). */
   collections: {
     bridal:
-      'https://res.cloudinary.com/dbsskv4bf/image/upload/v1786239087/krishna-jewellers-jajpur/products/qjwubuf7cxqxjduissfy.jpg',
+      'https://res.cloudinary.com/dbsskv4bf/image/upload/c_pad,b_rgb:2a1f18,w_800,h_800,q_auto,f_auto/v1786239082/krishna-jewellers-jajpur/products/hp8kqpsrnbueyf2iflyd.jpg',
     goldNecklaces:
-      'https://res.cloudinary.com/dbsskv4bf/image/upload/v1786239696/krishna-jewellers-jajpur/products/bk6zphz5zfcwcxrlywvy.jpg',
+      'https://res.cloudinary.com/dbsskv4bf/image/upload/c_fill,g_auto,w_800,h_800,q_auto,f_auto/v1786239706/krishna-jewellers-jajpur/products/fmsy98fbr3ay7mz4give.jpg',
     goldChains:
       'https://res.cloudinary.com/dbsskv4bf/image/upload/v1786212094/krishna-jewellers-jajpur/products/utkebwrbx6wacd0ablqy.jpg',
     goldRings: P,
@@ -48,7 +48,7 @@ export const STORE_PHOTOS = {
       'https://res.cloudinary.com/dbsskv4bf/image/upload/v1786211907/krishna-jewellers-jajpur/products/hbyuvlmtfdgnjyxzuyfn.jpg',
     temple: P,
     mangalsutra:
-      'https://res.cloudinary.com/dbsskv4bf/image/upload/v1786240270/krishna-jewellers-jajpur/products/al6egpvizrm6zwxeaxqk.jpg',
+      'https://res.cloudinary.com/dbsskv4bf/image/upload/c_fill,g_auto,w_800,h_800,q_auto,f_auto/v1786240260/krishna-jewellers-jajpur/products/lbknp4srdvtbgaozezwn.jpg',
     silver: P,
     kids: P,
     dailyWear: P,

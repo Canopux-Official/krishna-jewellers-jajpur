@@ -61,7 +61,7 @@ export default function ProductGrid({ products }: ProductGridProps) {
             gap: 24px 16px !important;
           }
         }
-        @media (max-width: 540px) {
+        @media (max-width: 360px) {
           .product-grid {
             grid-template-columns: 1fr !important;
             gap: 28px !important;

@@ -74,7 +74,7 @@ export default function RelatedProducts({ products }: RelatedProductsProps) {
 
       <style>{`
         @media (max-width: 900px) { .related-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; } }
-        @media (max-width: 380px) { .related-grid { grid-template-columns: 1fr !important; } }
+        @media (max-width: 360px) { .related-grid { grid-template-columns: 1fr !important; } }
       `}</style>
     </section>
   );

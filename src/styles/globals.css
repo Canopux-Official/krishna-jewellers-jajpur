@@ -46,7 +46,15 @@
   --max-width: 1440px;
   --navbar-brand-row: 64px;
   --navbar-cats-row: 48px;
-  --navbar-height: var(--navbar-brand-row);
+  --navbar-height: calc(var(--navbar-brand-row) + env(safe-area-inset-top, 0px));
+
+  /*
+   * Breakpoint policy (prefer these over one-offs):
+   *  640  — phone: hide category bar, hero 3:4, page-hero mobile caps
+   *  900  — tablet: denser navbar tokens, section/container padding
+   * 1024  — tablet-lg: FilterBar sheet (desktop chrome too crowded below this)
+   * 1200+ — desktop comfort / large grids
+   */
 }
 
 @media (max-width: 900px) {
@@ -60,6 +68,47 @@
   :root {
     --navbar-brand-row: 54px;
     --navbar-cats-row: 44px;
+  }
+}
+
+/* Shared page-hero mobile safety (About / Contact / Rates / Gallery) */
+.page-hero {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+.page-hero--sm {
+  height: 42vh;
+  min-height: 300px;
+}
+.page-hero--md {
+  height: 48vh;
+  min-height: 340px;
+}
+.page-hero--lg {
+  height: 52vh;
+  min-height: 380px;
+}
+@media (max-width: 640px) {
+  .page-hero {
+    height: 55svh !important;
+    min-height: 280px !important;
+    max-height: 440px !important;
+  }
+  .page-hero__content {
+    padding-top: calc(var(--navbar-height) + 16px) !important;
+    padding-bottom: 36px !important;
+  }
+  .page-hero__lede {
+    display: none !important;
+  }
+}
+@supports not (height: 1svh) {
+  @media (max-width: 640px) {
+    .page-hero {
+      height: 55vh !important;
+    }
   }
 }
 
