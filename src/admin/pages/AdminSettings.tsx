@@ -471,7 +471,7 @@ export default function AdminSettings() {
                       label={LABELS[field]}
                       value={(settings[field] as string) || ''}
                       placeholder={PLACEHOLDERS[field]}
-                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => set(field, e.target.value)}
+                      onChange={(e: any) => set(field, e.target.value)}
                       disabled={loading}
                     />
                   </div>
