@@ -18,18 +18,19 @@ export const METAL_RATES: MetalRate[] = [
 ];
 
 const C = STORE_PHOTOS.collections;
+const B = STORE_PHOTOS.collectionBanners;
 
 export const COLLECTIONS: Collection[] = [
-  { id: 'bridal', name: 'Bridal Collection', slug: 'bridal-collection', shortDescription: 'Haars, chokers and sets for the sacred day.', description: '', image: C.bridal, bannerImage: C.bridal, productCount: 0, size: 'large' },
-  { id: 'necklaces', name: 'Gold Necklaces', slug: 'gold-necklaces', shortDescription: 'Temple grace to everyday gold.', description: '', image: C.goldNecklaces, bannerImage: C.goldNecklaces, productCount: 0, size: 'medium' },
-  { id: 'chains', name: 'Gold Chains', slug: 'gold-chains', shortDescription: 'Links of purity for every day.', description: '', image: C.goldChains, bannerImage: C.goldChains, productCount: 0, size: 'small' },
-  { id: 'bangles', name: 'Bangles', slug: 'bangles', shortDescription: 'Chura, pairs, and festive stacks.', description: '', image: C.bangles, bannerImage: C.bangles, productCount: 0, size: 'small' },
-  { id: 'bracelets', name: 'Gold Bracelets', slug: 'gold-bracelets', shortDescription: 'Grace for the wrist.', description: '', image: C.bracelets, bannerImage: C.bracelets, productCount: 0, size: 'medium' },
-  { id: 'earrings', name: 'Gold Earrings', slug: 'earrings', shortDescription: 'Jhumkas, studs and drops.', description: '', image: C.earrings, bannerImage: C.earrings, productCount: 0, size: 'small' },
-  { id: 'pendants', name: 'Gold Pendants', slug: 'gold-pendants', shortDescription: 'Motifs of devotion & beauty.', description: '', image: C.pendants, bannerImage: C.pendants, productCount: 0, size: 'small' },
-  { id: 'coins', name: 'Coins', slug: 'gold-coins--bars', shortDescription: 'Hallmarked gold coins.', description: '', image: C.coins, bannerImage: C.coins, productCount: 0, size: 'small' },
-  { id: 'mangalsutra', name: 'Mangalsutra', slug: 'mangalsutra', shortDescription: 'Sacred threads of gold.', description: '', image: C.mangalsutra, bannerImage: C.mangalsutra, productCount: 0, size: 'medium' },
-  { id: 'watches', name: 'Watches', slug: 'watches--collections', shortDescription: 'Fine timepieces.', description: '', image: C.watches, bannerImage: C.watches, productCount: 0, size: 'small' },
+  { id: 'bridal', name: 'Bridal Collection', slug: 'bridal-collection', shortDescription: 'Haars, chokers and sets for the sacred day.', description: '', image: C.bridal, bannerImage: B.bridal, productCount: 0, size: 'large' },
+  { id: 'necklaces', name: 'Gold Necklaces', slug: 'gold-necklaces', shortDescription: 'Temple grace to everyday gold.', description: '', image: C.goldNecklaces, bannerImage: B.goldNecklaces, productCount: 0, size: 'medium' },
+  { id: 'chains', name: 'Gold Chains', slug: 'gold-chains', shortDescription: 'Links of purity for every day.', description: '', image: C.goldChains, bannerImage: B.goldChains, productCount: 0, size: 'small' },
+  { id: 'bangles', name: 'Bangles', slug: 'bangles', shortDescription: 'Chura, pairs, and festive stacks.', description: '', image: C.bangles, bannerImage: B.bangles, productCount: 0, size: 'small' },
+  { id: 'bracelets', name: 'Gold Bracelets', slug: 'gold-bracelets', shortDescription: 'Grace for the wrist.', description: '', image: C.bracelets, bannerImage: B.bracelets, productCount: 0, size: 'medium' },
+  { id: 'earrings', name: 'Gold Earrings', slug: 'earrings', shortDescription: 'Jhumkas, studs and drops.', description: '', image: C.earrings, bannerImage: B.earrings, productCount: 0, size: 'small' },
+  { id: 'pendants', name: 'Gold Pendants', slug: 'gold-pendants', shortDescription: 'Motifs of devotion & beauty.', description: '', image: C.pendants, bannerImage: B.pendants, productCount: 0, size: 'small' },
+  { id: 'coins', name: 'Coins', slug: 'gold-coins--bars', shortDescription: 'Hallmarked gold coins.', description: '', image: C.coins, bannerImage: B.coins, productCount: 0, size: 'small' },
+  { id: 'mangalsutra', name: 'Mangalsutra', slug: 'mangalsutra', shortDescription: 'Sacred threads of gold.', description: '', image: C.mangalsutra, bannerImage: B.mangalsutra, productCount: 0, size: 'medium' },
+  { id: 'watches', name: 'Watches', slug: 'watches--collections', shortDescription: 'Fine timepieces.', description: '', image: C.watches, bannerImage: B.watches, productCount: 0, size: 'small' },
 ];
 
 /** Featured products emptied for redesign. */

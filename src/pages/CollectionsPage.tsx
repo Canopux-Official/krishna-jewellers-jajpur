@@ -6,14 +6,13 @@ import GoldDivider from '../components/ui/GoldDivider';
 import CollectionMasonry from '../components/collection/CollectionMasonry';
 import PageMeta from '../components/seo/PageMeta';
 import { COLLECTIONS } from '../data/mockCollections';
-import { IMAGE_PLACEHOLDER } from '../data/storeImages';
+import { SECTION_IMAGES } from '../data/storeImages';
 import { STATIC_PAGE_META } from '../utils/seo';
 import { publicCategoriesService } from '../services/publicApi';
 import { mergeCollectionsWithLiveCounts } from '../utils/collections';
 import type { Collection } from '../types';
 
-/** Collections page keeps placeholders until category shoots are ready. */
-const HERO_IMAGE = IMAGE_PLACEHOLDER;
+const HERO_IMAGE = SECTION_IMAGES.collections;
 
 export default function CollectionsPage() {
   const meta = STATIC_PAGE_META.collections;

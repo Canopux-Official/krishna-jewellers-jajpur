@@ -16,10 +16,11 @@ export const SECTION_IMAGES = {
   craftsmanship: unsplash('photo-1715374033196-0ff662284a7e'),
   showroom: unsplash('photo-1573408301185-9146fe634ad0'),
   findUs: unsplash('photo-1601121141461-9d6647bca1ed'),
-  rates: unsplash('photo-1611591437281-460bfbe1220a'),
-  about: '/hero-2.png',
+  rates: '/rates-page-hero.png',
+  about: '/about-page-hero.png',
   contact: unsplash('photo-1515562141207-7a88fb7ce338'),
   galleryBanner: '/hero-3.png',
+  collections: '/collections-page-hero.png',
 } as const;
 
 const P = IMAGE_PLACEHOLDER;
@@ -55,6 +56,20 @@ export const STORE_PHOTOS = {
       'https://res.cloudinary.com/dbsskv4bf/image/upload/v1786211683/krishna-jewellers-jajpur/products/fyypmyfzuxk7jpuyw2ug.jpg',
     watches:
       'https://res.cloudinary.com/dbsskv4bf/image/upload/v1786211495/krishna-jewellers-jajpur/products/oq8tixdtu0mlgzkdigjk.jpg',
+  },
+
+  /** Lifestyle model banners for the homepage collections hero (16:9 → cropped into 21:9). */
+  collectionBanners: {
+    bridal: '/collection-hero-bridal.png',
+    goldNecklaces: '/collection-hero-necklaces.png',
+    goldChains: '/collection-hero-chains.png',
+    bangles: '/collection-hero-bangles.png',
+    bracelets: '/collection-hero-bracelets.png',
+    earrings: '/collection-hero-earrings.png',
+    pendants: '/collection-hero-pendants.png',
+    coins: '/collection-hero-coins.png',
+    mangalsutra: '/collection-hero-mangalsutra.png',
+    watches: '/collection-hero-watches.png',
   },
 
   products: {

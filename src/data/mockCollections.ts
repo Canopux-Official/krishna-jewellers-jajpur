@@ -2,6 +2,7 @@ import type { Collection } from '../types';
 import { STORE_PHOTOS } from './storeImages';
 
 const C = STORE_PHOTOS.collections;
+const B = STORE_PHOTOS.collectionBanners;
 
 export const COLLECTIONS: Collection[] = [
   {
@@ -12,7 +13,7 @@ export const COLLECTIONS: Collection[] = [
     description:
       'Bridal ornaments for Odia weddings and family rites — layered haars, chokers, and matching sets finished with care and BIS-hallmarked for purity.',
     image: C.bridal,
-    bannerImage: C.bridal,
+    bannerImage: B.bridal,
     productCount: 0,
     size: 'large',
   },
@@ -24,7 +25,7 @@ export const COLLECTIONS: Collection[] = [
     description:
       'From light daily-wear necklaces to statement bridal haars — available in 22K and 18K gold for festivals, rituals, and heirloom occasions.',
     image: C.goldNecklaces,
-    bannerImage: C.goldNecklaces,
+    bannerImage: B.goldNecklaces,
     productCount: 0,
     size: 'medium',
   },
@@ -36,7 +37,7 @@ export const COLLECTIONS: Collection[] = [
     description:
       'Classic and lightweight gold chains for daily wear or as the foundation for pendants — hallmarked in 22K and 18K gold.',
     image: C.goldChains,
-    bannerImage: C.goldChains,
+    bannerImage: B.goldChains,
     productCount: 0,
     size: 'small',
   },
@@ -48,7 +49,7 @@ export const COLLECTIONS: Collection[] = [
     description:
       'Traditional bangles and bridal chura — from slender plain gold to richly worked pairs for sankranti, weddings, and house celebrations.',
     image: C.bangles,
-    bannerImage: C.bangles,
+    bannerImage: B.bangles,
     productCount: 0,
     size: 'medium',
   },
@@ -60,7 +61,7 @@ export const COLLECTIONS: Collection[] = [
     description:
       'Twisted, curb, and delicate link bracelets that bridge Odisha tradition with easy contemporary wear.',
     image: C.bracelets,
-    bannerImage: C.bracelets,
+    bannerImage: B.bracelets,
     productCount: 0,
     size: 'small',
   },
@@ -72,7 +73,7 @@ export const COLLECTIONS: Collection[] = [
     description:
       'Classic jhumkas, temple-inspired drops, and refined studs for daily wear and festival evenings.',
     image: C.earrings,
-    bannerImage: C.earrings,
+    bannerImage: B.earrings,
     productCount: 0,
     size: 'small',
   },
@@ -84,7 +85,7 @@ export const COLLECTIONS: Collection[] = [
     description:
       'Temple, floral, and sacred motifs in 22K and 18K gold — pendants meant to be worn close to the heart.',
     image: C.pendants,
-    bannerImage: C.pendants,
+    bannerImage: B.pendants,
     productCount: 0,
     size: 'small',
   },
@@ -96,7 +97,7 @@ export const COLLECTIONS: Collection[] = [
     description:
       'BIS-hallmarked gold coins for gifting, auspicious occasions, and lasting value.',
     image: C.coins,
-    bannerImage: C.coins,
+    bannerImage: B.coins,
     productCount: 0,
     size: 'small',
   },
@@ -108,7 +109,7 @@ export const COLLECTIONS: Collection[] = [
     description:
       'Traditional and contemporary mangalsutra designs — from classic black-bead strands to light daily-wear pieces.',
     image: C.mangalsutra,
-    bannerImage: C.mangalsutra,
+    bannerImage: B.mangalsutra,
     productCount: 0,
     size: 'medium',
   },
@@ -120,7 +121,7 @@ export const COLLECTIONS: Collection[] = [
     description:
       'Curated watches chosen to pair with everyday gold — for gifting and personal style.',
     image: C.watches,
-    bannerImage: C.watches,
+    bannerImage: B.watches,
     productCount: 0,
     size: 'small',
   },

@@ -54,7 +54,7 @@ export default function Collections() {
                 aria-label={`Explore ${active.name}`}
               >
                 <img
-                  src={active.image}
+                  src={active.bannerImage || active.image}
                   alt=""
                   loading="lazy"
                   decoding="async"
@@ -203,7 +203,7 @@ export default function Collections() {
           min-height: 280px;
           overflow: hidden;
           border-radius: 4px;
-          background: #f3efe8;
+          background: var(--color-dark);
           box-shadow: 0 20px 50px rgba(24, 24, 24, 0.12);
         }
         .kj-collections__feature-link {
@@ -216,8 +216,8 @@ export default function Collections() {
         .kj-collections__feature-link img {
           width: 100%;
           height: 100%;
-          object-fit: contain;
-          object-position: center;
+          object-fit: cover;
+          object-position: center 28%;
           display: block;
           transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
         }
