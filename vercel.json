@@ -1,11 +1,29 @@
 {
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "krishnajewellersjajpur.in" }],
+      "destination": "https://www.krishnajewellersjajpur.in/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "krishnajewellersjajpur.com" }],
+      "destination": "https://www.krishnajewellersjajpur.in/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.krishnajewellersjajpur.com" }],
+      "destination": "https://www.krishnajewellersjajpur.in/:path*",
+      "permanent": true
+    },
+    {
       "source": "/admin",
       "has": [
         {
           "type": "host",
-          "value": "krishnajewellersjajpur.com"
+          "value": "www.krishnajewellersjajpur.in"
         }
       ],
       "destination": "/",
@@ -16,32 +34,21 @@
       "has": [
         {
           "type": "host",
-          "value": "krishnajewellersjajpur.com"
+          "value": "www.krishnajewellersjajpur.in"
         }
       ],
       "destination": "/",
       "permanent": false
     },
     {
-      "source": "/admin",
+      "source": "/",
       "has": [
         {
           "type": "host",
-          "value": "www.krishnajewellersjajpur.com"
+          "value": "admin.krishnajewellersjajpur.in"
         }
       ],
-      "destination": "/",
-      "permanent": false
-    },
-    {
-      "source": "/admin/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.krishnajewellersjajpur.com"
-        }
-      ],
-      "destination": "/",
+      "destination": "/admin/login",
       "permanent": false
     },
     {
@@ -58,7 +65,7 @@
   ],
   "rewrites": [
     {
-      "source": "/((?!assets/|images/|placeholders/|api/|favicon\\.svg|robots\\.txt|sitemap\\.xml|krishna-jewellers-hero\\.png|BIS\\.png|CANOPUX\\.png).*)",
+      "source": "/((?!assets/|images/|placeholders/|api/|favicon\\.svg|robots\\.txt|sitemap\\.xml|site\\.webmanifest|krishna-jewellers-logo\\.png|home-hero-bridal\\.png|BIS\\.png|CANOPUX\\.png).*)",
       "destination": "/index.html"
     }
   ],
@@ -78,6 +85,30 @@
         {
           "key": "Content-Type",
           "value": "application/xml; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/site.webmanifest",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/manifest+json; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "admin.krishnajewellersjajpur.in"
+        }
+      ],
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
         }
       ]
     },

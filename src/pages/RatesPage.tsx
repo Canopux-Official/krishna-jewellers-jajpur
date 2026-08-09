@@ -6,7 +6,7 @@ import MetalRates from '../components/sections/MetalRates';
 import PageMeta from '../components/seo/PageMeta';
 import { SECTION_IMAGES } from '../data/storeImages';
 import { useStoreSettings } from '../context/StoreSettingsContext';
-import { STATIC_PAGE_META } from '../utils/seo';
+import { STATIC_PAGE_META, buildBreadcrumbJsonLd } from '../utils/seo';
 
 const HERO_IMAGE = SECTION_IMAGES.rates;
 
@@ -18,7 +18,15 @@ export default function RatesPage() {
 
   return (
     <PageTransition>
-      <PageMeta title={meta.title} description={meta.description} path={meta.path} />
+      <PageMeta
+        title={meta.title}
+        description={meta.description}
+        path={meta.path}
+        jsonLd={buildBreadcrumbJsonLd([
+          { name: 'Home', path: '/' },
+          { name: "Today's Rates" },
+        ])}
+      />
       <section
         className="page-hero page-hero--sm"
       >

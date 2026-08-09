@@ -13,7 +13,7 @@ import {
 } from '../data/galleryImages';
 import { SECTION_IMAGES } from '../data/storeImages';
 import { useStoreSettings } from '../context/StoreSettingsContext';
-import { STATIC_PAGE_META } from '../utils/seo';
+import { STATIC_PAGE_META, buildBreadcrumbJsonLd } from '../utils/seo';
 import { publicGalleryService } from '../services/publicApi';
 import { resolveMediaUrl, videoThumbnailUrl } from '../utils/cloudinary';
 
@@ -126,6 +126,10 @@ export default function GalleryPage() {
         title={STATIC_PAGE_META.gallery.title}
         description={STATIC_PAGE_META.gallery.description}
         path={STATIC_PAGE_META.gallery.path}
+        jsonLd={buildBreadcrumbJsonLd([
+          { name: 'Home', path: '/' },
+          { name: 'Gallery' },
+        ])}
       />
       {/* Hero */}
       <section className="page-hero page-hero--lg">

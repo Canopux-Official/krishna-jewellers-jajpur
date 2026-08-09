@@ -11,7 +11,7 @@ import { applyFilters } from '../utils/filters';
 import { DEFAULT_FILTERS } from '../types';
 import type { FilterState, Product, Collection } from '../types';
 import { resolveMediaUrl } from '../utils/cloudinary';
-import { pageTitle, truncateMeta } from '../utils/seo';
+import { pageTitle, truncateMeta, buildCollectionJsonLd, buildBreadcrumbJsonLd, mergeJsonLd } from '../utils/seo';
 import { motion } from 'framer-motion';
 
 function mapApiProduct(p: any): Product {
@@ -111,6 +111,26 @@ export default function CollectionDetailPage() {
         )}
         path={`/collections/${collection.slug}`}
         image={collection.bannerImage || collection.image}
+        jsonLd={mergeJsonLd(
+          buildCollectionJsonLd({
+            name: collection.name,
+            description: collection.description,
+            shortDescription: collection.shortDescription,
+            slug: collection.slug,
+            image: collection.image,
+            bannerImage: collection.bannerImage,
+            products: filteredProducts.map((p) => ({
+              name: p.name,
+              slug: p.slug,
+              images: p.images,
+            })),
+          }),
+          buildBreadcrumbJsonLd([
+            { name: 'Home', path: '/' },
+            { name: 'Collections', path: '/collections' },
+            { name: collection.name },
+          ]),
+        )}
       />
       <CollectionHero collection={{ ...collection, productCount: filteredProducts.length || collection.productCount }} />
 

@@ -20,6 +20,7 @@ export default function HomePage() {
     showTestimonials,
     showVisitStore,
     showOffers,
+    showRates,
   } = useStoreSettings();
 
   // Wait for settings so toggled-off sections don't flash from defaults
@@ -30,7 +31,7 @@ export default function HomePage() {
       <PageMeta title={meta.title} description={meta.description} path={meta.path} />
       <Hero />
       {show(showCollections) && <Collections />}
-      <MetalRates />
+      {show(showRates) && <MetalRates />}
       {show(showBrandStory) && <BrandStory />}
       {show(showCraftsmanship) && <Craftsmanship />}
       {show(showTestimonials) && <Testimonials />}

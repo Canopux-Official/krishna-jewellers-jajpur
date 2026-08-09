@@ -62,7 +62,7 @@ export default function Collections() {
               >
                 <img
                   src={active.bannerImage || active.image}
-                  alt=""
+                  alt={`${active.name} collection — Krishna Jewellers, Byasanagar`}
                   loading="lazy"
                   decoding="async"
                 />
@@ -124,7 +124,7 @@ export default function Collections() {
                     <span className="kj-collections__tile-media">
                       <img
                         src={col.image}
-                        alt=""
+                        alt={label}
                         loading="lazy"
                         decoding="async"
                         draggable={false}

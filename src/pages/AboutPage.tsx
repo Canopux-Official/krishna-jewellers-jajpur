@@ -6,7 +6,7 @@ import VisitStore from '../components/sections/VisitStore';
 import PageMeta from '../components/seo/PageMeta';
 import { SECTION_IMAGES } from '../data/storeImages';
 import { useStoreSettings } from '../context/StoreSettingsContext';
-import { STATIC_PAGE_META } from '../utils/seo';
+import { STATIC_PAGE_META, buildBreadcrumbJsonLd } from '../utils/seo';
 
 const HERO_IMAGE = SECTION_IMAGES.about;
 
@@ -15,7 +15,15 @@ export default function AboutPage() {
   const { showBrandStory, showVisitStore } = useStoreSettings();
   return (
     <PageTransition>
-      <PageMeta title={meta.title} description={meta.description} path={meta.path} />
+      <PageMeta
+        title={meta.title}
+        description={meta.description}
+        path={meta.path}
+        jsonLd={buildBreadcrumbJsonLd([
+          { name: 'Home', path: '/' },
+          { name: 'About' },
+        ])}
+      />
       <section
         className="page-hero page-hero--md"
       >

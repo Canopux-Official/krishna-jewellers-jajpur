@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import {
   DEFAULT_DESCRIPTION,
   DEFAULT_OG_IMAGE,
+  DEFAULT_OG_IMAGE_HEIGHT,
+  DEFAULT_OG_IMAGE_WIDTH,
   DEFAULT_TITLE,
   SITE_NAME,
   absoluteUrl,
@@ -16,6 +18,8 @@ interface PageMetaProps {
   image?: string;
   type?: 'website' | 'article' | 'product';
   noindex?: boolean;
+  /** When false with noindex, skip canonical (prefer for soft 404s). */
+  setCanonical?: boolean;
   jsonLd?: JsonLd | null;
 }
 
@@ -37,6 +41,10 @@ function upsertLink(rel: string, href: string) {
     document.head.appendChild(el);
   }
   el.setAttribute('href', href);
+}
+
+function removeLink(rel: string) {
+  document.head.querySelector(`link[rel="${rel}"]`)?.remove();
 }
 
 function upsertJsonLd(data: JsonLd | null | undefined) {
@@ -67,6 +75,7 @@ export default function PageMeta({
   image = DEFAULT_OG_IMAGE,
   type = 'website',
   noindex = false,
+  setCanonical = true,
   jsonLd = null,
 }: PageMetaProps) {
   const jsonLdKey = jsonLd ? JSON.stringify(jsonLd) : '';
@@ -86,6 +95,8 @@ export default function PageMeta({
     upsertMeta('property', 'og:type', type === 'product' ? 'product' : 'website');
     upsertMeta('property', 'og:url', url);
     upsertMeta('property', 'og:image', ogImage);
+    upsertMeta('property', 'og:image:width', String(DEFAULT_OG_IMAGE_WIDTH));
+    upsertMeta('property', 'og:image:height', String(DEFAULT_OG_IMAGE_HEIGHT));
     upsertMeta('property', 'og:site_name', SITE_NAME);
     upsertMeta('property', 'og:locale', 'en_IN');
 
@@ -94,9 +105,14 @@ export default function PageMeta({
     upsertMeta('name', 'twitter:description', description);
     upsertMeta('name', 'twitter:image', ogImage);
 
-    upsertLink('canonical', url);
+    if (setCanonical && !noindex) {
+      upsertLink('canonical', url);
+    } else if (noindex) {
+      removeLink('canonical');
+    }
+
     upsertJsonLd(parsedJsonLd);
-  }, [title, description, path, image, type, noindex, jsonLdKey]);
+  }, [title, description, path, image, type, noindex, setCanonical, jsonLdKey]);
 
   return null;
 }

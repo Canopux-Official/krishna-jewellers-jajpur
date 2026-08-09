@@ -11,7 +11,7 @@ import BisCredibility from '../components/ui/BisCredibility';
 import { publicProductsService, buildWhatsAppEnquiry } from '../services/publicApi';
 import { useStoreSettings } from '../context/StoreSettingsContext';
 import { resolveMediaUrl } from '../utils/cloudinary';
-import { buildProductJsonLd, pageTitle, truncateMeta } from '../utils/seo';
+import { buildProductJsonLd, buildBreadcrumbJsonLd, mergeJsonLd, pageTitle, truncateMeta } from '../utils/seo';
 import { isProductSoldOut, stockLabel } from '../utils/stock';
 
 const INFO_SECTIONS = [
@@ -110,15 +110,28 @@ export default function ProductDetailPage() {
         path={`/products/${product.slug}`}
         image={images[0]}
         type="product"
-        jsonLd={buildProductJsonLd({
-          name: product.name,
-          description: product.description,
-          images,
-          purity: product.purity,
-          weight: product.weight,
-          priceValue: product.priceValue,
-          slug: product.slug,
-        })}
+        jsonLd={mergeJsonLd(
+          buildProductJsonLd({
+            name: product.name,
+            description: product.description,
+            images,
+            purity: product.purity,
+            weight: product.weight,
+            weightGrams: product.weightGrams,
+            priceValue: product.priceValue,
+            slug: product.slug,
+            sku: product.id,
+            categoryName,
+            isSoldOut: product.isSoldOut,
+            isAvailable: product.isAvailable,
+          }),
+          buildBreadcrumbJsonLd([
+            { name: 'Home', path: '/' },
+            { name: 'Collections', path: '/collections' },
+            { name: categoryName, path: `/collections/${categorySlug}` },
+            { name: product.name },
+          ]),
+        )}
       />
       <div style={{ paddingTop: 'var(--navbar-height)', backgroundColor: 'var(--color-bg)' }}>
         <div className="container" style={{ paddingTop: '32px', paddingBottom: '40px' }}>

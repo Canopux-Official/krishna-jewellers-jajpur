@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: /admin/
+Disallow: /404
 
-Sitemap: https://www.krishnajewellersjajpur.com/sitemap.xml
+Sitemap: https://www.krishnajewellersjajpur.in/sitemap.xml

@@ -7,7 +7,7 @@ import CollectionMasonry from '../components/collection/CollectionMasonry';
 import PageMeta from '../components/seo/PageMeta';
 import { COLLECTIONS } from '../data/mockCollections';
 import { SECTION_IMAGES } from '../data/storeImages';
-import { STATIC_PAGE_META } from '../utils/seo';
+import { STATIC_PAGE_META, buildCollectionsIndexJsonLd, buildBreadcrumbJsonLd, mergeJsonLd } from '../utils/seo';
 import { publicCategoriesService } from '../services/publicApi';
 import { mergeCollectionsWithLiveCounts } from '../utils/collections';
 import type { Collection } from '../types';
@@ -29,7 +29,24 @@ export default function CollectionsPage() {
 
   return (
     <PageTransition>
-      <PageMeta title={meta.title} description={meta.description} path={meta.path} />
+      <PageMeta
+        title={meta.title}
+        description={meta.description}
+        path={meta.path}
+        jsonLd={mergeJsonLd(
+          buildCollectionsIndexJsonLd(
+            collections.map((c) => ({
+              name: c.name,
+              slug: c.slug,
+              shortDescription: c.shortDescription,
+            })),
+          ),
+          buildBreadcrumbJsonLd([
+            { name: 'Home', path: '/' },
+            { name: 'Collections' },
+          ]),
+        )}
+      />
       {/* ── Hero ── */}
       <section
         className="collections-index-hero"

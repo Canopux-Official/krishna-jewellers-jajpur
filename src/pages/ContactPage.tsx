@@ -7,7 +7,7 @@ import PageMeta from '../components/seo/PageMeta';
 import MapsDirectionsButton from '../components/ui/MapsDirectionsButton';
 import { useStoreSettings } from '../context/StoreSettingsContext';
 import { SECTION_IMAGES } from '../data/storeImages';
-import { STATIC_PAGE_META } from '../utils/seo';
+import { STATIC_PAGE_META, buildBreadcrumbJsonLd } from '../utils/seo';
 import { getStoreMapsEmbedUrl, getStoreMapsUrl } from '../utils/maps';
 import { buildWhatsAppContact } from '../services/publicApi';
 
@@ -83,6 +83,10 @@ export default function ContactPage() {
         title={STATIC_PAGE_META.contact.title}
         description={STATIC_PAGE_META.contact.description}
         path={STATIC_PAGE_META.contact.path}
+        jsonLd={buildBreadcrumbJsonLd([
+          { name: 'Home', path: '/' },
+          { name: 'Contact' },
+        ])}
       />
       <section className="page-hero page-hero--sm">
         <motion.div

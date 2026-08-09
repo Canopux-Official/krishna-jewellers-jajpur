@@ -1,0 +1,24 @@
+{
+  "name": "Krishna Jewellers",
+  "short_name": "Krishna Jewellers",
+  "description": "BIS-hallmarked gold and silver jewellery in Byasanagar, Jajpur.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#F8F6F2",
+  "theme_color": "#F8F6F2",
+  "lang": "en-IN",
+  "icons": [
+    {
+      "src": "/krishna-jewellers-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

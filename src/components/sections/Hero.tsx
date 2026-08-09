@@ -318,7 +318,7 @@ export default function Hero() {
                     ) : null}
                     <img
                       src={slide.src}
-                      alt=""
+                      alt={`${slide.categoryLabel} jewellery at Krishna Jewellers, Byasanagar, Jajpur`}
                       loading={slide.realIndex === 0 ? 'eager' : 'lazy'}
                       decoding="async"
                       fetchPriority={slide.realIndex === 0 ? 'high' : 'auto'}
@@ -359,7 +359,9 @@ export default function Hero() {
           </div>
         )}
 
-        <p className="hero-tagline">Temple-town gold · Byasanagar, Jajpur</p>
+        <h1 className="hero-tagline">
+          Krishna Jewellers — Gold &amp; Silver Jewellery in Byasanagar, Jajpur
+        </h1>
       </div>
 
       <HeroNoticeRibbon />
@@ -501,11 +503,15 @@ export default function Hero() {
           flex-shrink: 0;
           text-align: center;
           font-family: var(--font-body);
-          font-size: 0.6875rem;
+          font-size: clamp(0.625rem, 1.4vw, 0.6875rem);
           font-weight: 300;
-          letter-spacing: 0.14em;
+          letter-spacing: 0.1em;
           text-transform: uppercase;
           color: var(--color-muted);
+          max-width: 36rem;
+          margin-inline: auto;
+          padding-inline: 16px;
+          line-height: 1.45;
         }
 
         .hero-notice-ribbon {

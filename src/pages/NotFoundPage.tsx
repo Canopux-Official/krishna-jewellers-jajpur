@@ -18,7 +18,7 @@ export default function NotFoundPage() {
         padding: '40px 24px',
       }}
     >
-      <PageMeta title={meta.title} description={meta.description} path={meta.path} noindex />
+      <PageMeta title={meta.title} description={meta.description} path={meta.path} noindex setCanonical={false} />
       <motion.p
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}

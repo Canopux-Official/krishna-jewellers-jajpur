@@ -1,15 +1,27 @@
 import { useEffect } from 'react';
 import { useStoreSettings } from '../../context/StoreSettingsContext';
-import { buildLocalBusinessJsonLd } from '../../utils/seo';
+import { buildLocalBusinessJsonLd, buildWebSiteJsonLd } from '../../utils/seo';
 
 const SCRIPT_ID = 'local-business-json-ld';
 
-/** Injects JewelryStore / LocalBusiness schema once for the public site. */
+/** Injects JewelryStore / LocalBusiness + WebSite schema for the public site. */
 export default function LocalBusinessJsonLd() {
   const settings = useStoreSettings();
 
   useEffect(() => {
-    const data = buildLocalBusinessJsonLd(settings);
+    const data = {
+      '@context': 'https://schema.org',
+      '@graph': [
+        (() => {
+          const { '@context': _c, ...store } = buildLocalBusinessJsonLd(settings);
+          return store;
+        })(),
+        (() => {
+          const { '@context': _c, ...site } = buildWebSiteJsonLd();
+          return site;
+        })(),
+      ],
+    };
     let script = document.getElementById(SCRIPT_ID) as HTMLScriptElement | null;
     if (!script) {
       script = document.createElement('script');
