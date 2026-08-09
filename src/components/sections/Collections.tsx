@@ -10,7 +10,14 @@ export default function Collections() {
   const active = COLLECTIONS.find((c) => c.id === activeId) ?? COLLECTIONS[0];
 
   const scrollStrip = (dir: 1 | -1) => {
-    stripRef.current?.scrollBy({ left: dir * 320, behavior: 'smooth' });
+    const el = stripRef.current;
+    if (!el) return;
+    const vertical = window.matchMedia('(min-width: 901px)').matches;
+    if (vertical) {
+      el.scrollBy({ top: dir * 160, behavior: 'smooth' });
+    } else {
+      el.scrollBy({ left: dir * 320, behavior: 'smooth' });
+    }
   };
 
   return (
@@ -22,15 +29,15 @@ export default function Collections() {
           <motion.h2
             id="collections-heading"
             initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
           >
             Collections
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.08 }}
           >
@@ -38,7 +45,7 @@ export default function Collections() {
           </motion.p>
         </header>
 
-        <div className="kj-collections__feature">
+        <div className="kj-collections__stage">
           <AnimatePresence mode="wait">
             <motion.div
               key={active.id}
@@ -70,68 +77,72 @@ export default function Collections() {
                     Explore collection →
                   </span>
                 </div>
-            </Link>
-          </motion.div>
+              </Link>
+            </motion.div>
           </AnimatePresence>
-        </div>
 
-        <div className="kj-collections__strip-wrap">
-          <button
-            type="button"
-            className="kj-collections__strip-nav kj-collections__strip-nav--prev"
-            aria-label="Scroll collections left"
-            onClick={() => scrollStrip(-1)}
-          >
-            ‹
-          </button>
+          <div className="kj-collections__strip-wrap">
+            <button
+              type="button"
+              className="kj-collections__strip-nav kj-collections__strip-nav--prev"
+              aria-label="Scroll collections"
+              onClick={() => scrollStrip(-1)}
+            >
+              <span className="kj-collections__strip-nav-icon" aria-hidden>
+                ‹
+              </span>
+            </button>
 
-          <div
-            ref={stripRef}
-            className="kj-collections__tiles"
-            role="listbox"
-            aria-label="Choose a collection"
-          >
-            {COLLECTIONS.map((col, i) => {
-              const selected = col.id === activeId;
-              const label = CATEGORY_NAV_LABELS[col.id] ?? col.name;
-              return (
-                <motion.button
-                  key={col.id}
-                  type="button"
-                  role="option"
-                  aria-selected={selected}
-                  className={`kj-collections__tile${selected ? ' is-active' : ''}`}
-                  initial={{ opacity: 0, y: 14 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.45, delay: i * 0.05 }}
-                  onClick={() => setActiveId(col.id)}
-                  onMouseEnter={() => setActiveId(col.id)}
-                  onFocus={() => setActiveId(col.id)}
-                >
-                  <span className="kj-collections__tile-media">
-                    <img
-                      src={col.image}
-                      alt=""
-                      loading="lazy"
-                      decoding="async"
-                      draggable={false}
-                    />
-                  </span>
-                  <span className="kj-collections__tile-label">{label}</span>
-                </motion.button>
-              );
-            })}
+            <div
+              ref={stripRef}
+              className="kj-collections__tiles"
+              role="listbox"
+              aria-label="Choose a collection"
+            >
+              {COLLECTIONS.map((col, i) => {
+                const selected = col.id === activeId;
+                const label = CATEGORY_NAV_LABELS[col.id] ?? col.name;
+                return (
+                  <motion.button
+                    key={col.id}
+                    type="button"
+                    role="option"
+                    aria-selected={selected}
+                    className={`kj-collections__tile${selected ? ' is-active' : ''}`}
+                    initial={{ opacity: 0, y: 14 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.45, delay: i * 0.04 }}
+                    onClick={() => setActiveId(col.id)}
+                    onMouseEnter={() => setActiveId(col.id)}
+                    onFocus={() => setActiveId(col.id)}
+                  >
+                    <span className="kj-collections__tile-media">
+                      <img
+                        src={col.image}
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                        draggable={false}
+                      />
+                    </span>
+                    <span className="kj-collections__tile-label">{label}</span>
+                  </motion.button>
+                );
+              })}
+            </div>
+
+            <button
+              type="button"
+              className="kj-collections__strip-nav kj-collections__strip-nav--next"
+              aria-label="Scroll collections"
+              onClick={() => scrollStrip(1)}
+            >
+              <span className="kj-collections__strip-nav-icon" aria-hidden>
+                ›
+              </span>
+            </button>
           </div>
-
-          <button
-            type="button"
-            className="kj-collections__strip-nav kj-collections__strip-nav--next"
-            aria-label="Scroll collections right"
-            onClick={() => scrollStrip(1)}
-          >
-            ›
-          </button>
         </div>
 
         <motion.div
@@ -143,7 +154,7 @@ export default function Collections() {
         >
           <Link to="/collections" className="kj-collections__all">
             View all collections
-      </Link>
+          </Link>
         </motion.div>
       </div>
 
@@ -190,17 +201,16 @@ export default function Collections() {
           line-height: 1.7;
         }
 
-        .kj-collections__feature {
+        /* Desktop: one large hero with vertical tile strip inside (right) */
+        .kj-collections__stage {
           position: relative;
           width: 100%;
-          margin-bottom: clamp(28px, 4vw, 40px);
         }
+
         .kj-collections__feature-frame {
           position: relative;
           width: 100%;
-          aspect-ratio: 21 / 9;
-          max-height: min(52vh, 520px);
-          min-height: 280px;
+          aspect-ratio: 16 / 9;
           overflow: hidden;
           border-radius: 4px;
           background: var(--color-dark);
@@ -217,7 +227,7 @@ export default function Collections() {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          object-position: center 28%;
+          object-position: center center;
           display: block;
           transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
         }
@@ -228,7 +238,8 @@ export default function Collections() {
           position: absolute;
           inset: 0;
           background:
-            linear-gradient(90deg, rgba(24,24,24,0.78) 0%, rgba(24,24,24,0.35) 38%, transparent 68%),
+            linear-gradient(90deg, rgba(24,24,24,0.78) 0%, rgba(24,24,24,0.35) 38%, transparent 58%),
+            linear-gradient(270deg, rgba(24,24,24,0.55) 0%, transparent 28%),
             linear-gradient(180deg, transparent 48%, rgba(24,24,24,0.5) 100%);
           pointer-events: none;
         }
@@ -236,7 +247,7 @@ export default function Collections() {
           position: absolute;
           left: 0;
           bottom: 0;
-          max-width: min(28rem, 92%);
+          max-width: min(28rem, 58%);
           padding: clamp(24px, 4vw, 44px);
           z-index: 1;
         }
@@ -276,18 +287,38 @@ export default function Collections() {
         }
 
         .kj-collections__strip-wrap {
+          position: absolute;
+          top: 14px;
+          right: 14px;
+          bottom: 14px;
+          z-index: 3;
+          width: 108px;
           display: grid;
-          grid-template-columns: auto 1fr auto;
+          grid-template-columns: 1fr;
+          grid-template-rows: auto minmax(0, 1fr) auto;
           align-items: center;
-          gap: 10px;
+          justify-items: center;
+          gap: 8px;
+          padding: 10px 8px;
+          border-radius: 4px;
+          background: rgba(248, 246, 242, 0.92);
+          border: 1px solid rgba(255, 255, 255, 0.35);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          box-shadow: 0 12px 28px rgba(24, 24, 24, 0.18);
         }
         .kj-collections__tiles {
           display: flex;
-          gap: clamp(12px, 1.6vw, 18px);
-          overflow-x: auto;
-          scroll-snap-type: x mandatory;
+          flex-direction: column;
+          gap: 10px;
+          overflow-y: auto;
+          overflow-x: hidden;
+          scroll-snap-type: y mandatory;
           scrollbar-width: none;
-          padding: 4px 2px 6px;
+          padding: 2px;
+          width: 100%;
+          height: 100%;
+          min-height: 0;
           -webkit-overflow-scrolling: touch;
         }
         .kj-collections__tiles::-webkit-scrollbar {
@@ -296,12 +327,12 @@ export default function Collections() {
 
         .kj-collections__tile {
           flex: 0 0 auto;
-          width: clamp(132px, 16vw, 168px);
+          width: 100%;
           scroll-snap-align: start;
           display: flex;
           flex-direction: column;
           align-items: stretch;
-          gap: 10px;
+          gap: 6px;
           padding: 0;
           border: none;
           background: transparent;
@@ -312,9 +343,9 @@ export default function Collections() {
         }
         .kj-collections__tile-media {
           display: block;
-          aspect-ratio: 4 / 5;
+          aspect-ratio: 1;
           overflow: hidden;
-          border-radius: 4px;
+          border-radius: 3px;
           background: #f3efe8;
           outline: 1px solid transparent;
           outline-offset: 0;
@@ -330,11 +361,11 @@ export default function Collections() {
         }
         .kj-collections__tile-label {
           font-family: var(--font-heading);
-          font-size: 1.0625rem;
+          font-size: 0.8125rem;
           font-weight: 600;
-          line-height: 1.2;
+          line-height: 1.15;
           letter-spacing: 0.01em;
-          padding-inline: 2px;
+          padding-inline: 1px;
         }
         .kj-collections__tile:hover {
           color: var(--color-text);
@@ -347,17 +378,17 @@ export default function Collections() {
         }
         .kj-collections__tile.is-active .kj-collections__tile-media {
           outline-color: var(--color-gold);
-          box-shadow: 0 10px 24px rgba(24, 24, 24, 0.1);
+          box-shadow: 0 6px 14px rgba(24, 24, 24, 0.12);
         }
 
         .kj-collections__strip-nav {
-          width: 36px;
-          height: 36px;
+          width: 28px;
+          height: 28px;
           border-radius: 999px;
           border: 1px solid var(--color-divider);
           background: var(--color-bg);
           color: var(--color-text);
-          font-size: 1.25rem;
+          font-size: 1rem;
           line-height: 1;
           cursor: pointer;
           display: flex;
@@ -368,6 +399,10 @@ export default function Collections() {
         .kj-collections__strip-nav:hover {
           border-color: var(--color-gold);
           color: var(--color-bronze);
+        }
+        .kj-collections__strip-nav-icon {
+          display: inline-block;
+          transform: rotate(90deg);
         }
 
         .kj-collections__footer {
@@ -389,15 +424,66 @@ export default function Collections() {
           border-bottom-color: var(--color-gold);
         }
 
+        /* Mobile: stacked hero + horizontal strip below */
         @media (max-width: 900px) {
           .kj-collections__feature-frame {
             aspect-ratio: 4 / 3;
-            max-height: none;
             min-height: 320px;
+          }
+          .kj-collections__feature-link img {
+            object-fit: cover;
+            object-position: left 35%;
           }
           .kj-collections__feature-shade {
             background:
               linear-gradient(180deg, transparent 35%, rgba(24,24,24,0.82) 100%);
+          }
+          .kj-collections__feature-copy {
+            max-width: min(28rem, 92%);
+          }
+          .kj-collections__strip-wrap {
+            position: static;
+            width: auto;
+            margin-top: clamp(20px, 3vw, 28px);
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            grid-template-rows: auto;
+            height: auto;
+            gap: 10px;
+            padding: 0;
+            border: none;
+            background: transparent;
+            box-shadow: none;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+          }
+          .kj-collections__tiles {
+            flex-direction: row;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-snap-type: x mandatory;
+            height: auto;
+            padding: 4px 2px 6px;
+            gap: clamp(12px, 1.6vw, 18px);
+          }
+          .kj-collections__tile {
+            width: clamp(132px, 16vw, 168px);
+            gap: 10px;
+          }
+          .kj-collections__tile-media {
+            aspect-ratio: 4 / 5;
+            border-radius: 4px;
+          }
+          .kj-collections__tile-label {
+            font-size: 1.0625rem;
+          }
+          .kj-collections__strip-nav {
+            width: 36px;
+            height: 36px;
+            font-size: 1.25rem;
+          }
+          .kj-collections__strip-nav-icon {
+            transform: none;
           }
         }
         @media (max-width: 640px) {

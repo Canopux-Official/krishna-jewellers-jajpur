@@ -65,3 +65,13 @@ export function buildWhatsAppEnquiry(
   );
   return `https://wa.me/${phone}?text=${message}`;
 }
+
+/** Build WhatsApp URL for a general Contact-page enquiry. */
+export function buildWhatsAppContact(whatsapp: string): string {
+  const phone = (whatsapp || '').replace(/[^\d]/g, '');
+  if (!phone) return '';
+  const message = encodeURIComponent(
+    `Hello Krishna Jewellers,\n\nI would like to enquire about jewellery from your Byasanagar showroom.\n\nPlease share more details.`,
+  );
+  return `https://wa.me/${phone}?text=${message}`;
+}

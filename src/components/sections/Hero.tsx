@@ -4,6 +4,7 @@ import { useStoreSettings } from '../../context/StoreSettingsContext';
 
 type HeroSlide = {
   src: string;
+  mobileSrc?: string;
   categoryLabel: string;
   categorySlug: string;
 };
@@ -13,17 +14,20 @@ type TrackItem = HeroSlide & { key: string; realIndex: number };
 /** Hero banners — each slide can point to its own collection. */
 const HERO_SLIDES: HeroSlide[] = [
   {
-    src: '/new-hero-1.png',
+    src: '/home-hero-bridal.png',
+    mobileSrc: '/home-hero-bridal-mobile.png',
     categoryLabel: 'Bridal Collection',
     categorySlug: 'bridal-collection',
   },
   {
-    src: '/new-hero-2.png',
+    src: '/home-hero-necklaces.png',
+    mobileSrc: '/home-hero-necklaces-mobile.png',
     categoryLabel: 'Gold Necklaces',
     categorySlug: 'gold-necklaces',
   },
   {
-    src: '/new-hero-3.png',
+    src: '/home-hero-bangles.png',
+    mobileSrc: '/home-hero-bangles-mobile.png',
     categoryLabel: 'Bangles',
     categorySlug: 'bangles',
   },
@@ -249,14 +253,19 @@ export default function Hero() {
                     else goToReal(slide.realIndex);
                   }}
                 >
-                  <img
-                    src={slide.src}
-                    alt=""
-                    loading={slide.realIndex === 0 ? 'eager' : 'lazy'}
-                    decoding="async"
-                    fetchPriority={slide.realIndex === 0 ? 'high' : 'auto'}
-                    draggable={false}
-                  />
+                  <picture>
+                    {slide.mobileSrc ? (
+                      <source media="(max-width: 640px)" srcSet={slide.mobileSrc} />
+                    ) : null}
+                    <img
+                      src={slide.src}
+                      alt=""
+                      loading={slide.realIndex === 0 ? 'eager' : 'lazy'}
+                      decoding="async"
+                      fetchPriority={slide.realIndex === 0 ? 'high' : 'auto'}
+                      draggable={false}
+                    />
+                  </picture>
                   <Link
                     to={`/collections/${slide.categorySlug}`}
                     className="hero-card__category"
@@ -360,6 +369,11 @@ export default function Hero() {
           box-shadow:
             0 16px 40px rgba(24, 24, 24, 0.18),
             0 0 0 1px rgba(199, 161, 90, 0.18);
+        }
+        .hero-slide picture {
+          position: absolute;
+          inset: 0;
+          display: block;
         }
         .hero-slide img {
           width: 100%;
@@ -471,6 +485,9 @@ export default function Hero() {
             .hero-slide {
               max-height: calc(100vh - var(--navbar-height) - 142px);
             }
+          }
+          .hero-slide img {
+            object-position: center center;
           }
           .hero-card__category {
             right: 10px;

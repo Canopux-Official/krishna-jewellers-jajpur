@@ -81,13 +81,20 @@ export default function Navbar() {
   // Keep page padding in sync with expanded / collapsed header
   useEffect(() => {
     const root = document.documentElement;
-    root.style.setProperty(
-      '--navbar-height',
-      atHeroTop
-        ? 'calc(var(--navbar-brand-row) + var(--navbar-cats-row))'
-        : 'var(--navbar-brand-row)',
-    );
+    const applyHeight = () => {
+      const mobile = window.matchMedia('(max-width: 640px)').matches;
+      // On mobile, hero-top categories collapse into the hamburger — no cats row.
+      root.style.setProperty(
+        '--navbar-height',
+        atHeroTop && !mobile
+          ? 'calc(var(--navbar-brand-row) + var(--navbar-cats-row))'
+          : 'var(--navbar-brand-row)',
+      );
+    };
+    applyHeight();
+    window.addEventListener('resize', applyHeight);
     return () => {
+      window.removeEventListener('resize', applyHeight);
       root.style.setProperty('--navbar-height', 'var(--navbar-brand-row)');
     };
   }, [atHeroTop]);
@@ -101,7 +108,7 @@ export default function Navbar() {
 
   useEffect(() => {
     setMenuOpen(false);
-  }, [location.pathname, scrolled]);
+  }, [location.pathname]);
 
   return (
     <>
@@ -228,28 +235,26 @@ export default function Navbar() {
               </button>
             )}
 
-            {atHeroTop && (
-              <button
-                type="button"
-                aria-label="Open menu"
-                aria-expanded={menuOpen}
-                onClick={() => setMenuOpen(true)}
-                style={{
-                  background: 'transparent',
-                  border: '1px solid var(--color-divider)',
-                  cursor: 'pointer',
-                  padding: '10px',
-                  color: 'var(--color-text)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '5px',
-                }}
-              >
-                <span style={{ display: 'block', width: 18, height: 1.5, background: 'currentColor' }} />
-                <span style={{ display: 'block', width: 18, height: 1.5, background: 'currentColor' }} />
-                <span style={{ display: 'block', width: 18, height: 1.5, background: 'currentColor' }} />
-              </button>
-            )}
+            <button
+              type="button"
+              className={`kj-menu-btn${atHeroTop ? ' is-visible' : ''}`}
+              aria-label="Open menu"
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen(true)}
+              style={{
+                background: 'transparent',
+                border: '1px solid var(--color-divider)',
+                cursor: 'pointer',
+                padding: '10px',
+                color: 'var(--color-text)',
+                flexDirection: 'column',
+                gap: '5px',
+              }}
+            >
+              <span style={{ display: 'block', width: 18, height: 1.5, background: 'currentColor' }} />
+              <span style={{ display: 'block', width: 18, height: 1.5, background: 'currentColor' }} />
+              <span style={{ display: 'block', width: 18, height: 1.5, background: 'currentColor' }} />
+            </button>
           </div>
         </div>
 
@@ -258,6 +263,7 @@ export default function Navbar() {
           {atHeroTop && (
             <motion.div
               key="category-bar"
+              className="kj-category-bar-wrap"
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'var(--navbar-cats-row)', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
@@ -304,7 +310,7 @@ export default function Navbar() {
       </header>
 
       <AnimatePresence>
-        {menuOpen && atHeroTop && (
+        {menuOpen && (
           <>
             <motion.div
               initial={{ opacity: 0 }}
@@ -447,6 +453,14 @@ export default function Navbar() {
         .kj-category-bar::-webkit-scrollbar {
           display: none;
         }
+        .kj-menu-btn {
+          display: none;
+          align-items: center;
+          justify-content: center;
+        }
+        .kj-menu-btn.is-visible {
+          display: flex;
+        }
         .kj-cat-link {
           flex-shrink: 0;
           display: flex;
@@ -478,6 +492,15 @@ export default function Navbar() {
           font-weight: 500;
         }
         @media (max-width: 640px) {
+          .kj-category-bar-wrap {
+            display: none !important;
+          }
+          .kj-scrolled-links {
+            display: none !important;
+          }
+          .kj-menu-btn {
+            display: flex !important;
+          }
           .kj-cat-link {
             gap: 6px;
           }
