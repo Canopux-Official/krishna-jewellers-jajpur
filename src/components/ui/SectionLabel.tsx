@@ -18,11 +18,10 @@ export default function SectionLabel({ children, light, className }: SectionLabe
         display: 'inline-block',
         fontFamily: 'var(--font-body)',
         fontSize: '0.6875rem',
-        fontWeight: 500,
+        fontWeight: 400,
         letterSpacing: '0.22em',
         textTransform: 'uppercase',
         color: light ? 'var(--color-on-maroon)' : 'var(--color-muted)',
-        fontWeight: 400,
       }}
     >
       {children}
