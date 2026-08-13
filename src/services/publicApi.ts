@@ -25,7 +25,7 @@ export const publicGalleryService = {
 export const publicProductsService = {
   getFeatured: () =>
     publicApi.get('/products', { params: { featured: true, limit: 8 } }).then((r) => r.data),
-  getBySlug: (slug: string) => publicApi.get(`/ap1/v1/products/slug/${slug}`).then((r) => r.data),
+  getBySlug: (slug: string) => publicApi.get(`/products/slug/${slug}`).then((r) => r.data),
   getByCollection: (categorySlug: string, params?: Record<string, unknown>) =>
     publicApi.get('/products', { params: { category: categorySlug, ...params } }).then((r) => r.data),
   search: (q: string) =>
