@@ -7,6 +7,7 @@ interface CollectionMasonryProps {
 }
 
 export default function CollectionMasonry({ collections }: CollectionMasonryProps) {
+
   return (
     <>
       <div
@@ -42,6 +43,7 @@ export default function CollectionMasonry({ collections }: CollectionMasonryProp
 function CollectionMasonryCard({ collection, index }: { collection: Collection; index: number }) {
   const colSpan = collection.size === 'large' ? 2 : 1;
   const rowSpan = collection.size === 'large' || collection.size === 'tall' ? 2 : 1;
+  
 
   return (
     <motion.div

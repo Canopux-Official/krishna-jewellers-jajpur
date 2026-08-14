@@ -31,7 +31,7 @@ export default function VisitStore() {
         </svg>
       ),
       label: 'Opening Hours',
-      value: `Monday – Sunday\n${settings.weekdayHours}\nClosed on the last Sunday of every month`,
+      value: `Monday – Sunday\n${settings.weekdayHours}\nClosed on the 25th of every month.`,
     },
     {
       icon: (

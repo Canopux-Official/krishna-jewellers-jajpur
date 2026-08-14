@@ -31,6 +31,8 @@ export const COLLECTIONS: Collection[] = [
   { id: 'coins', name: 'Coins', slug: 'gold-coins--bars', shortDescription: 'Hallmarked gold coins.', description: '', image: C.coins, bannerImage: B.coins, productCount: 0, size: 'small' },
   { id: 'mangalsutra', name: 'Mangalsutra', slug: 'mangalsutra', shortDescription: 'Sacred threads of gold.', description: '', image: C.mangalsutra, bannerImage: B.mangalsutra, productCount: 0, size: 'medium' },
   { id: 'watches', name: 'Watches', slug: 'watches--collections', shortDescription: 'Fine timepieces.', description: '', image: C.watches, bannerImage: B.watches, productCount: 0, size: 'small' },
+  { id: 'diamonds', name: 'Diamonds', slug: 'diamond-collections', shortDescription: 'Timeless brilliance and elegance.', description: '', image: C.diamonds, bannerImage: B.diamonds, productCount: 0, size: 'small' },
+  { id: 'gemstones', name: 'Gemstones', slug: 'gemstones', shortDescription: 'Vibrant and rare precious gems.', description: '', image: C.gemstones, bannerImage: B.gemstones, productCount: 0, size: 'small' }
 ];
 
 /** Featured products emptied for redesign. */

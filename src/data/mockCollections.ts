@@ -125,6 +125,30 @@ export const COLLECTIONS: Collection[] = [
     productCount: 0,
     size: 'small',
   },
+  {
+    id: 'diamonds',
+    slug: 'diamond-collections',
+    name: 'Diamonds',
+    shortDescription: 'Fine timepieces.',
+    description:
+      'Curated watches chosen to pair with everyday gold — for gifting and personal style.',
+    image: C.diamonds,
+    bannerImage: B.diamonds,
+    productCount: 0,
+    size: 'small',
+  },
+  {
+    id: 'gemstones',
+    slug: 'gemstones',
+    name: 'Gemstones',
+    shortDescription: 'Fine timepieces.',
+    description:
+      'Curated watches chosen to pair with everyday gold — for gifting and personal style.',
+    image: C.gemstones,
+    bannerImage: B.gemstones,
+    productCount: 0,
+    size: 'small',
+  },
 ];
 
 export function getCollectionBySlug(slug: string): Collection | undefined {

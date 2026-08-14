@@ -56,6 +56,10 @@ export const STORE_PHOTOS = {
       'https://res.cloudinary.com/dbsskv4bf/image/upload/v1786211683/krishna-jewellers-jajpur/products/fyypmyfzuxk7jpuyw2ug.jpg',
     watches:
       'https://res.cloudinary.com/dbsskv4bf/image/upload/v1786211495/krishna-jewellers-jajpur/products/oq8tixdtu0mlgzkdigjk.jpg',
+    diamonds:
+    'https://res.cloudinary.com/dbsskv4bf/image/upload/v1786644160/krishna-jewellers-jajpur/products/krshdyttr48ir8ivoxtk.jpg',
+    gemstones:
+    'https://res.cloudinary.com/dbsskv4bf/image/upload/v1786644895/krishna-jewellers-jajpur/products/x4dghre6y9rdxlfuzm3v.jpg'
   },
 
   /** Lifestyle model banners for the homepage collections hero (16:9 → cropped into 21:9). */
@@ -70,6 +74,8 @@ export const STORE_PHOTOS = {
     coins: '/collection-hero-coins.png',
     mangalsutra: '/collection-hero-mangalsutra.png',
     watches: '/collection-hero-watches.png',
+    diamonds: '/collection-hero-diamonds.png',
+    gemstones: '/collection-hero-gemstones.png'
   },
 
   products: {

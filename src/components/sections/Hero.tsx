@@ -588,8 +588,8 @@ export default function Hero() {
 
 function HeroNoticeRibbon() {
   const settings = useStoreSettings();
-  const hours = settings.weekdayHours || '10:00 AM – 8:30 PM';
-  const line = `Open Monday – Sunday · ${hours} · Closed on the last Sunday of every month`;
+  const hours = settings.weekdayHours || '9:30 AM – 9:30 PM';
+  const line = `Open Monday – Sunday · ${hours} · We remain closed on the 25th of every month.`;
 
   return (
     <div className="hero-notice-ribbon" role="note">

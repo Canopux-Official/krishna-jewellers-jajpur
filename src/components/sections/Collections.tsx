@@ -130,6 +130,7 @@ export default function Collections() {
                         draggable={false}
                       />
                     </span>
+                    
                     <span className="kj-collections__tile-label">{label}</span>
                   </motion.button>
                 );

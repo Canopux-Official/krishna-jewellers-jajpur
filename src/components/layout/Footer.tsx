@@ -216,7 +216,7 @@ export default function Footer() {
               {[
                 { label: 'Address', value: settings.address },
                 { label: 'Phone', value: settings.phone },
-                { label: 'Hours', value: `Monday – Sunday\n${settings.weekdayHours}\nClosed on the last Sunday of every month` },
+                { label: 'Hours', value: `Monday – Sunday\n${settings.weekdayHours}\nClosed on the 25th of every month.` },
               ].map((item) => (
                 <div key={item.label}>
                   <p
