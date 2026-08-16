@@ -18,6 +18,7 @@ import { OffersModule } from './offers/offers.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { ActivityLogModule } from './activity-log/activity-log.module';
 import { SettingsModule } from './settings/settings.module';
+import { HealthModule } from './health/health.module';
 
 @Module({
   imports: [
@@ -38,6 +39,7 @@ import { SettingsModule } from './settings/settings.module';
     OffersModule,
     DashboardModule,
     SettingsModule,
+    HealthModule
   ],
   providers: [
     { provide: APP_FILTER, useClass: AllExceptionsFilter },
