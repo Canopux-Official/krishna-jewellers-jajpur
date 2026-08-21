@@ -140,6 +140,42 @@ export function IconWatches(props: IconProps) {
   );
 }
 
+export function IconDiamond(props: IconProps) {
+  return (
+    <Svg {...props}>
+      {/* Outer outline */}
+      <path d="M11 8h10l5 6l-10 12l-10-12z" />
+      {/* Girdle divider */}
+      <path d="M6 14h20" />
+      {/* Crown facets */}
+      <path d="M11 8l2.5 6l2.5-6l2.5 6l2.5-6" />
+      {/* Pavilion facets */}
+      <path d="M13.5 14L16 26l2.5-12" />
+      <path d="M16 14v12" />
+    </Svg>
+  );
+}
+
+export function IconGemstone(props: IconProps) {
+  return (
+    <Svg {...props}>
+      {/* Outer octagonal gem boundary */}
+      <path d="M10 6h12l4 4v12l-4 4H10l-4-4V10z" />
+      {/* Inner table facet */}
+      <path d="M13 10h6l2 2v8l-2 2h-6l-2-2v-8z" />
+      {/* Facet corner connections */}
+      <path d="M10 6l3 4" />
+      <path d="M22 6l-3 4" />
+      <path d="M26 10l-5 2" />
+      <path d="M26 22l-5-2" />
+      <path d="M22 26l-3-4" />
+      <path d="M10 26l3-4" />
+      <path d="M6 22l5-2" />
+      <path d="M6 10l5 2" />
+    </Svg>
+  );
+}
+
 const BY_ID: Record<string, (props: IconProps) => ReactNode> = {
   bridal: IconBridal,
   necklaces: IconNecklace,
@@ -151,6 +187,8 @@ const BY_ID: Record<string, (props: IconProps) => ReactNode> = {
   coins: IconCoins,
   mangalsutra: IconMangalsutra,
   watches: IconWatches,
+  diamonds: IconDiamond,
+  gemstones: IconGemstone
 };
 
 /** Short labels for the category strip (Tanishq-style). */
@@ -176,6 +214,6 @@ export function CategoryNavIcon({
   size?: number;
   className?: string;
 }) {
-  const Icon = BY_ID[id] ?? IconNecklace;
+  const Icon = BY_ID[id];
   return <Icon size={size} className={className} />;
 }
