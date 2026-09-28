@@ -4,8 +4,8 @@ interface BaseProps {
   label: string;
   error?: string;
   required?: boolean;
+  endAdornment?: React.ReactNode;
 }
-
 interface InputProps extends BaseProps, InputHTMLAttributes<HTMLInputElement> {
   as?: 'input';
 }
@@ -64,12 +64,23 @@ export default function FormField(props: FormFieldProps) {
           ))}
         </select>
       ) : (
-        <input
-          {...(rest as InputHTMLAttributes<HTMLInputElement>)}
-          onFocus={handleFocus as any}
-          onBlur={handleBlur as any}
-          style={{ ...fieldStyle, borderColor: error ? 'var(--admin-danger)' : 'var(--admin-border)' }}
-        />
+        <div style={{ position: 'relative' }}>
+          <input
+            {...(rest as InputHTMLAttributes<HTMLInputElement>)}
+            onFocus={handleFocus as any}
+            onBlur={handleBlur as any}
+            style={{
+              ...fieldStyle,
+              borderColor: error ? 'var(--admin-danger)' : 'var(--admin-border)',
+              paddingRight: (props as InputProps).endAdornment ? '40px' : fieldStyle.padding,
+            }}
+          />
+          {(props as InputProps).endAdornment && (
+            <div style={{ position: 'absolute', right: '10px', top: '50%', transform: 'translateY(-50%)' }}>
+              {(props as InputProps).endAdornment}
+            </div>
+          )}
+        </div>
       )}
 
       {error && (

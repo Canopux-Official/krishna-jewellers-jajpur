@@ -60,64 +60,64 @@ const SECTIONS: {
   icon: React.ReactNode;
   fields: TextField[];
 }[] = [
-  {
-    title: 'Admin Account',
-    subtitle: 'Your login and contact details.',
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-        <circle cx="12" cy="7" r="4" />
-      </svg>
-    ),
-    fields: ['adminName', 'email'],
-  },
-  {
-    title: 'Store Information',
-    subtitle: 'Displayed on the website and in communications.',
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-        <polyline points="9 22 9 12 15 12 15 22" />
-      </svg>
-    ),
-    fields: ['storeName', 'address'],
-  },
-  {
-    title: 'Contact Details',
-    subtitle: 'Used for customer enquiries and WhatsApp.',
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.86 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.77 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-      </svg>
-    ),
-    fields: ['phone', 'whatsapp'],
-  },
-  {
-    title: 'Opening Hours',
-    subtitle: 'Shown in the "Visit Our Store" section.',
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <circle cx="12" cy="12" r="10" />
-        <polyline points="12 6 12 12 16 14" />
-      </svg>
-    ),
-    fields: ['weekdayHours', 'sundayHours'],
-  },
-  {
-    title: 'Social & Maps',
-    subtitle: 'Links shown in the footer and visit section.',
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <circle cx="18" cy="5" r="3" />
-        <circle cx="6" cy="12" r="3" />
-        <circle cx="18" cy="19" r="3" />
-        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
-        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
-      </svg>
-    ),
-    fields: ['instagramUrl', 'instagramCaption', 'facebookUrl', 'googleMapsUrl'],
-  },
-];
+    {
+      title: 'Admin Account',
+      subtitle: 'Your login and contact details.',
+      icon: (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+          <circle cx="12" cy="7" r="4" />
+        </svg>
+      ),
+      fields: ['adminName', 'email'],
+    },
+    {
+      title: 'Store Information',
+      subtitle: 'Displayed on the website and in communications.',
+      icon: (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+          <polyline points="9 22 9 12 15 12 15 22" />
+        </svg>
+      ),
+      fields: ['storeName', 'address'],
+    },
+    {
+      title: 'Contact Details',
+      subtitle: 'Used for customer enquiries and WhatsApp.',
+      icon: (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.86 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.77 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+        </svg>
+      ),
+      fields: ['phone', 'whatsapp'],
+    },
+    {
+      title: 'Opening Hours',
+      subtitle: 'Shown in the "Visit Our Store" section.',
+      icon: (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <circle cx="12" cy="12" r="10" />
+          <polyline points="12 6 12 12 16 14" />
+        </svg>
+      ),
+      fields: ['weekdayHours', 'sundayHours'],
+    },
+    {
+      title: 'Social & Maps',
+      subtitle: 'Links shown in the footer and visit section.',
+      icon: (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <circle cx="18" cy="5" r="3" />
+          <circle cx="6" cy="12" r="3" />
+          <circle cx="18" cy="19" r="3" />
+          <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
+          <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
+        </svg>
+      ),
+      fields: ['instagramUrl', 'instagramCaption', 'facebookUrl', 'googleMapsUrl'],
+    },
+  ];
 
 const LABELS: Record<TextField, string> = {
   adminName: 'Admin Name',
@@ -206,6 +206,24 @@ export default function AdminSettings() {
     newPassword: '',
     confirmPassword: '',
   });
+
+  const [showPw, setShowPw] = useState({ current: false, new: false, confirm: false });
+  const toggleShowPw = (key: keyof typeof showPw) =>
+    setShowPw((s) => ({ ...s, [key]: !s[key] }));
+
+  const EyeButton = ({ shown, onClick }: { shown: boolean; onClick: () => void }) => (
+    <button
+      type="button"
+      onClick={onClick}
+      style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--admin-text-2)', display: 'flex', alignItems: 'center', padding: 0 }}
+    >
+      {shown
+        ? <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" /><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" /><line x1="1" y1="1" x2="23" y2="23" /></svg>
+        : <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" /><circle cx="12" cy="12" r="3" /></svg>
+      }
+    </button>
+  );
+
   const [changingPassword, setChangingPassword] = useState(false);
 
   useEffect(() => {
@@ -512,29 +530,32 @@ export default function AdminSettings() {
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 16 }}>
                   <FormField
                     label="Current Password"
-                    type="password"
+                    type={showPw.current ? 'text' : 'password'}
                     autoComplete="current-password"
                     value={passwordForm.currentPassword}
                     onChange={(e) => setPassword('currentPassword', e.target.value)}
                     disabled={changingPassword}
+                    endAdornment={<EyeButton shown={showPw.current} onClick={() => toggleShowPw('current')} />}
                   />
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18 }}>
                     <FormField
                       label="New Password"
-                      type="password"
+                      type={showPw.new ? 'text' : 'password'}
                       autoComplete="new-password"
                       placeholder="At least 8 characters"
                       value={passwordForm.newPassword}
                       onChange={(e) => setPassword('newPassword', e.target.value)}
                       disabled={changingPassword}
+                      endAdornment={<EyeButton shown={showPw.new} onClick={() => toggleShowPw('new')} />}
                     />
                     <FormField
                       label="Confirm New Password"
-                      type="password"
+                      type={showPw.confirm ? 'text' : 'password'}
                       autoComplete="new-password"
                       value={passwordForm.confirmPassword}
                       onChange={(e) => setPassword('confirmPassword', e.target.value)}
                       disabled={changingPassword}
+                      endAdornment={<EyeButton shown={showPw.confirm} onClick={() => toggleShowPw('confirm')} />}
                     />
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
